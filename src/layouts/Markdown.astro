@@ -1,16 +1,20 @@
 ---
-import { SEO } from "astro-seo";
-import { Breadcrumb } from 'astro-headless-ui';
-import Navbar from "@/components/Navbar.astro";
-import Footer from "@/components/Footer.astro";
-import { SEODefault } from "@/config";
+import { SEO } from 'astro-seo';
+import { Icon } from 'astro-icon'
+import { Breadcrumb, CodeCopy, IconSwitch } from 'astro-headless-ui';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import ScrollToTop from '@/components/ScrollToTop.astro';
+import { SEODefault } from '@/config';
 import type { MarkdownLayout } from '@/types';
-import '@/css/base.scss'
+import '@/css/markdown.scss'
 
 export interface Props extends MarkdownLayout {};
 
 const  {
-    frontmatter,
+	frontmatter,
+	headings,
     SEO: _SEO = {
         ...SEODefault(Astro)
     }
@@ -29,13 +33,25 @@ const  {
 	<body>
 		<Navbar />
 		<main>
-			<nav style="display:flex;align-items:center;gap:.25em;margin:.5em 0;white-space:nowrap;">
-				<Breadcrumb />
+			<nav id="breadcrumb">
+				<Breadcrumb collapse />
 			</nav>
-			<section data-pagefind-body> 
-				<slot />
-			</section>
+			<div>
+				<aside>
+					<TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} headings={headings}/>
+				</aside>
+				<section data-pagefind-body> 
+					<slot />
+				</section>
+			</div>
 		</main>
 		<Footer />
+		<ScrollToTop />
+		<CodeCopy>
+			<IconSwitch name="copy-icons" selector="button.copied" size="1.5rem">
+				<Icon name="fluent:clipboard-20-regular"/>
+				<Icon name="fluent:clipboard-task-20-regular"/>
+			</IconSwitch>
+		</CodeCopy>
 	</body>
 </html>

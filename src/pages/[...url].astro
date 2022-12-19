@@ -28,7 +28,7 @@ const {
 ---
 
 <Base breadcrumb>
-    <section class="table-of-contents">
+    <section class="flex-list">
         <h1>Table of Contents</h1>
         {pages.map(page => (
             <TableOfContents url={page.url||''} headings={page.getHeadings()}/>

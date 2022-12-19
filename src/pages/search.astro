@@ -4,9 +4,11 @@ import Base from "@/layouts/Base.astro";
 
 <Base>
 	<link slot="head" href="/_pagefind/pagefind-ui.css" rel="stylesheet">
-    <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
-    <div id="search"></div>
-    <script is:inline>
+    <section style="margin:1em 0;">
+        <div id="search"></div>
+    </section>
+    <script slot="body" src="/_pagefind/pagefind-ui.js" type="text/javascript" is:inline></script>
+    <script slot="body" is:inline>
         window.addEventListener('DOMContentLoaded', (event) => {
             new PagefindUI({ 
                 element: "#search",

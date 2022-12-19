@@ -23,7 +23,7 @@
     --darker: #000;
     --grayer: #575757;
     --gray: #e8e8e8;
-    --light: #fdfdfd;
+    --light: #fefefe;
     --lighter: #FFF;
 
     --font: 'Helvetica', 'sans-serif';
@@ -41,13 +41,6 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    height: 100%;
-    width: 100%;
-    max-width: 80ch;
-    margin: 0 auto;
     background-color: var(--light);
     font-family: var(--font);
     line-height: 1.25;
@@ -67,13 +60,7 @@ body {
     --pagefind-ui-font: var(--font);
 }
 
-main {
-    flex: 1 0 auto;
-    margin: 0;
-    padding: 0 .75em;
-}
-
-input {
+input, button {
     font-size: inherit;
     color: inherit;
 }

@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    max-width: 80ch;
+    margin: 0 auto;
+}
+
+main {
+    flex: 1 0 auto;
+    margin: 0;
+    padding: 0 1em;
+}
+
+main > div > aside {
+    position: relative;
+    display: flex;
+    gap: .5em;
+}
+
+main > div > aside > dialog {
+    flex-basis: 1 0 100%;
+}
+
+#scroll-to-top {
+    rotate: 90deg;
+    position: fixed;
+    right: .5em;
+    bottom: .5em;
+    display: grid;
+    padding-right: .2em;
+    padding-bottom: .2em;
+    place-items: center;
+    font-family: monospace;
+    border-radius: 3px;
+    border: none;
+    outline: 2px solid var(--gray);
+    background-color: var(--light);
+    transition: transform 300ms;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+#scroll-to-top.success {
+    transform: translateX(-.5em);
+}

@@ -1,0 +1,14 @@
+---
+
+---
+
+<button id="scroll-to-top" class="touch-target scale" onclick="scrollToTop()">&lt;&lt;</button>
+<script is:inline>
+    window.scrollToTop = () => {
+        window.scrollTo(0, 0)
+        const classes = document.querySelector('#scroll-to-top').classList
+        classes.add('success')
+        if (document.body._scrolltToTopTimer) clearTimeout(document.body._scrolltToTopTimer)
+        document.body._scrolltToTopTimer = setTimeout(() => classes.remove('success'), 250);
+    }
+</script>

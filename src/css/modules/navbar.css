@@ -6,11 +6,8 @@ body > header {
 }
 
 body > header > a {
+    text-decoration: none !important;
     font-size: clamp(1.13rem, 0.56vw + 1.01rem, 1.5rem);
-}
-
-body > header > a:hover {
-    text-decoration: none;
 }
 
 body > header menu {
@@ -26,12 +23,10 @@ body > header menu {
     outline: none;
     border-radius: 3px;
     border: none;
-    outline: 2px solid var(--dark);
+    outline: 2px solid var(--gray);
     background-color: transparent;
     font-size: inherit;
     color: inherit;
-} #theme-toggle:active {
-
 }
 
 .theme-icons {
@@ -39,16 +34,19 @@ body > header menu {
 }
 
 #search-link {
+    text-decoration: none !important;
     display: flex;
     align-items: center;
     padding: .5em .75em .5em .5em;
     border-radius: 3px;
     outline: 2px solid var(--primary);
-} #search-link:hover {
-    text-decoration: none;
 }
 
-.touch-target {
-    min-height: 42px;
-    min-width: 42px;
+#breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: .25em;
+    margin: 1em 0 1.5em 0;
+    white-space: nowrap;
+    overflow-x: hidden;
 }

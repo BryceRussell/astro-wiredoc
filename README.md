@@ -21,7 +21,7 @@ Nest `.md` files like `/src/pages/components` to organize files
 
 `astro build && npx -y pagefind --source dist`
 
-Add pagefind's indexing command after build is finished
+Adds pagefind's indexing command after build to add search functionality
 
 ### `npm run preview`
 

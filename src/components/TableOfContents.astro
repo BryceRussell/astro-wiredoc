@@ -1,26 +1,39 @@
 ---
 import type { MarkdownHeading } from 'astro';
+import type { HTMLAttributes } from 'astro/types';
 
 export interface Props {
     url: string;
     headings?: MarkdownHeading[];
     depth?: number;
     max?: number;
+    item?: string;
+    title?: string;
+    open?: boolean;
 }
 
 const {
     url,
     headings=[],
     depth=1,
-    max=6
+    max=6,
+    item: Item ="a",
+    title,
+    open=false
 } = Astro.props
 
 const equalDepth = headings.filter(h => h.depth === +depth);
 
 const Tag = depth === 1 ? 'details' : 'ul'
+
+const attrs = {
+    class: depth === 1 ? "table-of-contents": null,
+    open: open && depth === 1 ? true : null,
+    'data-depth': depth
+}
 ---
 
-<Tag data-depth={depth}>
+<Tag {...attrs}>
     { equalDepth.map((heading, i) => {
         const start = headings.indexOf(heading) + 1
         const end = headings.indexOf(equalDepth[i + 1])
@@ -38,13 +51,10 @@ const Tag = depth === 1 ? 'details' : 'ul'
         } 
         return <>
             { depth === 1
-                ? <summary><a href={url}>{heading.text}</a></summary>
-                : <li><a href={`${url}#${heading.slug}`}>{heading.text}</a></li>
+                ? <summary class="touch-target"><Item href={Item==='a'?url:null}>{title||heading.text}</Item></summary>
+                : <li><Item href={Item==='a'?`${url}#${heading.slug}`:null}>{heading.text}</Item></li>
             }
-            {!!subHeadings.length && heading.depth < +max && ( depth === 1
-                ? <Astro.self {...param.props}/>
-                : <li><Astro.self {...param.props}/></li>
-            )}
+            { !!subHeadings.length && heading.depth < +max && <Astro.self {...param.props}/> }
         </>
     })}
 </Tag>
