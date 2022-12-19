@@ -1,0 +1,125 @@
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: var(--darker);
+    margin: 1em 0;
+}
+
+h1 {
+    font-size: var(--fluid-7);
+} h2 {
+    padding: 0 0 .25em 0;
+    border-bottom: 2px solid var(--gray);
+    font-size: var(--fluid-6);
+} h3 {
+    font-size: var(--fluid-5);
+} h4 {
+    font-size: var(--fluid-4);
+} h5 {
+    font-size: var(--fluid-3);
+} h6 {
+    font-size: var(--fluid-2);
+}
+
+hr {
+    border: none;
+    border-bottom: 2px solid var(--gray);
+}
+
+::selection {
+    background: var(--primary-a);
+}
+
+p {
+    margin: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+}
+a:hover {
+    text-decoration: underline;
+    filter: brightness(70%);
+    transition: filter 100ms;
+}
+a:focus {
+    text-decoration: underline;
+    outline: none;
+}
+
+del {
+    color: var(--invalid);
+}
+
+strong {
+    font-weight: bold;
+    color: var(--darker);
+}
+
+small, sub, sup, .data-footnote-backref, [aria-describedby="footnote-label"] {
+    font-size: var(--fluid-0);
+}
+
+.data-footnote-backref, [aria-describedby="footnote-label"] {
+    color: var(--primary);
+}
+
+mark {
+    width: fit-content;
+    padding: 1px 3px;
+    background-color: var(--warning-a);
+}
+
+blockquote {
+    display: inline-block;
+    margin: .5em 0 .5em 2em;
+    border-left: .25rem solid var(--gray);
+}
+
+:not(pre) > code {
+    padding: 2px 4px;
+    vertical-align: text-bottom;
+    border-radius: 3px;
+    background-color: var(--gray);
+}
+
+pre {
+    overflow-x: auto;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 3px;
+    background-color: var(--gray);
+    font-size: var(--fluid-0);
+}
+
+table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-indent: 0;
+}
+
+thead th,
+thead td {
+    border-bottom: 3px solid var(--gray);
+}
+
+th,
+td {
+    padding: .5em 1em;
+    border-bottom: 1px solid var(--gray);
+    text-align: left;
+    text-align: start;
+}
+
+tfoot th,
+tfoot td {
+    border-top: 3px solid var(--gray);
+    border-bottom: 0;
+}
+
+img {
+    max-width: 100%;
+      height: auto;
+}

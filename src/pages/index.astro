@@ -1,0 +1,19 @@
+---
+import Base from "@/layouts/Base.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
+
+const pages = await Astro.glob('/src/pages/**/*.md')
+---
+
+<Base>
+    <section class="table-of-contents">
+        <h1>Table of Contents</h1>
+        {pages.map(page => {
+            return (
+                <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
+            )
+        })}
+    </section>
+</Base>
+
+

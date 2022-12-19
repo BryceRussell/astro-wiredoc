@@ -1,0 +1,54 @@
+body > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .75em;
+}
+
+body > header > a {
+    font-size: clamp(1.13rem, 0.56vw + 1.01rem, 1.5rem);
+}
+
+body > header > a:hover {
+    text-decoration: none;
+}
+
+body > header menu {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin: 0;
+    padding: 0;
+}
+
+#theme-toggle {
+    aspect-ratio: 1;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+    outline: 2px solid var(--dark);
+    background-color: transparent;
+    font-size: inherit;
+    color: inherit;
+} #theme-toggle:active {
+
+}
+
+.theme-icons {
+    margin-top: .25em;
+}
+
+#search-link {
+    display: flex;
+    align-items: center;
+    padding: .5em .75em .5em .5em;
+    border-radius: 3px;
+    outline: 2px solid var(--primary);
+} #search-link:hover {
+    text-decoration: none;
+}
+
+.touch-target {
+    min-height: 42px;
+    min-width: 42px;
+}

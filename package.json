@@ -1,0 +1,23 @@
+{
+  "name": "@example/minimal",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build && npx -y pagefind --source dist",
+    "preview": "astro build && npx -y pagefind --source dist && astro preview"
+  },
+  "devDependencies": {
+    "astro": "^1.6.15",
+    "astro-headless-ui": "^0.0.19",
+    "astro-icon": "^0.8.0",
+    "astro-seo": "^0.6.0",
+    "sass": "^1.56.2"
+  },
+  "dependencies": {
+    "astro-default-frontmatter": "^0.0.1",
+    "fast-glob": "^3.2.12"
+  }
+}

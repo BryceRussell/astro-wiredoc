@@ -1,0 +1,13 @@
+body.dark {
+    --primary: #34c740;
+    --primary-a: rgba(52, 199, 64, .25);
+    --warning: #FFCC00;
+    --warning-a: rgba(255, 204, 0, .75);
+    --invalid: #FF3B30;
+    --light: #1f1f1f;
+    --lighter: #000;
+    --gray: #2e2e2e;
+    --grayer: #ABABAB;
+    --dark: #ddd;
+    --darker: #fefefe;
+}

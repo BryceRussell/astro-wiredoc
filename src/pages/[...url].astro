@@ -1,0 +1,37 @@
+---
+import fg from 'fast-glob';
+import Base from "@/layouts/Base.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
+import type { MarkdownInstance } from 'astro';
+
+export async function getStaticPaths() {
+    // Automatically create indexes for directories
+    const pages = await Astro.glob('/src/pages/**/*.md')
+    const urls = fg.sync('src/pages/**', { onlyDirectories: true }).map(h => h.replace('src/pages/', ''))
+    return urls.map(url => ({
+        params: {
+            url
+        },
+        props: {
+            pages: pages.filter(page => page.url?.startsWith('/'+url))
+        }
+    }))
+}
+
+export interface Props {
+    pages: MarkdownInstance<any>[];
+}
+
+const {
+    pages
+} = Astro.props as Props
+---
+
+<Base breadcrumb>
+    <section class="table-of-contents">
+        <h1>Table of Contents</h1>
+        {pages.map(page => (
+            <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
+        ))}
+    </section>
+</Base>

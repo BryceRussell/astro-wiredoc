@@ -1,0 +1,50 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+export interface Props {
+    url: string;
+    headings?: MarkdownHeading[];
+    depth?: number;
+    max?: number;
+}
+
+const {
+    url,
+    headings=[],
+    depth=1,
+    max=6
+} = Astro.props
+
+const equalDepth = headings.filter(h => h.depth === +depth);
+
+const Tag = depth === 1 ? 'details' : 'ul'
+---
+
+<Tag data-depth={depth}>
+    { equalDepth.map((heading, i) => {
+        const start = headings.indexOf(heading) + 1
+        const end = headings.indexOf(equalDepth[i + 1])
+        const subHeadings = headings.slice(start, end === -1 ? undefined : end)
+        const param = {
+            Self: Astro.self,
+            props: { 
+                url, 
+                headings: subHeadings, 
+                depth: heading.depth + 1
+            },
+            heading,
+            subHeadings,
+            ...Astro.props
+        } 
+        return <>
+            { depth === 1
+                ? <summary><a href={url}>{heading.text}</a></summary>
+                : <li><a href={`${url}#${heading.slug}`}>{heading.text}</a></li>
+            }
+            {!!subHeadings.length && heading.depth < +max && ( depth === 1
+                ? <Astro.self {...param.props}/>
+                : <li><Astro.self {...param.props}/></li>
+            )}
+        </>
+    })}
+</Tag>
