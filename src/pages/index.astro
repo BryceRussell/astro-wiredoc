@@ -9,7 +9,6 @@ const pages = await Astro.glob('/src/pages/**/*.md')
     <section class="flex-list">
         <h1>Table of Contents</h1>
         {pages.map(page => {
-            console.log(page.url)
             return (
                 <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
             )

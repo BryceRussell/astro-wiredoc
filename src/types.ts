@@ -1,6 +1,19 @@
 import type { MarkdownInstance, MarkdownLayoutProps } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 
+export interface Frontmatter {
+    draft?: boolean;
+    title?: string;
+    description?: string;
+    date?: string|number|Date;
+    tags?: string[];
+    source?: string;
+    demo?: string;
+}
+
+export type Markdown = MarkdownInstance<Frontmatter>;
+export type MarkdownLayout = MarkdownLayoutProps<Frontmatter>;
+
 export interface SEOInterface {
     title?: string;
     description?: string;
@@ -50,16 +63,3 @@ export interface SEOInterface {
         meta?: Partial<HTMLAttributes<'meta'>>[];
     };
 };
-
-export interface Frontmatter {
-    draft?: boolean;
-    title?: string;
-    description?: string;
-    date?: string|number|Date;
-    tags?: string[];
-    source?: string;
-    demo?: string;
-}
-
-export type Markdown = MarkdownInstance<Frontmatter>;
-export type MarkdownLayout = MarkdownLayoutProps<Frontmatter>;

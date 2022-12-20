@@ -2,18 +2,21 @@
 
 A easy and simple solution to authoring and publishing documention using Astro
 
+## [Demo](https://astro-simple-docs.netlify.app)
+
 ## Features
-- Automatically create index pages
-- All index pages contain a table of contents of the directory's `.md` files
-- Breadcrumb navigation
+- Automatically creates index pages for directories in `src/pages/`
+- All index pages contain a list of `.md` files with table of contents
 - Static search using pagefind
+- Breadcrumb navigation
+- Scroll to top button
 - Dark/light theme
+- Heading Links
+- Syntax highlighting
 
 ## How to use
 
-Add `.md` pages to `/src/pages`
-
-Nest `.md` files like `/src/pages/components` to organize files
+Just add `.md` pages to `/src/pages`, everything else is generated for you
 
 ## NPM Scripts
 
@@ -21,10 +24,10 @@ Nest `.md` files like `/src/pages/components` to organize files
 
 `astro build && npx -y pagefind --source dist`
 
-Adds pagefind's indexing command after build to add search functionality
+This template adds pagefind's indexing command after building to add search functionality
 
 ### `npm run preview`
 
 `astro build && npx -y pagefind --source dist && astro preview`
 
-Build, index, and preview the website. Pagefind does not work in `dev` mode, you must use this command to test search features locally 
+This template combines the build, index, and preview commands into one, this makes customizing/debugging pagefind much easier

@@ -30,8 +30,6 @@ main > div > aside > dialog {
     right: .5em;
     bottom: .5em;
     display: grid;
-    padding-right: .2em;
-    padding-bottom: .2em;
     place-items: center;
     font-family: monospace;
     border-radius: 3px;

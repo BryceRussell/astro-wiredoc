@@ -7,7 +7,7 @@ import type { MarkdownInstance } from 'astro';
 export async function getStaticPaths() {
     // Automatically create indexes for directories
     const pages = await Astro.glob('/src/pages/**/*.md')
-    const urls = fg.sync('src/pages/**', { onlyDirectories: true }).map(h => h.replace('src/pages/', ''))
+    const urls = fg.sync('src/pages/**', { onlyDirectories: true }).map(d => d.replace('src/pages/', ''))
     return urls.map(url => ({
         params: {
             url

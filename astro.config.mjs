@@ -5,9 +5,9 @@ import { defaultFrontmatter } from 'astro-default-frontmatter';
 import { h } from 'hastscript'
 
 export default defineConfig({
-    site: process.env.DEV
+    site: process.env.MODE === 'development'
         ? 'https://localhost:3000/'
-        : 'https://localhost:3000/',
+        : 'https://astro-simple-docs.netlify.app/',
     markdown: {
         extendDefaultPlugins: true,
         remarkPlugins: [
