@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "astro-default-frontmatter": "^0.0.1",
-    "fast-glob": "^3.2.12"
+    "fast-glob": "^3.2.12",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-slug": "^5.1.0"
   }
 }

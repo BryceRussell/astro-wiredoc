@@ -47,11 +47,14 @@ const  {
 		</main>
 		<Footer />
 		<ScrollToTop />
-		<CodeCopy>
-			<IconSwitch name="copy-icons" selector="button.copied" size="1.5rem">
+		<CodeCopy style="position:absolute;top:.5rem;right:.5rem;aspect-ratio:1;padding:0;">
+			<IconSwitch name="copy-icons" selector="button.copied" size="1.5rem" style="margin-top:-1px">
 				<Icon name="fluent:clipboard-20-regular"/>
 				<Icon name="fluent:clipboard-task-20-regular"/>
 			</IconSwitch>
 		</CodeCopy>
+		<div style="display:none;">
+			<svg id="hash-link-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" id="footer-sample-full" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify iconify--eva"><path fill="currentColor" d="M20 14h-4.3l.73-4H20a1 1 0 0 0 0-2h-3.21l.69-3.81A1 1 0 0 0 16.64 3a1 1 0 0 0-1.22.82L14.67 8h-3.88l.69-3.81A1 1 0 0 0 10.64 3a1 1 0 0 0-1.22.82L8.67 8H4a1 1 0 0 0 0 2h4.3l-.73 4H4a1 1 0 0 0 0 2h3.21l-.69 3.81A1 1 0 0 0 7.36 21a1 1 0 0 0 1.22-.82L9.33 16h3.88l-.69 3.81a1 1 0 0 0 .84 1.19a1 1 0 0 0 1.22-.82l.75-4.18H20a1 1 0 0 0 0-2ZM9.7 14l.73-4h3.87l-.73 4Z"></path></svg>
+		</div>
 	</body>
 </html>

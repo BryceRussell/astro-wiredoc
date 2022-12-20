@@ -20,10 +20,10 @@ body > header menu {
 
 #theme-toggle {
     aspect-ratio: 1;
-    outline: none;
+    padding: 0;
     border-radius: 3px;
     border: none;
-    outline: 2px solid var(--gray);
+    border: 2px solid var(--gray);
     background-color: transparent;
     font-size: inherit;
     color: inherit;
@@ -37,9 +37,9 @@ body > header menu {
     text-decoration: none !important;
     display: flex;
     align-items: center;
-    padding: .5em .75em .5em .5em;
+    padding: 0 .75em 0 .5em;
     border-radius: 3px;
-    outline: 2px solid var(--primary);
+    border: 2px solid var(--primary);
 }
 
 #breadcrumb {

@@ -28,16 +28,14 @@
 
     --font: 'Helvetica', 'sans-serif';
 
-    --fluid-0: clamp(0.85rem, 0.16vw + 0.82rem, 0.97rem);
-    --fluid-1: clamp(0.94rem, 0.17vw + 0.9rem, 1.06rem);
-    --fluid-2: clamp(1.03rem, 0.19vw + 0.99rem, 1.17rem);
-    --fluid-3: clamp(1.13rem, 0.21vw + 1.09rem, 1.29rem);
-    --fluid-4: clamp(1.25rem, 0.23vw + 1.2rem, 1.41rem);
-    --fluid-5: clamp(1.37rem, 0.25vw + 1.32rem, 1.56rem);
-    --fluid-6: clamp(1.51rem, 0.28vw + 1.45rem, 1.71rem);
-    --fluid-7: clamp(1.66rem, 0.31vw + 1.59rem, 1.88rem);
-    --fluid-8: clamp(1.83rem, 0.34vw + 1.75rem, 2.07rem);
-    --fluid-9: clamp(2.01rem, 0.37vw + 1.93rem, 2.28rem);
+    --fluid-0: clamp(0.77rem, 0.14vw + 0.74rem, 0.88rem);
+    --fluid-1: clamp(0.85rem, 0.16vw + 0.82rem, 0.97rem);
+    --fluid-2: clamp(0.94rem, 0.17vw + 0.9rem, 1.06rem);
+    --fluid-3: clamp(1.03rem, 0.19vw + 0.99rem, 1.17rem);
+    --fluid-4: clamp(1.13rem, 0.21vw + 1.09rem, 1.29rem);
+    --fluid-5: clamp(1.25rem, 0.23vw + 1.2rem, 1.41rem);
+    --fluid-6: clamp(1.37rem, 0.25vw + 1.32rem, 1.56rem);
+    --fluid-7: clamp(1.51rem, 0.34vw + 1.75rem, 1.88rem);
 }
 
 body {
@@ -64,3 +62,8 @@ input, button {
     font-size: inherit;
     color: inherit;
 }
+
+@font-face {
+    font-family: monospace;
+    src: local('Menlo');
+ }

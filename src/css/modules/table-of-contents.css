@@ -8,15 +8,15 @@
     justify-content: space-between;
     gap: .5em;
     padding: .5em;
-    outline: none;
-    outline: 2px solid var(--gray);
+    border: none;
+    border: 2px solid var(--gray);
     border-radius: 3px;
     line-height: 1;
 } .table-of-contents summary:focus {
-    outline-color: var(--primary);
-    outline: 2px solid var(--primary-a);
+    border-color: var(--primary);
+    border: 2px solid var(--primary-a);
 } .table-of-contents summary::marker {
-    content: "";
+    display: none;
 } .table-of-contents summary:after {
     content: "<";
     display: block;
@@ -37,7 +37,7 @@
     margin: .5em 0 0 0;
     padding: .75em 1em;
     border-radius: 3px;
-    outline: 2px solid var(--gray);
+    border: 2px solid var(--gray);
 }
 
 .table-of-contents ul {
