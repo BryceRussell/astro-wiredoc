@@ -60,7 +60,3 @@ h6 > a {
     font-size: var(--fluid-2);
     color: var(--gray);
 }
-
-.heading-link-icon {
-    padding-bottom: .2em;
-}

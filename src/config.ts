@@ -1,9 +1,9 @@
 import type { AstroGlobal } from "astro";
 import type { SEOInterface } from "@/types";
 
-export const SITE = 'https://localhost:3000/'
+export const SITE = 'https://astro-simple-docs.netlify.app/'
 
-export const SEODefault = (Astro: AstroGlobal): SEOInterface => {
+export function SEODefault(Astro: AstroGlobal): SEOInterface {
     if (!Astro.site) throw Error("src/config.ts SEODefault(): No 'site' option is set in astro.config.mjs")
     return {
         title: "Astro Simple Docs",
