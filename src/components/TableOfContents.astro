@@ -1,6 +1,6 @@
 ---
 import type { MarkdownHeading } from 'astro';
-import type { HTMLAttributes } from 'astro/types';
+import { Icon } from 'astro-icon';
 
 export interface Props {
     url: string;
@@ -24,7 +24,7 @@ const {
 
 const equalDepth = headings.filter(h => h.depth === +depth);
 
-const Tag = depth === 1 ? 'details' : 'ul'
+const Tag = depth === 1 ? 'details' : 'ol'
 
 const attrs = {
     class: depth === 1 ? "table-of-contents": null,
@@ -52,7 +52,10 @@ const attrs = {
         } 
         return <>
             { depth === 1
-                ? <summary class="touch-target"><Item href={Item==='a'?url:null}>{title||text}</Item></summary>
+                ? <summary class="touch-target">
+                    <Item href={Item==='a'?url:null}>{title||text}</Item>
+                    <Icon name="radix-icons:caret-up" size={24}/>
+                </summary>
                 : <li><Item href={Item==='a'?`${url}#${heading.slug}`:null}>{text}</Item></li>
             }
             { !!subHeadings.length && heading.depth < +max && <Astro.self {...param.props}/> }

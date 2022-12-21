@@ -29,14 +29,14 @@
 
     --font: 'Helvetica', 'sans-serif';
 
-    --fluid-0: clamp(0.77rem, 0.15vw + 0.74rem, 0.88rem);
-    --fluid-1: clamp(0.85rem, 0.16vw + 0.81rem, 0.97rem);
-    --fluid-2: clamp(0.94rem, 0.18vw + 0.9rem, 1.06rem);
-    --fluid-3: clamp(1.03rem, 0.2vw + 0.99rem, 1.17rem);
-    --fluid-4: clamp(1.13rem, 0.22vw + 1.08rem, 1.29rem);
-    --fluid-5: clamp(1.25rem, 0.24vw + 1.19rem, 1.41rem);
-    --fluid-6: clamp(1.37rem, 0.26vw + 1.31rem, 1.56rem);
-    --fluid-7: clamp(1.51rem, 0.29vw + 1.44rem, 1.71rem);
+    --fluid-0: clamp(0.72rem, 0.05vw + 0.71rem, 0.76rem);
+    --fluid-1: clamp(0.8rem, 0.11vw + 0.77rem, 0.87rem);
+    --fluid-2: clamp(0.88rem, 0.18vw + 0.83rem, 1rem);
+    --fluid-3: clamp(0.96rem, 0.27vw + 0.9rem, 1.15rem);
+    --fluid-4: clamp(1.06rem, 0.38vw + 0.97rem, 1.32rem);
+    --fluid-5: clamp(1.16rem, 0.51vw + 1.05rem, 1.52rem);
+    --fluid-6: clamp(1.28rem, 0.67vw + 1.13rem, 1.75rem);
+    --fluid-7: clamp(1.41rem, 0.86vw + 1.21rem, 2.01rem);
 }
 
 body {

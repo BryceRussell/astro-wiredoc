@@ -25,7 +25,6 @@ main + div + aside > dialog {
 }
 
 #scroll-to-top {
-    rotate: 90deg;
     position: fixed;
     right: .3em;
     bottom: .5em;
@@ -42,7 +41,7 @@ main + div + aside > dialog {
 }
 
 #scroll-to-top.success {
-    transform: translateX(-.5em);
+    transform: translateY(-.5em);
 }
 
 .copy-code {

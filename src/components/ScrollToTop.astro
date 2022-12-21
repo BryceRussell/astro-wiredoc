@@ -1,5 +1,5 @@
 ---
-
+import { Icon } from 'astro-icon';
 ---
 
 <button
@@ -8,8 +8,9 @@
     onclick="scrollToTop()"
     draggable="true"
 >
-    &lt;&lt;
+    <Icon name="radix-icons:double-arrow-up" size={20}/>
 </button>
+
 <script is:inline>
     const button = document.querySelector('#scroll-to-top')
 

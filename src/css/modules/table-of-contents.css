@@ -17,21 +17,18 @@
     border: 2px solid var(--primary-a);
 } .table-of-contents summary::marker {
     display: none;
-} .table-of-contents summary:after {
-    content: "<";
-    display: block;
-    float: right;
-    margin-bottom: .1em;
-    font-family: monospace;
-    font-weight: bold;
+} ::-webkit-details-marker {
+    display: none;
+} .table-of-contents summary svg {
+    rotate: -90deg;
     transition: transform 200ms;
 }
 
-.table-of-contents[open] summary::after {
+.table-of-contents[open] summary svg {
     transform: rotate(-90deg);
 }
 
-.table-of-contents > summary + ul {
+.table-of-contents > summary + ol {
     display: flex;
     flex-direction: column;
     margin: .5em 0 0 0;
@@ -40,15 +37,12 @@
     border: 2px solid var(--gray);
 }
 
-.table-of-contents ul {
+.table-of-contents ol {
     list-style: none;
     padding-left: 1em;
 }
 
-.table-of-contents li {
-    padding-left: .25em;
-}
-
-.table-of-contents li::marker {
+.table-of-contents li::before {
     content: "-";
+    padding-right: .25em;
 }
