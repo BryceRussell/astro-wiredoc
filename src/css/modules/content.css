@@ -1,8 +1,12 @@
 h1, h2, h3, h4, h5, h6 {
     position: relative;
+    margin: 1em 0;
     font-weight: bold;
     color: var(--darker);
-    margin: 1em 0;
+}
+
+h2, h3, h4, h5, h6 {
+    margin-left: .6em;
 }
 
 h1 {

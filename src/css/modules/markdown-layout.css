@@ -11,7 +11,7 @@ body {
 main {
     flex: 1 0 auto;
     margin: 0;
-    padding: 0 1em;
+    padding: 0 .75em;
 }
 
 main > div > aside {
@@ -27,14 +27,14 @@ main > div > aside > dialog {
 #scroll-to-top {
     rotate: 90deg;
     position: fixed;
-    right: .5em;
+    right: .3em;
     bottom: .5em;
     display: grid;
     place-items: center;
     font-family: monospace;
     border-radius: 3px;
-    border: none;
-    outline: 2px solid var(--gray);
+    border: 2px solid var(--gray);
+    outline: none;
     background-color: var(--light);
     transition: transform 300ms;
     line-height: 1;
@@ -43,6 +43,15 @@ main > div > aside > dialog {
 
 #scroll-to-top.success {
     transform: translateX(-.5em);
+}
+
+.copy-code {
+    display: inline-block;
+    padding: 2px 0 0 0;
+    border-radius: 3px;
+    border: var(--grayer);
+    background-color: var(--gray);
+    color: var(--dark);
 }
 
 h2 > a,
@@ -59,4 +68,8 @@ h6 > a {
     line-height: inherit;
     font-size: var(--fluid-2);
     color: var(--gray);
+}
+
+.heading-link-icon {
+    padding-left: .5em;
 }

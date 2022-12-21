@@ -19,7 +19,7 @@ export default defineConfig({
             [rehypeSlug, {}],
             [rehypeAutolinkHeadings, {
                 behavior: 'prepend',
-                test: ['h2', 'h3', 'h4', 'h5', 'h6'],
+                test: ['h2', 'h3'],
                 content: [
                     h('span.heading-link-icon', '#')
                 ]
