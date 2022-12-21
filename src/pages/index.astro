@@ -10,7 +10,7 @@ const pages = await Astro.glob('/src/pages/**/*.md')
         <h1>Table of Contents</h1>
         {pages.map(page => {
             return (
-                <TableOfContents open url={page.url||''} headings={page.getHeadings()}/>
+                <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
             )
         })}
     </section>

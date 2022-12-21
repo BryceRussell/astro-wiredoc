@@ -14,13 +14,13 @@ main {
     padding: 0 .75em;
 }
 
-main > div > aside {
+main + div + aside {
     position: relative;
     display: flex;
     gap: .5em;
 }
 
-main > div > aside > dialog {
+main + div + aside > dialog {
     flex-basis: 1 0 100%;
 }
 
