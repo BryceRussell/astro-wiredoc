@@ -27,7 +27,7 @@ hr {
 }
 
 p {
-    margin: 1em;
+    margin: 1em 0;
 }
 
 a {
@@ -73,6 +73,10 @@ blockquote {
     display: inline-block;
     margin: .5em 0 .5em 2em;
     border-left: .25rem solid var(--gray);
+} 
+
+blockquote p {
+    margin: 1em;
 }
 
 :not(pre) > code {
@@ -122,4 +126,14 @@ tfoot td {
 img {
     max-width: 100%;
       height: auto;
+}
+
+.remark-oembed-you-tube {
+    display: grid;
+    place-items: center;    
+}
+
+.remark-oembed-you-tube iframe {
+    height: clamp(9.94rem, 22.21vw + 4.73rem, 22.5rem);
+    width: clamp(17.56rem, 39.67vw + 8.27rem, 40rem);
 }

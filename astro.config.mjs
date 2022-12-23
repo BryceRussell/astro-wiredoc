@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 import rehypeSlug from 'rehype-slug'
+import remarkGemoji from 'remark-gemoji'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import oembed from 'remark-oembed';
 import { defaultFrontmatter } from 'astro-default-frontmatter';
 import { h } from 'hastscript'
 
@@ -11,7 +13,9 @@ export default defineConfig({
     markdown: {
         extendDefaultPlugins: true,
         remarkPlugins: [
-            [ defaultFrontmatter, {
+            [remarkGemoji, {}],
+            [oembed, { syncWidget: true }],
+            [defaultFrontmatter, {
                 layout: "@/layouts/Markdown.astro"
             }]
         ],

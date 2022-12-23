@@ -49,6 +49,7 @@ main {
     border-radius: 3px;
     border: var(--grayer);
     background-color: var(--gray);
+    font-size: var(--fluid-1);
     color: var(--dark);
 }
 
