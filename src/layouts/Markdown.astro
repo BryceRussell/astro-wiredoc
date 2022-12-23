@@ -36,14 +36,12 @@ const  {
 			<nav id="breadcrumb">
 				<Breadcrumb collapse/>
 			</nav>
-			<div>
-				<aside>
-					<TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} headings={headings}/>
-				</aside>
-				<section data-pagefind-body> 
-					<slot />
-				</section>
-			</div>
+			<nav id="sidebar-right">
+				<TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} headings={headings}/>
+			</nav>
+			<section class="markdown" data-pagefind-body> 
+				<slot />
+			</section>
 		</main>
 		<Footer />
 		<ScrollToTop />

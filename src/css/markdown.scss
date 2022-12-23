@@ -1,7 +1,7 @@
-@import 'modules/document';
-@import 'modules/dark';
-@import 'modules/markdown-layout';
-@import 'modules/content';
+@import 'modules/base/global';
+@import 'modules/base/dark';
+@import 'modules/base/navbar';
+@import 'modules/base/table-of-contents';
+@import 'modules/markdown/markdown-layout';
+@import 'modules/markdown/markdown-content';
 @import 'modules/utility';
-@import 'modules/navbar';
-@import 'modules/table-of-contents';

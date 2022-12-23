@@ -13,16 +13,19 @@ export async function getStaticPaths() {
             url
         },
         props: {
+            url,
             pages: pages.filter(page => page.url?.startsWith('/'+url))
         }
     }))
 }
 
 export interface Props {
+    url: string,
     pages: MarkdownInstance<any>[];
 }
 
 const {
+    url,
     pages
 } = Astro.props as Props
 ---

@@ -1,16 +1,16 @@
-body > header {
+#header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .75em;
 }
 
-body > header > a {
-    text-decoration: none !important;
+#logo {
+    text-decoration: none;
     font-size: clamp(1.13rem, 0.56vw + 1.01rem, 1.5rem);
 }
 
-body > header menu {
+#header menu {
     display: flex;
     align-items: center;
     gap: .5em;

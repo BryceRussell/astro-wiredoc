@@ -1,7 +1,7 @@
-@import 'modules/document';
-@import 'modules/dark';
-@import 'modules/base-layout';
-@import 'modules/content';
+@import 'modules/base/global';
+@import 'modules/base/dark';
+@import 'modules/base/base-layout';
+@import 'modules/base/base-content';
+@import 'modules/base/navbar';
+@import 'modules/base/table-of-contents';
 @import 'modules/utility';
-@import 'modules/navbar';
-@import 'modules/table-of-contents';

@@ -14,30 +14,28 @@ main {
     padding: 0 .75em;
 }
 
-main + div + aside {
+#sidebar-right {
     position: relative;
     display: flex;
     gap: .5em;
 }
 
-main + div + aside > dialog {
+#sidebar-right > dialog {
     flex-basis: 1 0 100%;
 }
 
 #scroll-to-top {
     position: fixed;
-    right: .3em;
+    right: .5em;
     bottom: .5em;
     display: grid;
     place-items: center;
-    font-family: monospace;
+    padding: 0;
     border-radius: 3px;
     border: 2px solid var(--gray);
     outline: none;
     background-color: var(--light);
     transition: transform 300ms;
-    line-height: 1;
-    letter-spacing: -1px;
 }
 
 #scroll-to-top.success {
