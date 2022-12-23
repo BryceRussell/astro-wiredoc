@@ -45,7 +45,9 @@ main {
 .copy-code {
     display: inline-block;
     aspect-ratio: 1;
+    display: grid;
     padding: 0;
+    place-items: center;
     border-radius: 3px;
     border: var(--grayer);
     background-color: var(--gray);

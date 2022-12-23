@@ -1,0 +1,13 @@
+.remark-oembed-inline {
+    margin: 1em 0;
+}
+
+.remark-oembed-you-tube {
+    display: grid;
+    place-items: center;
+}
+
+.remark-oembed-you-tube iframe {
+    height: clamp(9.94rem, 22.21vw + 4.73rem, 22.5rem);
+    width: clamp(17.56rem, 39.67vw + 8.27rem, 40rem);
+}

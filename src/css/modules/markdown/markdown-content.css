@@ -2,7 +2,7 @@
 
 /* Markdown specific css must be scoped to .markdown class because of bug with Astro.glob() */
 
-.markdown h2, h3, h4, h5, h6 {
+.markdown h2, h3 {
     margin-left: .6em;
 }
 

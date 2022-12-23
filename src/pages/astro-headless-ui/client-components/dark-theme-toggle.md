@@ -1,7 +1,5 @@
 # `<DarkThemeToggle>`
 
-https://www.youtube.com/watch?v=u0HTvSXNJmE&t=648s
-
 A dark mode button toggle and script designed for websites with a light(default) and dark theme
 
 The easiest way to use this component is in an element that is shared across all pages like a navbar or footer

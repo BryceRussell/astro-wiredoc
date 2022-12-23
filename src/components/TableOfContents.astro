@@ -56,9 +56,12 @@ const attrs = {
                     <Item href={Item==='a'?url:null}>{title||text}</Item>
                     <Icon name="radix-icons:caret-up" size={24}/>
                 </summary>
-                : <li><Item href={Item==='a'?`${url}#${heading.slug}`:null}>{text}</Item></li>
+                : <li>
+                    <Item href={Item==='a'?`${url}#${heading.slug}`:null}>{text}</Item>
+                    { !!subHeadings.length && heading.depth < +max && depth > 1 && <Astro.self {...param.props}/> }
+                </li>
             }
-            { !!subHeadings.length && heading.depth < +max && <Astro.self {...param.props}/> }
+            { !!subHeadings.length && heading.depth < +max && depth === 1 && <Astro.self {...param.props}/> }
         </>
     })}
 </Tag>

@@ -80,9 +80,9 @@ blockquote p {
 }
 
 :not(pre) > code {
-    padding: 0 .25em 1px .25em;
-    vertical-align: text-bottom;
-    border-radius: 3px;
+    vertical-align: middle;
+    padding: 0 .25em;
+    border-radius: 2px;
     background-color: var(--gray);
 }
 
@@ -121,19 +121,4 @@ tfoot th,
 tfoot td {
     border-top: 3px solid var(--gray);
     border-bottom: 0;
-}
-
-img {
-    max-width: 100%;
-      height: auto;
-}
-
-.remark-oembed-you-tube {
-    display: grid;
-    place-items: center;    
-}
-
-.remark-oembed-you-tube iframe {
-    height: clamp(9.94rem, 22.21vw + 4.73rem, 22.5rem);
-    width: clamp(17.56rem, 39.67vw + 8.27rem, 40rem);
 }

@@ -11,3 +11,7 @@ body.dark {
     --dark: #ddd;
     --darker: #fefefe;
 }
+
+body.dark a:hover {
+    filter: brightness(120%);
+}

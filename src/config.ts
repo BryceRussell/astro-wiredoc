@@ -11,14 +11,14 @@ export function SEODefault(Astro: AstroGlobal): SEOInterface {
         canonical: ''+(new URL(Astro.url.pathname, Astro.site)),
         openGraph: {
             basic: {
-                title: "Simple Docs",
+                title: "astro-simple-docs",
                 url: ''+(new URL(Astro.url.pathname, Astro.site)),
                 image: "/og.webp",
                 type: "website"
             },
             optional: {
                 siteName: "Astro Simple Docs",
-                description: "Documentation template built using Astro"
+                description: "An easy to use documentation template built using Astro"
             },
             image: {
                 alt: "logo"
