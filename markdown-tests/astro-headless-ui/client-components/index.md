@@ -1,3 +1,6 @@
+---
+title: <DarkThemeToggle>
+---
 # `<DarkThemeToggle>`
 
 A dark mode button toggle and script designed for websites with a light(default) and dark theme

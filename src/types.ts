@@ -5,7 +5,7 @@ export interface Frontmatter {
     draft?: boolean;
     title?: string;
     description?: string;
-    date?: string|number|Date;
+    pubDate?: Date;
     tags?: string[];
     source?: string;
     demo?: string;
