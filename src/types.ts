@@ -1,3 +1,4 @@
+import type { VFile, Data } from 'vfile';
 import type { MarkdownInstance, MarkdownLayoutProps } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 
@@ -63,3 +64,11 @@ export interface SEOInterface {
         meta?: Partial<HTMLAttributes<'meta'>>[];
     };
 };
+
+export type AstroVFile = VFile & {
+    data: Data & {
+        astro: {
+            frontmatter: Record<string, unknown>;
+        }
+    }
+}

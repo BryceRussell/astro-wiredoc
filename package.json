@@ -20,6 +20,7 @@
     "astro-layouts": "^0.1.1",
     "astro-netlify-cms": "^0.5.0",
     "fast-glob": "^3.2.12",
+    "mdast-util-to-string": "^3.1.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
     "remark-gemoji": "^7.0.1",

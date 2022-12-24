@@ -4,6 +4,7 @@ import rehypeSlug from 'rehype-slug'
 import remarkGemoji from 'remark-gemoji'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import oembed from 'remark-oembed';
+import { autoTitle } from './src/utils';
 import h from 'hastscript'
 
 export default defineConfig({
@@ -52,11 +53,12 @@ export default defineConfig({
     markdown: {
         extendDefaultPlugins: true,
         remarkPlugins: [
-            [remarkGemoji, {}],
+            autoTitle,
+            remarkGemoji,
             [oembed, { syncWidget: true }]
         ],
         rehypePlugins: [
-            [rehypeSlug, {}],
+            rehypeSlug,
             [rehypeAutolinkHeadings, {
                 behavior: 'prepend',
                 test: ['h2', 'h3'],
