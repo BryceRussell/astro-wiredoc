@@ -4,7 +4,6 @@ import { Breadcrumb } from 'astro-headless-ui';
 import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
 import { SEODefault } from "@/config";
-import '@/css/base.scss'
 
 const  {
 	breadcrumb=false,
@@ -23,14 +22,18 @@ const  {
 	</head>
 	<body>
 		<Navbar />
+		<nav id="_breadcrumb" class="touch-target">
+			<Breadcrumb />
+		</nav>
+		<aside id="_sidebar-left">
+
+		</aside>
 		<main>
-			{ breadcrumb && 
-				<nav id="breadcrumb">
-					<Breadcrumb />
-				</nav>
-			}
 			<slot />
 		</main>
+		<aside id="_sidebar-right">
+
+		</aside>
 		<Footer />
 		<slot name="body"/>
 	</body>

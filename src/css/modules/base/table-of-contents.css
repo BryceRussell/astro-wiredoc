@@ -42,7 +42,7 @@
     padding-left: 1em;
 }
 
-.table-of-contents li::before {
+/* .table-of-contents li::before {
     content: "-";
     padding-right: .25em;
-}
+} */

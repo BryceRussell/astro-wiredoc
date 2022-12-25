@@ -1,16 +1,17 @@
-#header {
+#_header {
+    grid-area: header;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .75em;
 }
 
-#logo {
+#_logo {
     text-decoration: none;
     font-size: clamp(1.13rem, 0.56vw + 1.01rem, 1.5rem);
 }
 
-#header menu {
+#_header menu {
     display: flex;
     align-items: center;
     gap: .5em;
@@ -18,7 +19,7 @@
     padding: 0;
 }
 
-#theme-toggle {
+#_theme-toggle {
     aspect-ratio: 1;
     padding: 0;
     border-radius: 3px;
@@ -33,7 +34,7 @@
     margin-top: .25em;
 }
 
-#search-link {
+#_search-link {
     text-decoration: none !important;
     display: flex;
     align-items: center;
@@ -42,10 +43,19 @@
     border: 2px solid var(--primary);
 }
 
-#breadcrumb {
+#_breadcrumb {
+    grid-area: bread;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    width: 100%;
     gap: .25em;
-    margin: 1em 0 1.5em 0;
+    margin: 0;
+    padding: 0 .75em;
+    border-block: 2px solid var(--gray);
+}
+
+#_breadcrumb > a {
+    display: flex;
+    align-items: center;
 }

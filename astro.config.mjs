@@ -3,8 +3,9 @@ import NetlifyCMS from 'astro-netlify-cms';
 import rehypeSlug from 'rehype-slug'
 import remarkGemoji from 'remark-gemoji'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import oembed from 'remark-oembed';
 import h from 'hastscript'
+import oembed from 'remark-oembed';
+import { autoTitle } from './plugins.mjs';
 
 export default defineConfig({
     site: process.env.MODE === 'development'
@@ -35,8 +36,8 @@ export default defineConfig({
                     },
                     fields: [
                         { name: "layout", widget: "hidden", default: "@/layouts/Markdown.astro" },
-                        { name: "draft", widget: "boolean", label: "Draft", default: true },
-                        { name: "pubDate", widget: "date", label: "Publish Date", default: "" },
+                        { name: "draft", widget: "boolean", label: "Draft", default: true, required: false },
+                        { name: "pubDate", widget: "date", label: "Publish Date" },
                         { name: "title", widget: "string", label: "Title" },
                         { name: "tags", widget: "list", label: "Tags" },
                         { name: "description", widget: "string", label: "Description" },
@@ -52,11 +53,11 @@ export default defineConfig({
     markdown: {
         extendDefaultPlugins: true,
         remarkPlugins: [
-            [remarkGemoji, {}],
+            remarkGemoji,
             [oembed, { syncWidget: true }]
         ],
         rehypePlugins: [
-            [rehypeSlug, {}],
+            rehypeSlug,
             [rehypeAutolinkHeadings, {
                 behavior: 'prepend',
                 test: ['h2', 'h3'],
