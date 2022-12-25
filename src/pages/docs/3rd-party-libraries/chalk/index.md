@@ -1,6 +1,6 @@
 ---
 layout: "@/layouts/Markdown.astro"
-draft: true
+draft: false
 pubDate: 2022-12-24T06:00:00.000Z
 title: chalk
 tags:
@@ -8,6 +8,8 @@ tags:
   - cli
 description: colored CLI
 ---
+# chalk
+
 <h1 align="center">
 	<br>
 	<br>

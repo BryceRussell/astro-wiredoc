@@ -6,7 +6,6 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import h from 'hastscript'
 import oembed from 'remark-oembed';
 import { autoTitle } from './plugins.mjs';
-import h from 'hastscript'
 
 export default defineConfig({
     site: process.env.MODE === 'development'
@@ -37,8 +36,8 @@ export default defineConfig({
                     },
                     fields: [
                         { name: "layout", widget: "hidden", default: "@/layouts/Markdown.astro" },
-                        { name: "draft", widget: "boolean", label: "Draft", default: true },
-                        { name: "pubDate", widget: "date", label: "Publish Date", default: "" },
+                        { name: "draft", widget: "boolean", label: "Draft", default: true, required: false },
+                        { name: "pubDate", widget: "date", label: "Publish Date" },
                         { name: "title", widget: "string", label: "Title" },
                         { name: "tags", widget: "list", label: "Tags" },
                         { name: "description", widget: "string", label: "Description" },
@@ -58,7 +57,7 @@ export default defineConfig({
             [oembed, { syncWidget: true }]
         ],
         rehypePlugins: [
-            [rehypeSlug, {}],
+            rehypeSlug,
             [rehypeAutolinkHeadings, {
                 behavior: 'prepend',
                 test: ['h2', 'h3'],

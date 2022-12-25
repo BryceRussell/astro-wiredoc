@@ -1,33 +1,43 @@
 body {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: min-content min-content min-content 100% min-content;
+    grid-template-areas: "header" "bread" "right" "main" "footer";
     min-height: 100vh;
     height: 100%;
-    width: 100%;
-    max-width: 80ch;
-    margin: 0 auto;
+    margin: 0;
 }
 
 main {
-    flex: 1 0 auto;
-    margin: 0;
+    grid-area: main;
+    height: auto;
+    width: 100%;
+    min-width: 265px;
+    max-width: 85ch;
+    margin: 0 auto;
     padding: 0 .75em;
 }
 
-#sidebar-right {
-    position: relative;
+#_sidebar-left {
+    grid-area: left;
+    display: none;
+}
+
+#_sidebar-right {
+    grid-area: right;
     display: flex;
+    height: auto;
     gap: .5em;
 }
 
-#sidebar-right > dialog {
-    flex-basis: 1 0 100%;
+#_sidebar-right .table-of-contents {
+    margin: .75em;
 }
 
-#scroll-to-top {
+#_scroll-to-top {
+    z-index: 10;
     position: fixed;
-    right: .5em;
     bottom: .5em;
+    right: .5rem;
     display: grid;
     place-items: center;
     padding: 0;
@@ -38,7 +48,7 @@ main {
     transition: transform 300ms;
 }
 
-#scroll-to-top.success {
+#_scroll-to-top.success {
     transform: translateY(-.5em);
 }
 
@@ -73,4 +83,49 @@ h6 > a {
 
 .heading-link-icon {
     padding-left: .5em;
+}
+
+@media (min-width: 748px) {
+    body {
+        grid-auto-columns: 30ch auto 30ch;
+        grid-template-rows: min-content min-content min-content 100% min-content;
+        grid-template-areas:
+            "header header header"
+            "bread bread bread"
+            "left right right"
+            "left main main"
+            "footer footer footer";
+    }
+
+    main {
+        min-width: 50ch;
+        max-width: 100ch;
+    }
+
+    #_sidebar-left {
+        display: flex;
+        height: 100%;
+        padding: .5em;
+        border-right: 2px solid var(--gray);
+    } 
+}
+
+@media (min-width: 1024px) {
+    body {
+        grid-template-rows: min-content min-content 100% min-content;
+        grid-template-areas:
+            "header header header"
+            "bread bread bread"
+            "left main right"
+            "footer footer footer";
+    }
+
+    #_sidebar-right {
+        padding: .5em;
+        border-left: 2px solid var(--gray);
+    }
+
+    #_sidebar-right .table-of-contents {
+        margin: 0;
+    }
 }

@@ -42,7 +42,7 @@
 body {
     background-color: var(--light);
     font-family: var(--font);
-    line-height: 1.3;
+    line-height: 1.5;
     font-size: var(--fluid-2);
     color: var(--dark);
 
