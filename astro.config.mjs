@@ -3,7 +3,9 @@ import NetlifyCMS from 'astro-netlify-cms';
 import rehypeSlug from 'rehype-slug'
 import remarkGemoji from 'remark-gemoji'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import h from 'hastscript'
 import oembed from 'remark-oembed';
+import { autoTitle } from './plugins.mjs';
 import h from 'hastscript'
 
 export default defineConfig({
@@ -52,7 +54,7 @@ export default defineConfig({
     markdown: {
         extendDefaultPlugins: true,
         remarkPlugins: [
-            [remarkGemoji, {}],
+            remarkGemoji,
             [oembed, { syncWidget: true }]
         ],
         rehypePlugins: [
