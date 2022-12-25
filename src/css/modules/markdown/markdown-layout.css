@@ -102,6 +102,14 @@ h6 > a {
         max-width: 100ch;
     }
 
+    #_header {
+        border-bottom: 2px solid var(--gray);
+    }
+
+    #_breadcrumb {
+        border-bottom: 2px solid var(--gray);
+    }
+
     #_sidebar-left {
         display: flex;
         height: 100%;
