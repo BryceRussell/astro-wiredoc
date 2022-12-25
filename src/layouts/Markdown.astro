@@ -32,25 +32,33 @@ const  {
 	</head>
 	<body>
 		<Navbar />
-		<main>
-			<nav id="breadcrumb">
-				<Breadcrumb collapse/>
-			</nav>
-			<nav id="sidebar-right">
-				<TableOfContents item='span' title="On This Page" url={Astro.url.pathname} headings={headings}/>
-			</nav>
-			<section class="markdown" data-pagefind-body> 
-				<slot />
-			</section>
+		<nav id="_breadcrumb" class="touch-target">
+			<Breadcrumb collapse/>
+		</nav>
+		<aside id="_sidebar-left">
+			<TableOfContents item='span' url={Astro.url.pathname} max={3} headings={headings}/>
+		</aside>
+		<main class="markdown" data-pagefind-body>
+			<slot />
 		</main>
+		<aside id="_sidebar-right">
+			<ScrollToTop />
+			<TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>
+		</aside>
 		<Footer />
-		<ScrollToTop />
 		<CodeCopy padding=".375em" class="copy-code">
 			<IconSwitch name="copy-icons" selector="button.copied" size="1.5rem" style="margin-top:-1px">
 				<Icon name="fluent:clipboard-20-regular"/>
 				<Icon name="fluent:clipboard-task-20-regular"/>
 			</IconSwitch>
 		</CodeCopy>
+		<script is:inline>
+			let e = document.querySelector('#_sidebar-right .table-of-contents')
+			e.open = !(window.innerWidth < 1024)
+			window.addEventListener('resize', function() {
+				e.open = !(window.innerWidth < 1024)
+			});
+		</script>
 		<script is:inline>
 			if (window.netlifyIdentity) {
 			  window.netlifyIdentity.on("init", user => {
@@ -61,6 +69,6 @@ const  {
 				}
 			  });
 			}
-		  </script>
+		</script>
 	</body>
 </html>
