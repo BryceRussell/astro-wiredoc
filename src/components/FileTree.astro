@@ -7,7 +7,7 @@ export interface Props {
 
 const {
     dirs,
-    tree=[],
+    tree,
     url="/docs"
 } = Astro.props
 
@@ -35,7 +35,7 @@ function createTree(directories: string[]) {
 ---
 
 <ol>
-    { Object.entries(tree||createTree(dirs)['']).map(([key, val]) => {
+    { Object.entries(tree||createTree(dirs)['']||{}).map(([key, val]) => {
         const newUrl = url+'/'+key
         return <li>
             <a href={newUrl}>{newUrl.replace('/docs', '')}</a>
