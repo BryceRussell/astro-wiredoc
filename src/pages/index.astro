@@ -1,6 +1,8 @@
 ---
+import fg from 'fast-glob';
 import Markdown from "@/layouts/Markdown.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
+import FileTree from "@/components/FileTree.astro";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "@/types";
 
@@ -11,6 +13,8 @@ try {
 } catch {
     console.warn("Could not find any markdown files, create a new entry at /admin")
 }
+
+const dirs = fg.sync('src/pages/**', { onlyDirectories: true }).map(d => d.replace('src/pages/docs', ''))
 ---
 
 <Markdown breadcrumb={false}>
@@ -21,6 +25,7 @@ try {
             )
         })}
     </Fragment>
+    <FileTree dirs={dirs} />
 </Markdown>
 
 

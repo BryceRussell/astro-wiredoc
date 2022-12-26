@@ -1,0 +1,45 @@
+---
+export interface Props {
+  dirs: string[];
+  tree?: FileTreeNode;
+  url: string;
+}  
+
+const {
+    dirs,
+    tree,
+    url="/docs"
+} = Astro.props
+
+interface FileTreeNode {
+    [dir: string]: FileTreeNode
+}
+
+function createTree(directories: string[]) {
+  let tree: FileTreeNode = {};
+
+  for (const directory of directories) {
+    let current = tree;
+    const path = directory.split('/');
+
+    for (const dir of path) {
+      if (!current[dir]) {
+        current[dir] = {};
+      }
+      current = current[dir];
+    }
+  }
+
+  return tree;
+}
+---
+
+<ol>
+    { Object.entries(tree||createTree(dirs)).map(([key, val]) => {
+        const newUrl = url+key+'/'
+        return <li>
+            <a href={newUrl}>{newUrl.replace('/docs', '')}</a>
+            <Astro.self tree={val} url={newUrl} />
+        </li>
+    })}
+</ol>
