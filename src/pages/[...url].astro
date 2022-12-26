@@ -39,10 +39,11 @@ const {
 ---
 
 <Markdown>
-    <section class="flex-list">
-        <h1>Table of Contents</h1>
-        {pages.map(page => (
-            <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
-        ))}
-    </section>
+    <Fragment slot="sidebar-left">
+        {pages.map(page => {
+            return (
+                <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
+            )
+        })}
+    </Fragment>
 </Markdown>

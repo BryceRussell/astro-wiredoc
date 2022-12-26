@@ -32,7 +32,11 @@ const  {
 		<Navbar />
 		{ breadcrumb &&
 			<nav id="_breadcrumb" class="touch-target">
-				<Breadcrumb />
+				<Breadcrumb index={false} collapse>
+					{url => (<a href={url.href[0]==='/'?url.href:'/'+url.href}>{url.text}</a><span>/</span>)}
+					<index slot="docs">{() => (<a href="/docs">Docs</a><span>/</span>)}</index>
+					<Fragment slot="disabled"><span>...</span><span>/</span></Fragment>
+				</Breadcrumb>
 			</nav>
 		}
 		<aside id="_sidebar-left">

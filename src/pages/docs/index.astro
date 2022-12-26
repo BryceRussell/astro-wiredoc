@@ -1,0 +1,26 @@
+---
+import Markdown from "@/layouts/Markdown.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
+import type { MarkdownInstance } from "astro";
+import type { Frontmatter } from "@/types";
+
+var pages: MarkdownInstance<Frontmatter>[] = []
+
+try {
+    pages = await Astro.glob<Frontmatter>('/src/pages/docs/**/*.md')
+} catch {
+    console.warn("Could not find any markdown files, create a new entry at /admin")
+}
+---
+
+<Markdown>
+    <Fragment slot="sidebar-left">
+        {pages.map(page => {
+            return (
+                <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
+            )
+        })}
+    </Fragment>
+</Markdown>
+
+
