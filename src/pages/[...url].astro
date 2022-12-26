@@ -2,6 +2,7 @@
 import fg from 'fast-glob';
 import Markdown from "@/layouts/Markdown.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
+import FileTree from '@/components/FileTree.astro';
 import type { MarkdownInstance } from 'astro';
 import type { Frontmatter } from "@/types";
 
@@ -33,9 +34,12 @@ export interface Props {
 }
 
 const {
-    url,
+    url='',
     pages
 } = Astro.props as Props
+
+console.log(url)
+const dirs = fg.sync(`src/pages/${url}/**`, { onlyDirectories: true }).map(d => d.replace('src/pages/docs', ''))
 ---
 
 <Markdown>
@@ -46,4 +50,5 @@ const {
             )
         })}
     </Fragment>
+    <FileTree dirs={dirs} />
 </Markdown>

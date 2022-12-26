@@ -2,7 +2,7 @@
 export interface Props {
   dirs: string[];
   tree?: FileTreeNode;
-  url: string;
+  url?: string;
 }  
 
 const {
@@ -35,8 +35,8 @@ function createTree(directories: string[]) {
 ---
 
 <ol>
-    { Object.entries(tree||createTree(dirs)).map(([key, val]) => {
-        const newUrl = url+key+'/'
+    { Object.entries(tree||createTree(dirs)['']).map(([key, val]) => {
+        const newUrl = url+'/'+key
         return <li>
             <a href={newUrl}>{newUrl.replace('/docs', '')}</a>
             <Astro.self tree={val} url={newUrl} />
