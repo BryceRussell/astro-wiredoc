@@ -1,6 +1,6 @@
 ---
 import fg from 'fast-glob';
-import Base from "@/layouts/Base.astro";
+import Markdown from "@/layouts/Markdown.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import type { MarkdownInstance } from 'astro';
 import type { Frontmatter } from "@/types";
@@ -38,11 +38,11 @@ const {
 } = Astro.props as Props
 ---
 
-<Base breadcrumb>
+<Markdown>
     <section class="flex-list">
         <h1>Table of Contents</h1>
         {pages.map(page => (
             <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
         ))}
     </section>
-</Base>
+</Markdown>

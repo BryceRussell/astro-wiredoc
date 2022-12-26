@@ -10,10 +10,8 @@ import { SEODefault } from '@/config';
 import type { MarkdownLayout } from '@/types';
 import '@/css/markdown.scss'
 
-export interface Props extends MarkdownLayout {};
-
 const  {
-	frontmatter,
+	breadcrumb=true,
 	headings,
     SEO: _SEO = {
         ...SEODefault(Astro)
@@ -32,18 +30,22 @@ const  {
 	</head>
 	<body>
 		<Navbar />
-		<nav id="_breadcrumb" class="touch-target">
-			<Breadcrumb collapse/>
-		</nav>
+		{ breadcrumb &&
+			<nav id="_breadcrumb" class="touch-target">
+				<Breadcrumb />
+			</nav>
+		}
 		<aside id="_sidebar-left">
-			<TableOfContents item='span' url={Astro.url.pathname} max={3} headings={headings}/>
+			{headings && <TableOfContents item='span' url={Astro.url.pathname} max={3} headings={headings}/>}
+			<slot name="sidebar-left"/>
 		</aside>
 		<main class="markdown" data-pagefind-body>
 			<slot />
 		</main>
 		<aside id="_sidebar-right">
 			<ScrollToTop />
-			<TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>
+			{headings && <TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
+			<slot name="sidebar-right"/>
 		</aside>
 		<Footer />
 		<CodeCopy padding=".375em" class="copy-code">
@@ -54,9 +56,12 @@ const  {
 		</CodeCopy>
 		<script is:inline>
 			let e = document.querySelector('#_sidebar-right .table-of-contents')
-			e.open = !(window.innerWidth < 1024)
+			let last;
+			e?.open = !(window.innerWidth < 1024)
 			window.addEventListener('resize', function() {
-				e.open = !(window.innerWidth < 1024)
+				const w = window.innerWidth
+				if (last !== w) e?.open = !(w < 1024)
+				last = w
 			});
 		</script>
 		<script is:inline>

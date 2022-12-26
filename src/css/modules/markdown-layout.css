@@ -20,6 +20,8 @@ main {
 #_sidebar-left {
     grid-area: left;
     display: none;
+    flex-direction: column;
+    gap: .5em;
 }
 
 #_sidebar-right {
@@ -30,7 +32,7 @@ main {
 }
 
 #_sidebar-right .table-of-contents {
-    margin: .75em;
+    margin: .5em;
 }
 
 #_scroll-to-top {

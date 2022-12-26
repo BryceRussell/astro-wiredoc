@@ -1,8 +1,8 @@
-@import 'modules/base/global';
-@import 'modules/base/dark';
-@import 'modules/base/base-layout';
-@import 'modules/base/base-content';
-@import 'modules/base/media';
-@import 'modules/base/navbar';
-@import 'modules/base/table-of-contents';
+@import 'modules/global';
+@import 'modules/dark';
+@import 'modules/base-layout';
+@import 'modules/header';
+@import 'modules/content';
+@import 'modules/oembed';
 @import 'modules/utility';
+@import 'modules/table-of-contents';

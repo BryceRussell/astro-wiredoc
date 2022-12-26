@@ -1,5 +1,5 @@
 ---
-import Base from "@/layouts/Base.astro";
+import Markdown from "@/layouts/Markdown.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "@/types";
@@ -13,15 +13,14 @@ try {
 }
 ---
 
-<Base>
-    <section class="flex-list">
-        <h1>Table of Contents</h1>
+<Markdown breadcrumb={false}>
+    <Fragment slot="sidebar-left">
         {pages.map(page => {
             return (
                 <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
             )
         })}
-    </section>
-</Base>
+    </Fragment>
+</Markdown>
 
 

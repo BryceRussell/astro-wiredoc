@@ -3,9 +3,13 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1em 0;
     font-weight: bold;
     color: var(--darker);
+} h2, h3 {
+    margin-left: .6em;
 } h1 {
     font-size: var(--fluid-7);
 } h2 {
+    padding: 0 0 .25em 0;
+    border-bottom: 2px solid var(--gray);
     font-size: var(--fluid-6);
 } h3 {
     font-size: var(--fluid-5);
@@ -121,4 +125,9 @@ tfoot th,
 tfoot td {
     border-top: 3px solid var(--gray);
     border-bottom: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }

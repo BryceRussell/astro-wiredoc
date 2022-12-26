@@ -8,6 +8,9 @@ tags:
   - cli
 description: CLI colors / typography
 ---
+
+# kleur
+
 <div align="center">
   <img src="shots/logo.png" alt="kleur" height="120" />
 </div>
