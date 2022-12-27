@@ -41,7 +41,7 @@ const {
 const dirs = fg.sync(`src/pages/${url}/**`, { onlyDirectories: true }).map(d => d.replace('src/pages/docs', ''))
 ---
 
-<Markdown>
+<Markdown scroll={false}>
     <Fragment slot="sidebar-left">
         {pages.map(page => {
             return (

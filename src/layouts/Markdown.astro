@@ -12,6 +12,7 @@ import '@/css/markdown.scss'
 
 const  {
 	breadcrumb=true,
+	scroll=true,
 	headings,
     SEO: _SEO = {
         ...SEODefault(Astro)
@@ -47,7 +48,7 @@ const  {
 			<slot />
 		</main>
 		<aside id="_sidebar-right">
-			<ScrollToTop />
+			{scroll && <ScrollToTop />}
 			{headings && <TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
 			<slot name="sidebar-right"/>
 		</aside>
@@ -59,12 +60,12 @@ const  {
 			</IconSwitch>
 		</CodeCopy>
 		<script is:inline>
-			let e = document.querySelector('#_sidebar-right .table-of-contents')
+			const e = document.querySelector('#_sidebar-right .table-of-contents')||null
 			let last;
-			e?.open = !(window.innerWidth < 1024)
+			e.open = !(window.innerWidth < 1024)
 			window.addEventListener('resize', function() {
 				const w = window.innerWidth
-				if (last !== w) e?.open = !(w < 1024)
+				if (last !== w) e.open = !(w < 1024)
 				last = w
 			});
 		</script>
