@@ -60,6 +60,11 @@ const  {
 			</IconSwitch>
 		</CodeCopy>
 		<script is:inline>
+			document.querySelectorAll('a > img').forEach(e => {
+				e.parentNode.classList.add('link-image')
+			});
+		</script>
+		<script is:inline>
 			const e = document.querySelector('#_sidebar-right .table-of-contents')||null
 			let last;
 			e.open = !(window.innerWidth < 1024)

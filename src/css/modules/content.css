@@ -44,7 +44,7 @@ a {
 } a:focus {
     text-decoration: underline;
     outline: none;
-} a img {
+} .link-image:hover {
     text-decoration: none;
 }
 
