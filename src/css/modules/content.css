@@ -37,17 +37,15 @@ p {
 a {
     text-decoration: none;
     color: var(--primary);
-}
-
-a:hover {
+} a:hover {
     text-decoration: underline;
     filter: brightness(70%);
     transition: filter 100ms, transform 250ms;
-}
-
-a:focus {
+} a:focus {
     text-decoration: underline;
     outline: none;
+} a img {
+    text-decoration: none;
 }
 
 del {

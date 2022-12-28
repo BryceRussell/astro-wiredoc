@@ -5,7 +5,7 @@ import remarkGemoji from 'remark-gemoji'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import h from 'hastscript'
 import oembed from 'remark-oembed';
-import { autoTitle } from './plugins.mjs';
+import { autoTitle, remarkImage } from './plugins.mjs';
 
 export default defineConfig({
     site: process.env.MODE === 'development'
@@ -18,16 +18,22 @@ export default defineConfig({
                     name: 'git-gateway',
                     branch: 'master'
                 },
+                slug: {
+                    encoding: "ascii",
+                    clean_accents: true
+                },
                 collections: [{
+                    folder: "src/pages/docs",
                     name: "Documentation",
                     label: "Documentation",
                     description: "This is a description",
                     label_singular: "Page",
                     summary: "/{{dirname}} - {{title}}",
-                    folder: "src/pages/docs",
-                    path: "{{slug}}/index",
-                    media_folder: "",
-                    public_folder: "",
+                    extension: "md",
+                    format: "frontmatter",
+                    media_folder: "/public/docs/{{dirname}}",
+                    public_folder: "/docs/{{dirname}}",
+                    preview_path: "/docs/{{dirname}}",
                     create: true,
                     delete: true,
                     nested: {
@@ -36,7 +42,7 @@ export default defineConfig({
                     },
                     fields: [
                         { name: "layout", widget: "hidden", default: "@/layouts/Markdown.astro" },
-                        { name: "draft", widget: "boolean", label: "Draft", default: true, required: false },
+                        { name: "draft", widget: "boolean", label: "Draft", default: false, required: false },
                         { name: "pubDate", widget: "date", label: "Publish Date" },
                         { name: "title", widget: "string", label: "Title" },
                         { name: "tags", widget: "list", label: "Tags" },

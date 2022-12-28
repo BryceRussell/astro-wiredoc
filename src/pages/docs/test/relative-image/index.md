@@ -7,4 +7,4 @@ description: Testing relative images
 ---
 # Relative Image Test
 
-![My cat Levi](levi-cropped.jpg "boop")
+![My cat Levi](/docs/test/relative-image/levi-cropped.jpg "boop")
