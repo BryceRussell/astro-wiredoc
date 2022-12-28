@@ -49,6 +49,7 @@ try {
 				<Breadcrumb index={false} collapse>
 					{url => (<a href={url.href[0]==='/'?url.href:'/'+url.href}>{url.text}</a><span>/</span>)}
 					<index slot="docs">{() => (<a href="/docs">Docs</a><span>/</span>)}</index>
+					<active slot="active">{url => <span>{url.text}</span>}</active>
 					<Fragment slot="disabled"><span>...</span><span>/</span></Fragment>
 				</Breadcrumb>
 			</nav>

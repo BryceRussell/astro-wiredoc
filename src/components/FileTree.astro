@@ -20,17 +20,19 @@ function createTree(directories: string[]) {
 }
 
 export interface Props {
-  dirs: (string|undefined)[];
+  dirs: string[];
   tree?: FileTreeNode;
   url?: string;
   depth?: number;
+  max?: number;
 }
 
 const {
-    dirs,
+    dirs=[],
     tree=createTree(dirs)['']||{},
     url="/docs",
-    depth=1
+    depth=1,
+    max=2
 } = Astro.props
 
 interface FileTreeNode {
@@ -73,10 +75,10 @@ const _attrs = {
                 </summary>
               : <li>
                   <a href={newUrl}>{key}</a>
-                  { depth > 1 && <Astro.self {..._props}/> }
+                  { depth > 1 && depth <= max && <Astro.self {..._props}/> }
                 </li>
             }
-            { depth === 1 && <Astro.self {..._props}/> }
+            { depth === 1 && depth <= max && <Astro.self {..._props}/> }
         </>
     })}
 </Tag>
