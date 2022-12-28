@@ -27,9 +27,15 @@ const  {
 				<Breadcrumb index={false} collapse />
 			</nav>
 		}
+		<aside id="_sidebar-left">
+			<slot name="sidebar-left"/>
+		</aside>
 		<main>
 			<slot />
 		</main>
+		<aside id="_sidebar-right">
+			<slot name="sidebar-right"/>
+		</aside>
 		<Footer />
 		<slot name="body"/>
 		<script is:inline>

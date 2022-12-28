@@ -1,8 +1,18 @@
 ---
-import Markdown from "@/layouts/Markdown.astro";
+import Base from "@/layouts/Base.astro";
+import RootFileTree from "@/components/RootFileTree.astro";
+import '@/css/markdown.scss'
+
+var pages: MarkdownInstance<Frontmatter>[] = []
+try {
+    pages = await Astro.glob<Frontmatter>('/src/pages/docs/**/*.md')
+} catch {
+    console.warn("Could not find any markdown files, create a new entry at /admin")
+}
 ---
 
-<Markdown breadcrumb={false}>
+<Base breadcrumb={false}>
+    <RootFileTree slot="sidebar-left" pages={pages} />
 	<link slot="head" href="/_pagefind/pagefind-ui.css" rel="stylesheet">
     <div id="search" style="margin:.75em 0;"></div>
     <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
@@ -19,6 +29,6 @@ import Markdown from "@/layouts/Markdown.astro";
             });
         });
     </script>
-</Markdown>
+</Base>
 
 

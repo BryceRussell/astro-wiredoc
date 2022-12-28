@@ -1,8 +1,9 @@
 ---
 import type { MarkdownHeading } from 'astro';
 import { Icon } from 'astro-icon';
+import type { HTMLAttributes } from 'astro/types';
 
-export interface Props {
+export interface Props extends HTMLAttributes<'div'>{
     url: string;
     headings?: MarkdownHeading[];
     depth?: number;
@@ -19,21 +20,23 @@ const {
     max=6,
     item: Item ="a",
     title,
-    open=false
+    open=false,
+    ...attrs
 } = Astro.props
 
 const equalDepth = headings.filter(h => h.depth === +depth);
 
 const Tag = depth === 1 ? 'details' : 'ol'
 
-const attrs = {
+const _attrs = {
     class: depth === 1 ? "table-of-contents": null,
     open: open && depth === 1 ? true : null,
-    'data-depth': depth
+    'data-depth': depth,
+    ...attrs
 }
 ---
 
-<Tag {...attrs}>
+<Tag {..._attrs}>
     { equalDepth.map((heading, i) => {
         const start = headings.indexOf(heading) + 1
         const end = headings.indexOf(equalDepth[i + 1])

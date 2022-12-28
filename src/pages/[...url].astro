@@ -1,8 +1,7 @@
 ---
 import fg from 'fast-glob';
-import Markdown from "@/layouts/Markdown.astro";
-import TableOfContents from "@/components/TableOfContents.astro";
-import FileTree from '@/components/FileTree.astro';
+import Base from "@/layouts/Base.astro";
+import RootFileTree from "@/components/RootFileTree.astro";
 import type { MarkdownInstance } from 'astro';
 import type { Frontmatter } from "@/types";
 
@@ -23,7 +22,8 @@ export async function getStaticPaths() {
         },
         props: {
             url,
-            pages: pages.filter(page => page.url?.startsWith('/'+url))
+            pages: pages.filter(page => page.url?.startsWith('/'+url)),
+            allPages: pages
         }
     }))
 }
@@ -31,23 +31,16 @@ export async function getStaticPaths() {
 export interface Props {
     url: string,
     pages: MarkdownInstance<any>[];
+    allPages: MarkdownInstance<any>[];
 }
 
 const {
     url='',
-    pages
+    pages,
+    allPages
 } = Astro.props as Props
-
-const dirs = fg.sync(`src/pages/${url}/**`, { onlyDirectories: true }).map(d => d.replace('src/pages/docs', ''))
 ---
 
-<Markdown scroll={false}>
-    <Fragment slot="sidebar-left">
-        {pages.map(page => {
-            return (
-                <TableOfContents url={page.url||''} headings={page.getHeadings()}/>
-            )
-        })}
-    </Fragment>
-    <FileTree dirs={dirs} />
-</Markdown>
+<Base>
+    <RootFileTree slot="sidebar-left" pages={allPages} />
+</Base>
