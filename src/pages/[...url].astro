@@ -1,6 +1,6 @@
 ---
 import fg from 'fast-glob';
-import Base from "@/layouts/Base.astro";
+import Grid from "@/layouts/Grid.astro";
 import RootFileTree from "@/components/RootFileTree.astro";
 import type { MarkdownInstance } from 'astro';
 import type { Frontmatter } from "@/types";
@@ -41,6 +41,6 @@ const {
 } = Astro.props as Props
 ---
 
-<Base>
+<Grid>
     <RootFileTree slot="sidebar-left" pages={allPages} />
-</Base>
+</Grid>

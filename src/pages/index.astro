@@ -1,19 +1,13 @@
 ---
 import Base from "@/layouts/Base.astro";
-import RootFileTree from "@/components/RootFileTree.astro";
-import type { MarkdownInstance } from "astro";
-import type { Frontmatter } from "@/types";
+import '@/css/base.scss';
 
-var pages: MarkdownInstance<Frontmatter>[] = []
-try {
-    pages = await Astro.glob<Frontmatter>('/src/pages/docs/**/*.md')
-} catch {
-    console.warn("Could not find any markdown files, create a new entry at /admin")
-}
 ---
 
-<Base breadcrumb={false}>
-    <RootFileTree slot="sidebar-left" pages={pages} />
+<Base>
+    <main style="display:grid;place-items:center;">
+        <a href="/docs" style="font-size:var(--fluid-7);">To Docs</a>
+    </main>
 </Base>
 
 

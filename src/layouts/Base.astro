@@ -1,53 +1,12 @@
 ---
-import { SEO } from "astro-seo";
-import { Breadcrumb } from 'astro-headless-ui';
-import Navbar from "@/components/Navbar.astro";
-import Footer from "@/components/Footer.astro";
-import { SEODefault } from "@/config";
 
-const  {
-	breadcrumb=false,
-    SEO: _SEO=SEODefault(Astro)
-} = Astro.props
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <SEO {..._SEO}/>
-        <slot name="head"/>
-	</head>
-	<body>
-		<Navbar />
-		{ breadcrumb &&
-			<nav id="_breadcrumb" class="touch-target">
-				<Breadcrumb index={false} collapse />
-			</nav>
-		}
-		<aside id="_sidebar-left">
-			<slot name="sidebar-left"/>
-		</aside>
-		<main>
-			<slot />
-		</main>
-		<aside id="_sidebar-right">
-			<slot name="sidebar-right"/>
-		</aside>
-		<Footer />
-		<slot name="body"/>
-		<script is:inline>
-			if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", user => {
-				if (!user) {
-				window.netlifyIdentity.on("login", () => {
-					document.location.href = "/admin/";
-				});
-				}
-			});
-			}
-		</script>
-	</body>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <slot />
+    </body>
 </html>

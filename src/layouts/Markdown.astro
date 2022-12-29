@@ -9,7 +9,7 @@ import ScrollToTop from '@/components/ScrollToTop.astro';
 import RootFileTree from '@/components/RootFileTree.astro';
 import { SEODefault } from '@/config';
 import type { Markdown, Frontmatter } from '@/types';
-import '@/css/markdown.scss'
+import '@/css/grid.scss'
 
 const  {
 	breadcrumb=true,
@@ -60,9 +60,9 @@ try {
 		</aside>
 		<main class="markdown" data-pagefind-body>
 			<slot />
+			{scroll && <ScrollToTop />}
 		</main>
 		<aside id="_sidebar-right">
-			{scroll && <ScrollToTop />}
 			{headings && <TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
 			<slot name="sidebar-right"/>
 		</aside>
@@ -73,6 +73,11 @@ try {
 				<Icon name="fluent:clipboard-task-20-regular"/>
 			</IconSwitch>
 		</CodeCopy>
+		<script is:inline>
+			function toggleDetails() {
+				
+			}
+		</script>
 		<script is:inline>
 			document.querySelectorAll('a > img').forEach(e => {
 				e.parentNode.classList.add('link-image')

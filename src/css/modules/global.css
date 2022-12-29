@@ -37,6 +37,12 @@
     --fluid-5: clamp(1.16rem, 0.51vw + 1.05rem, 1.52rem);
     --fluid-6: clamp(1.28rem, 0.67vw + 1.13rem, 1.75rem);
     --fluid-7: clamp(1.41rem, 0.86vw + 1.21rem, 2.01rem);
+
+    --header-height: calc(38px + 1.5em);
+    --breadcrumb-height: 38px;
+    --sidebar-width: 30ch;
+    --sidebar-right-height: 0px;
+    --ui-height: calc(var(--header-height) + var(--breadcrumb-height) + var(--sidebar-right-height));
 }
 
 body {

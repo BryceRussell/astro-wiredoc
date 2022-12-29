@@ -1,5 +1,5 @@
 ---
-import Base from "@/layouts/Base.astro";
+import Grid from "@/layouts/Grid.astro";
 import RootFileTree from "@/components/RootFileTree.astro";
 import '@/css/markdown.scss'
 
@@ -11,7 +11,7 @@ try {
 }
 ---
 
-<Base breadcrumb={false}>
+<Grid>
     <RootFileTree slot="sidebar-left" pages={pages} />
 	<link slot="head" href="/_pagefind/pagefind-ui.css" rel="stylesheet">
     <div id="search" style="margin:.75em 0;"></div>
@@ -29,6 +29,6 @@ try {
             });
         });
     </script>
-</Base>
+</Grid>
 
 

@@ -17,18 +17,36 @@ main {
     padding: 0 .75em;
 }
 
+.markdown {
+    position: relative;
+}
+
 #_sidebar-left {
     grid-area: left;
+    z-index: 10;
+    position: fixed;
+    top: var(--ui-height);
+    left: 0;
     display: none;
     flex-direction: column;
+    height: 100%;
+    max-height: 100vh;
+    width: var(--sidebar-width);
     gap: .5em;
+    background-color: var(--lighter);
 }
 
 #_sidebar-right {
     grid-area: right;
+    z-index: 10;
+    position: fixed;
+    top: calc(var(--header-height) + var(--breadcrumb-height));
+    left: 0;
     display: flex;
-    height: auto;
+    height: fit-content;
+    width: 100%;
     gap: .5em;
+    background-color: var(--lighter);
 }
 
 #_sidebar-right .table-of-contents {
@@ -36,10 +54,10 @@ main {
 }
 
 #_scroll-to-top {
-    z-index: 10;
-    position: fixed;
+    z-index: 11;
+    position: sticky;
     bottom: .5em;
-    right: .5rem;
+    left: 100%;
     display: grid;
     place-items: center;
     padding: 0;
@@ -89,7 +107,7 @@ h6 > a {
 
 @media (min-width: 748px) {
     body {
-        grid-auto-columns: 30ch auto 30ch;
+        grid-auto-columns: var(--sidebar-width) auto var(--sidebar-width);
         grid-template-rows: min-content min-content min-content 100% min-content;
         grid-template-areas:
             "header header header"
@@ -117,7 +135,12 @@ h6 > a {
         height: 100%;
         padding: .5em;
         border-right: 2px solid var(--gray);
-    } 
+    }
+
+    #_sidebar-right {
+        left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));   
+    }
 }
 
 @media (min-width: 1024px) {
@@ -131,6 +154,11 @@ h6 > a {
     }
 
     #_sidebar-right {
+        top: var(--ui-height);
+        left: revert;
+        right: 0;
+        width: var(--sidebar-width);
+        height: 100%;
         padding: .5em;
         border-left: 2px solid var(--gray);
     }

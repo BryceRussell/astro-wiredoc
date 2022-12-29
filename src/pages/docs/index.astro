@@ -1,5 +1,5 @@
 ---
-import Base from "@/layouts/Base.astro";
+import Grid from "@/layouts/Grid.astro";
 import RootFileTree from "@/components/RootFileTree.astro";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "@/types";
@@ -13,8 +13,8 @@ try {
 }
 ---
 
-<Base breadcrumb={false}>
+<Grid>
     <RootFileTree slot="sidebar-left" pages={pages} />
-</Base>
+</Grid>
 
 
