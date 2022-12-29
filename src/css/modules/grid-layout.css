@@ -13,7 +13,7 @@ main {
     width: 100%;
     min-width: 265px;
     max-width: 85ch;
-    margin: calc(var(--ui-height) + 3.5em) auto 0 auto;
+    margin: var(--ui-height) auto 0 auto;
     padding: 0 .75em;
 }
 
@@ -22,6 +22,7 @@ main {
 }
 
 #_sidebar-left {
+    overflow-y: auto;
     grid-area: left;
     z-index: 10;
     position: fixed;
@@ -30,13 +31,14 @@ main {
     display: none;
     flex-direction: column;
     height: 100%;
-    max-height: 100vh;
+    max-height: calc(100% - var(--ui-height));
     width: var(--sidebar-width);
     gap: .5em;
     background-color: var(--lighter);
 }
 
 #_sidebar-right {
+    overflow-y: auto;
     grid-area: right;
     z-index: 10;
     position: fixed;
@@ -44,6 +46,7 @@ main {
     left: 0;
     display: flex;
     height: fit-content;
+    max-height: calc(100% - var(--ui-height));
     width: 100%;
     gap: .5em;
     background-color: var(--lighter);
@@ -145,7 +148,8 @@ h6 > a {
 
 @media (min-width: 1024px) {
     :root {
-        scroll-padding-top: calc(var(--ui-height) + .75em); 
+        scroll-padding-top: calc(var(--ui-height) + .75em);
+        --sidebar-right-height: 0px;
     }
     body {
         grid-template-rows: min-content min-content 100% min-content;
