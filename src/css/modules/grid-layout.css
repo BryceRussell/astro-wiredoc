@@ -98,10 +98,11 @@ main {
     padding: 0;
     place-items: center;
     border-radius: 3px;
-    border: var(--grayer);
-    background-color: var(--gray);
+    border: none;
+    outline: none;
+    background-color: transparent;
     font-size: var(--fluid-1);
-    color: var(--dark);
+    color: var(--grayer);
 }
 
 h2 > a,
