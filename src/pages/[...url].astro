@@ -43,7 +43,5 @@ const {
 
 <Grid>
     <RootFileTree slot="sidebar-left" pages={allPages} />
-    <div style="display:flex;flex-direction:column;gap:.5em;margin:.5em 0">
-        <RootFileTree glob={url.split('/').slice(0, 3).join('/')} pages={pages} />
-    </div>
+    <RootFileTree slot="sidebar-right" glob={url.split('/').slice(0, 3).join('/')} pages={pages} />
 </Grid>

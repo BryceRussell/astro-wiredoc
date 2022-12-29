@@ -13,7 +13,7 @@ main {
     width: 100%;
     min-width: 265px;
     max-width: 85ch;
-    margin: var(--ui-height) auto 0 auto;
+    margin: calc(var(--ui-height) + var(--sidebar-right-height) + 3em) auto 0 auto;
     padding: 0 .75em;
 }
 
