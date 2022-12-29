@@ -57,11 +57,11 @@ const _attrs = {
         return <>
             { depth === 1
                 ? <summary class="touch-target">
-                    <Item href={Item==='a'?url:null} onclick={Item==='a'?"this.parentNode.parentNode.parentNode.open = false":null}>{title||text}</Item>
+                    <Item href={Item==='a'?url:null} onclick={Item==='a'?"toggleDetails(this)":null}>{title||text}</Item>
                     <Icon name="radix-icons:caret-up" size={24}/>
                 </summary>
                 : <li>
-                    <Item href={Item==='a'?`${url}#${heading.slug}`:null} onclick={Item==='a'?"this.parentNode.parentNode.parentNode.open = false":null}>{text}</Item>
+                    <Item href={Item==='a'?`${url}#${heading.slug}`:null} onclick={Item==='a'?"toggleDetails(this)":null}>{text}</Item>
                     { !!subHeadings.length && heading.depth < +max && depth > 1 && <Astro.self {...param.props}/> }
                 </li>
             }

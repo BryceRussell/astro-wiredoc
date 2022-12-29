@@ -1,9 +1,10 @@
 ---
 import { SEO } from 'astro-seo';
 import { Icon } from 'astro-icon'
-import { Breadcrumb, CodeCopy, IconSwitch } from 'astro-headless-ui';
+import { CodeCopy, IconSwitch } from 'astro-headless-ui';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import ScrollToTop from '@/components/ScrollToTop.astro';
 import RootFileTree from '@/components/RootFileTree.astro';
@@ -44,16 +45,7 @@ try {
 	</head>
 	<body>
 		<Navbar />
-		{ breadcrumb &&
-			<nav id="_breadcrumb" class="touch-target">
-				<Breadcrumb index={false} collapse>
-					{url => (<a href={url.href[0]==='/'?url.href:'/'+url.href}>{url.text}</a><span>/</span>)}
-					<index slot="docs">{() => (<a href="/docs">Docs</a><span>/</span>)}</index>
-					<active slot="active">{url => <span>{url.text}</span>}</active>
-					<Fragment slot="disabled"><span>...</span><span>/</span></Fragment>
-				</Breadcrumb>
-			</nav>
-		}
+		<Breadcrumb />
 		<aside id="_sidebar-left">
 			<RootFileTree pages={pages} />
 			<slot name="sidebar-left"/>
@@ -74,8 +66,9 @@ try {
 			</IconSwitch>
 		</CodeCopy>
 		<script is:inline>
-			function toggleDetails() {
-				
+			function toggleDetails(e) {
+				const details = e.closest('details');
+				details.open = false
 			}
 		</script>
 		<script is:inline>

@@ -13,7 +13,7 @@
     text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     tab-size: 4;
-    scroll-padding-top: .75em; 
+    scroll-padding-top: calc(var(--ui-height) + 3.5em); 
 
     --primary: #1767BF;
     --primary-a: rgba(23, 103, 191, .25);
@@ -46,7 +46,7 @@
 }
 
 body {
-    background-color: var(--light);
+    background-color: var(--lighter);
     font-family: var(--font);
     line-height: 1.5;
     font-size: var(--fluid-2);

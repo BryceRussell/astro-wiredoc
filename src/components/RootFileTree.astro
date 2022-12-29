@@ -4,21 +4,22 @@ import FileTree from '@/components/FileTree.astro';
 import type { Markdown } from '@/types';
 
 export interface Props {
+    glob?: string;
     pages: Markdown[];
 }
 
 const {
+    glob="docs/",
     pages
 } = Astro.props
 
-const urls = fg.sync('src/pages/docs/*', { onlyDirectories: true }).map(d => d.replace('src/pages', ''))
+const urls = fg.sync(`src/pages/${glob}*`, { onlyDirectories: true }).map(d => d.replace('src/pages', ''))
 ---
 
 {urls &&
     urls.map((url: string) => {
-        console.log(url)
         const _pages = pages.filter((p: Markdown)=> p.url?.startsWith(url))
         const dirs = _pages.map((p: Markdown) => p.url ? p.url.replace('/docs','') : null)
-        return <FileTree dirs={dirs}/>
+        if (pages) return <FileTree dirs={dirs}/>
     })
 }

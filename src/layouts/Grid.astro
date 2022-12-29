@@ -1,8 +1,8 @@
 ---
 import { SEO } from "astro-seo";
-import { Breadcrumb } from 'astro-headless-ui';
 import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
 import { SEODefault } from "@/config";
 
 const  {
@@ -22,11 +22,7 @@ const  {
 	</head>
 	<body>
 		<Navbar />
-		{ breadcrumb &&
-			<nav id="_breadcrumb" class="touch-target">
-				<Breadcrumb index={false} collapse />
-			</nav>
-		}
+		{breadcrumb && <Breadcrumb />}
 		<aside id="_sidebar-left">
 			<slot name="sidebar-left"/>
 		</aside>

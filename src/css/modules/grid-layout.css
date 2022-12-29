@@ -13,7 +13,7 @@ main {
     width: 100%;
     min-width: 265px;
     max-width: 85ch;
-    margin: 0 auto;
+    margin: calc(var(--ui-height) + 3.5em) auto 0 auto;
     padding: 0 .75em;
 }
 
@@ -144,6 +144,9 @@ h6 > a {
 }
 
 @media (min-width: 1024px) {
+    :root {
+        scroll-padding-top: calc(var(--ui-height) + .75em); 
+    }
     body {
         grid-template-rows: min-content min-content 100% min-content;
         grid-template-areas:
@@ -152,7 +155,9 @@ h6 > a {
             "left main right"
             "footer footer footer";
     }
-
+    main {
+        margin-top: var(--ui-height);
+    }
     #_sidebar-right {
         top: var(--ui-height);
         left: revert;
