@@ -1,9 +1,10 @@
 ---
 import Grid from "@/layouts/Grid.astro";
 import RootFileTree from "@/components/RootFileTree.astro";
+import type { Markdown, Frontmatter } from "@/types";
 import '@/css/grid.scss'
 
-var pages: MarkdownInstance<Frontmatter>[] = []
+var pages: Markdown[] = []
 try {
     pages = await Astro.glob<Frontmatter>('/src/pages/docs/**/*.md')
 } catch {
