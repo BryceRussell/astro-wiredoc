@@ -54,7 +54,7 @@
 }
 
 #_breadcrumb {
-    z-index: 10;
+    z-index: 11;
     position: fixed;
     top: var(--header-height);
     display: flex;
