@@ -1,5 +1,4 @@
 #_header {
-    grid-area: header;
     z-index: 10;
     position: fixed;
     top: 0;
@@ -10,6 +9,11 @@
     width: 100%;
     padding: .75em;
     background-color: var(--lighter);
+}
+
+#_header-spacer {
+    grid-area: header;
+    height: var(--header-height);
 }
 
 #_logo {
@@ -50,7 +54,6 @@
 }
 
 #_breadcrumb {
-    grid-area: bread;
     z-index: 10;
     position: fixed;
     top: var(--header-height);
@@ -63,4 +66,9 @@
     margin: 0;
     padding: 0 .75em;
     background-color: var(--lighter);
+}
+
+#_breadcrumb-spacer {
+    grid-area: bread;
+    height: var(--breadcrumb-height);
 }

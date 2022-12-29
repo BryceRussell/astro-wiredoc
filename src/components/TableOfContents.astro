@@ -11,6 +11,7 @@ export interface Props extends HTMLAttributes<'div'>{
     item?: string;
     title?: string;
     open?: boolean;
+    close?: boolean;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
     item: Item ="a",
     title,
     open=false,
+    close=false,
     ...attrs
 } = Astro.props
 
@@ -29,8 +31,12 @@ const equalDepth = headings.filter(h => h.depth === +depth);
 const Tag = depth === 1 ? 'details' : 'ol'
 
 const _attrs = {
-    class: depth === 1 ? "table-of-contents": null,
-    open: open && depth === 1 ? true : null,
+    class: depth === 1
+        ? "table-of-contents"
+        : null,
+    open: open
+        ? true
+        : null,
     'data-depth': depth,
     ...attrs
 }
@@ -42,30 +48,33 @@ const _attrs = {
         const end = headings.indexOf(equalDepth[i + 1])
         const subHeadings = headings.slice(start, end === -1 ? undefined : end)
         const text = heading.text.replace(/^#/g, '')
-        const param = {
-            Self: Astro.self,
-            props: { 
-                url, 
-                headings: subHeadings, 
-                depth: heading.depth + 1,
-                max
-            },
-            heading,
-            subHeadings,
-            ...Astro.props
+        const link_attrs = {
+            href: depth === 1 
+                ? url
+                : `${url}#${heading.slug}`,
+            onclick: close
+                ? "toggleDetails(this)"
+                : null
+        }
+        const _props = { 
+            url, 
+            headings: subHeadings, 
+            depth: heading.depth + 1,
+            max,
+            close
         } 
         return <>
             { depth === 1
                 ? <summary class="touch-target">
-                    <Item href={Item==='a'?url:null} onclick={Item==='a'?"toggleDetails(this)":null}>{title||text}</Item>
+                    <Item {...(Item==='a'?link_attrs:null)}>{title||text}</Item>
                     <Icon name="radix-icons:caret-up" size={24}/>
                 </summary>
                 : <li>
-                    <Item href={Item==='a'?`${url}#${heading.slug}`:null} onclick={Item==='a'?"toggleDetails(this)":null}>{text}</Item>
-                    { !!subHeadings.length && heading.depth < +max && depth > 1 && <Astro.self {...param.props}/> }
+                    <Item {...(Item==='a'?link_attrs:null)}>{text}</Item>
+                    { !!subHeadings.length && heading.depth < +max && depth > 1 && <Astro.self {..._props}/> }
                 </li>
             }
-            { !!subHeadings.length && heading.depth < +max && depth === 1 && <Astro.self {...param.props}/> }
+            { !!subHeadings.length && heading.depth < +max && depth === 1 && <Astro.self {..._props}/> }
         </>
     })}
 </Tag>

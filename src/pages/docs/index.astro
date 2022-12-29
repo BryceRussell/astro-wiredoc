@@ -1,8 +1,12 @@
 ---
 import Grid from "@/layouts/Grid.astro";
 import RootFileTree from "@/components/RootFileTree.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "@/types";
+import { renderMarkdown } from '@astrojs/markdown-remark'
+
+console.log(await renderMarkdown("# TEst", {}).then(r => r.vfile.data))
 
 var pages: MarkdownInstance<Frontmatter>[] = []
 
@@ -15,9 +19,9 @@ try {
 
 <Grid>
     <RootFileTree slot="sidebar-left" pages={pages} />
-    <div style="display:flex;flex-direction:column;gap:.5em;margin:.5em 0">
-        <RootFileTree pages={pages} />
-    </div>
+    <nav style="display:flex;flex-direction:column;gap:.5em;">
+        { pages.map(page => <TableOfContents url={page.url} headings={page.getHeadings()} max={2}/>) }
+    </nav>
 </Grid>
 
 

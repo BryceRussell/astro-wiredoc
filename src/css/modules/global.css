@@ -13,7 +13,7 @@
     text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     tab-size: 4;
-    scroll-padding-top: calc(var(--ui-height) + 3.5em); 
+    scroll-padding-top: var(--ui-height-mobile);
 
     --primary: #1767BF;
     --primary-a: rgba(23, 103, 191, .25);
@@ -40,9 +40,10 @@
 
     --header-height: calc(38px + 1.5em);
     --breadcrumb-height: 38px;
+    --sidebar-mobile-height: 3.75em;
+    --ui-height: calc(var(--header-height) + var(--breadcrumb-height));
+    --ui-height-mobile: calc(var(--header-height) + var(--breadcrumb-height) + var(--sidebar-mobile-height));
     --sidebar-width: 30ch;
-    --sidebar-right-height: 2.5px;
-    --ui-height: calc(var(--header-height) + var(--breadcrumb-height) + var(--sidebar-right-height));
 }
 
 body {

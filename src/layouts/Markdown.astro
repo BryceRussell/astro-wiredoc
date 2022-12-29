@@ -54,6 +54,11 @@ try {
 			<slot />
 			{scroll && <ScrollToTop />}
 		</main>
+		<aside id="_sidebar-mobile">
+			{headings && <TableOfContents close item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
+			<slot name="sidebar-mobile"/>
+		</aside>
+		<div id="_sidebar-mobile-spacer"></div>
 		<aside id="_sidebar-right">
 			{headings && <TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
 			<slot name="sidebar-right"/>
@@ -68,22 +73,14 @@ try {
 		<script is:inline>
 			function toggleDetails(e) {
 				const details = e.closest('details');
-				details.open = false
+				setTimeout(function(){
+					details.open = false
+				}, 150);
 			}
 		</script>
 		<script is:inline>
 			document.querySelectorAll('a > img').forEach(e => {
 				e.parentNode.classList.add('link-image')
-			});
-		</script>
-		<script is:inline>
-			const e = document.querySelector('#_sidebar-right .table-of-contents')||null
-			let last;
-			e.open = !(window.innerWidth < 1024)
-			window.addEventListener('resize', function() {
-				const w = window.innerWidth
-				if (last !== w) e.open = !(w < 1024)
-				last = w
 			});
 		</script>
 		<script is:inline>
