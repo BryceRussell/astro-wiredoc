@@ -102,7 +102,7 @@ main {
     outline: none;
     background-color: transparent;
     font-size: var(--fluid-1);
-    color: var(--grayer);
+    color: #ccc;
 }
 
 h2 > a,

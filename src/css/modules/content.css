@@ -90,6 +90,7 @@ blockquote p {
 
 pre {
     overflow-x: auto;
+    scrollbar-width: thin;
     height: 100%;
     margin: 1em 0;
     padding: 1em;
