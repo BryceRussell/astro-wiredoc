@@ -32,7 +32,7 @@ main {
     flex-direction: column;
     height: 100%;
     max-height: calc(100% - var(--ui-height));
-    width: var(--sidebar-width);
+    width: var(--sidebar-left-width);
     gap: .5em;
     background-color: var(--lighter);
 }
@@ -67,7 +67,7 @@ main {
     display: none;
     height: 100%;
     max-height: calc(100% - var(--ui-height));
-    width: 30ch;
+    width: var(--sidebar-right-width);
     gap: .5em;
     background-color: var(--lighter);
 }
@@ -130,7 +130,7 @@ h6 > a {
         --ui-height: calc(var(--header-height) + var(--breadcrumb-height));
     }
     body {
-        grid-auto-columns: var(--sidebar-width) auto var(--sidebar-width);
+        grid-auto-columns: var(--sidebar-left-width) auto var(--sidebar-right-width);
         grid-template-rows: min-content min-content min-content 100% min-content;
         grid-template-areas:
             "header header header"
@@ -141,7 +141,6 @@ h6 > a {
     }
 
     main {
-        min-width: 50ch;
         max-width: 100ch;
     }
 
@@ -164,8 +163,8 @@ h6 > a {
     }
 
     #_sidebar-mobile {
-        left: var(--sidebar-width);
-        width: calc(100% - var(--sidebar-width));   
+        left: var(--sidebar-left-width);
+        width: calc(100% - var(--sidebar-left-width));   
         padding: .75em;
     }
 }
@@ -175,7 +174,7 @@ h6 > a {
         scroll-padding-top: calc(var(--ui-height) + .5em);
     }
     body {
-        grid-auto-columns: var(--sidebar-width) auto var(--sidebar-width);
+        grid-auto-columns: var(--sidebar-left-width) auto var(--sidebar-right-width);
         grid-template-rows: min-content min-content 100% min-content;
         grid-template-areas:
             "header header header"
