@@ -7,7 +7,7 @@
     align-items: center;
     height: var(--header-height);
     width: 100%;
-    padding: .75em;
+    padding: 0 .75em;
     background-color: var(--lighter);
 }
 
@@ -64,7 +64,7 @@
     width: 100%;
     gap: .25em;
     margin: 0;
-    padding: 0 .75em;
+    padding: 0 .75em .5em .75em;
     background-color: var(--lighter);
 }
 

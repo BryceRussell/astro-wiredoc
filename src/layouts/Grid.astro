@@ -22,7 +22,7 @@ const  {
 	</head>
 	<body>
 		<Navbar />
-		{breadcrumb && <Breadcrumb />}
+		<Breadcrumb hide={!breadcrumb} />
 		<aside id="_sidebar-left">
 			<slot name="sidebar-left"/>
 		</aside>

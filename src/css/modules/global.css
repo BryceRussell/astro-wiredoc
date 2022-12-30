@@ -13,7 +13,7 @@
     text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     tab-size: 4;
-    scroll-padding-top: var(--ui-height-mobile);
+    scroll-padding-top: calc(var(--ui-height-mobile) - .5em);
 
     --primary: #1767BF;
     --primary-a: rgba(23, 103, 191, .25);
@@ -40,7 +40,7 @@
 
     --header-height: calc(38px + 1.5em);
     --breadcrumb-height: 38px;
-    --sidebar-mobile-height: 3.75em;
+    --sidebar-mobile-height: 4.25em;
     --ui-height: calc(var(--header-height) + var(--breadcrumb-height));
     --ui-height-mobile: calc(var(--header-height) + var(--breadcrumb-height) + var(--sidebar-mobile-height));
     --sidebar-width: 30ch;
