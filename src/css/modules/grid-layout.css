@@ -18,6 +18,7 @@ main {
 }
 
 .markdown {
+    overflow: hidden;
     position: relative;
 }
 
