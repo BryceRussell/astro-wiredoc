@@ -23,27 +23,16 @@ const  {
 	<body>
 		<Navbar />
 		<Breadcrumb hide={!breadcrumb} />
-		<aside id="_sidebar-left">
+		<aside class="sidebar-left">
 			<slot name="sidebar-left"/>
 		</aside>
 		<main>
 			<slot />
 		</main>
-		<aside id="_sidebar-right">
+		<aside class="sidebar-right">
 			<slot name="sidebar-right"/>
 		</aside>
 		<Footer />
 		<slot name="body"/>
-		<script is:inline>
-			if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", user => {
-				if (!user) {
-				window.netlifyIdentity.on("login", () => {
-					document.location.href = "/admin/";
-				});
-				}
-			});
-			}
-		</script>
 	</body>
 </html>

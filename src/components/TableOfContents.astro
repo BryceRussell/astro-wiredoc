@@ -1,7 +1,7 @@
 ---
-import type { MarkdownHeading } from 'astro';
 import { Icon } from 'astro-icon';
-import type { HTMLAttributes } from 'astro/types';
+import type { MarkdownHeading } from 'astro';
+import type { HTMLAttributes, HTMLTag } from 'astro/types';
 
 export interface Props extends HTMLAttributes<'div'>{
     url: string;
@@ -28,7 +28,7 @@ const {
 
 const equalDepth = headings.filter(h => h.depth === +depth);
 
-const Tag = depth === 1 ? 'details' : 'ol'
+const Tag: HTMLTag = depth === 1 ? 'details' : 'ol'
 
 const _attrs = {
     class: depth === 1
@@ -78,3 +78,10 @@ const _attrs = {
         </>
     })}
 </Tag>
+
+<script>
+    window.toggleDetails = (e) => {
+        const details = e.closest('details')
+        details.open = false
+    }
+</script>

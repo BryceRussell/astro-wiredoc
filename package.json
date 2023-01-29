@@ -10,14 +10,14 @@
     "preview": "astro build && npx -y pagefind --source dist && astro preview"
   },
   "devDependencies": {
-    "astro": "^1.6.15",
-    "astro-headless-ui": "^0.0.19",
+    "astro": "^2.0.0",
+    "astro-headless-ui": "^0.0.24",
     "astro-icon": "^0.8.0",
     "astro-seo": "^0.6.0",
     "sass": "^1.56.2"
   },
   "dependencies": {
-    "astro-layouts": "^0.1.1",
+    "astro-auto-title": "^0.0.3",
     "astro-netlify-cms": "^0.5.0",
     "fast-glob": "^3.2.12",
     "mdast-util-to-string": "^3.1.0",

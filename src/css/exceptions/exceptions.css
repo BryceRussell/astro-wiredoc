@@ -1,0 +1,28 @@
+/* https://cube.fyi/exception.html */
+
+/* TL;DR: one-off styles for finite states */
+
+/* '#' char inside links appended using rehype-auto-link */
+.heading-link-icon {
+  padding-left: .5em;
+  color: var(--fg-subtle);
+}
+
+h2 > a,
+h3 > a {
+  position: absolute;
+  right: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: .5em;
+  line-height: inherit;
+  font-size: var(--fluid-2);
+  color: var(--light-gray);
+}
+
+
+/* Scroll to top button clicked */
+.scroll-to-top.success {
+  transform: translateY(-.5em);
+}

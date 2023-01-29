@@ -1,0 +1,141 @@
+:root {
+  scroll-padding-top: calc(var(--ui-height-mobile) - 1em);
+}
+
+body {
+  --bg: var(--light);
+  --fg: var(--dark);
+  --bg-subtle: var(--dark-gray);
+  --fg-subtle: var(--light-gray);
+  --accent-color: var(--accent);
+
+  font-family: var(--font);
+  font-size: var(--fluid-2);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+  background: var(--bg);
+  color: var(--fg);
+  letter-spacing: var(--tracking-l);
+  display: flex;
+  flex-direction: column;
+}
+
+body.dark {
+  --bg: var(--dark);
+  --fg: var(--light);
+  --bg-subtle: var(--light-gray);
+  --fg-subtle: var(--dark-gray);
+  --accent-color: var(--accent-dark);
+}
+
+/* Base typesetting */
+
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  margin: .75em 0;
+  font-weight: var(--font-weight-bold);
+  color: var(--fg);
+} h1 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-h2);
+  font-size: var(--fluid-7);
+} h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-h2);
+  font-size: var(--fluid-6);
+} h3 {
+  font-size: var(--fluid-5);
+} h4 {
+  font-size: var(--fluid-4);
+} h5 {
+  font-size: var(--fluid-3);
+} h6 {
+  font-size: var(--fluid-2);
+}
+
+p {
+  margin: 1em 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+a:hover {
+  text-decoration: underline;
+  filter: brightness(70%);
+  transition: filter 100ms,
+}
+
+a:focus {
+  text-decoration: underline;
+}
+
+/* Generic elements */
+
+ul {
+  margin: 1em 0;
+}
+
+[role='list'] {
+  padding: 0;
+}
+
+em {
+  color: var(--accent-color);
+}
+
+blockquote {
+  display: inline-block;
+  margin: .5em 0 .5em 2em;
+  border-left: .25rem solid var(--fg-subtle);
+} 
+
+blockquote p {
+  margin: 1em;
+}
+
+svg {
+  height: 2.5ex;
+  width: auto;
+  flex: none;
+}
+
+main > ul[role='list'],
+header,
+section,
+article > *,
+aside {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: var(--bg-subtle);
+}
+
+:not(pre) > code {
+  vertical-align: middle;
+  padding: .125em .25em;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--fg-subtle);
+  font-size: var(--fluid-1);
+}
+
+pre {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  height: 100%;
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--gray);
+  font-size: var(--fluid-0);
+}
+
+footer {
+  margin-block-start: var(--space-xl-2xl);
+}

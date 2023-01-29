@@ -1,0 +1,67 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+
+:root {
+    cursor: default;
+    overflow-wrap: break-word;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    tab-size: 4;
+    scroll-padding-top: calc(var(--ui-height-mobile) - .5em);
+
+    --primary: #1767BF;
+    --primary-a: rgba(23, 103, 191, .25);
+    --warning: #ffe135;
+    --warning-a: rgba(255, 225, 53, .5);
+    --invalid: #dc143c;
+    --dark: #1a1a1a;
+    --darker: #000;
+    --grayer: #575757;
+    --gray: #e8e8e8;
+    --light: #fefefe;
+    --lighter: #FFF;
+
+    --font: 'Helvetica', 'sans-serif';
+
+    --fluid-0: clamp(0.72rem, 0.05vw + 0.71rem, 0.76rem);
+    --fluid-1: clamp(0.8rem, 0.11vw + 0.77rem, 0.87rem);
+    --fluid-2: clamp(0.88rem, 0.18vw + 0.83rem, 1rem);
+    --fluid-3: clamp(0.96rem, 0.27vw + 0.9rem, 1.15rem);
+    --fluid-4: clamp(1.06rem, 0.38vw + 0.97rem, 1.32rem);
+    --fluid-5: clamp(1.16rem, 0.51vw + 1.05rem, 1.52rem);
+    --fluid-6: clamp(1.28rem, 0.67vw + 1.13rem, 1.75rem);
+    --fluid-7: clamp(1.41rem, 0.86vw + 1.21rem, 2.01rem);
+    --fluid-8: clamp(1.55rem, 1.09vw + 1.3rem, 2.31rem);
+    --fluid-9: clamp(1.71rem, 1.36vw + 1.39rem, 2.66rem);
+}
+
+body {
+    background-color: var(--lighter);
+    font-family: var(--font);
+    line-height: 1.5;
+    font-size: var(--fluid-2);
+    color: var(--dark);
+
+    --pagefind-ui-scale: 0.8;
+    --pagefind-ui-primary: var(--primary);
+    --pagefind-ui-text: var(--dark);
+    --pagefind-ui-background: var(--lighter);
+    --pagefind-ui-border: var(--gray);
+    --pagefind-ui-tag: var(--gray);
+    --pagefind-ui-border-width: 2px;
+    --pagefind-ui-border-radius: 3px;
+    --pagefind-ui-image-border-radius: 0;
+    --pagefind-ui-image-box-ratio: 3 / 2;
+    --pagefind-ui-font: var(--font);
+}
+
+input, button {
+    font-size: inherit;
+    color: inherit;
+}

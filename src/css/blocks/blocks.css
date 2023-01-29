@@ -1,0 +1,16 @@
+/* https://cube.fyi/block.html */
+
+/* TL;DR: Components styles */
+
+.prose {
+  position: relative;
+}
+
+.prose h2, h3 {
+  margin-left: .6em; 
+}
+
+.prose h2 {
+  padding: 0 0 .25em 0;
+  border-bottom: 2px solid var(--fg-subtle);
+}

@@ -1,0 +1,107 @@
+/* https://cube.fyi/utility.html */
+
+/* TL;DR: Utility classes (yes, like Tailwind) */
+
+.touch {
+  min-height: 38px;
+  min-width: 38px;
+}
+
+.wrapper {
+  width: clamp(16rem, 95vw, 75rem);
+  margin-inline: auto;
+  padding-inline: var(--gutter, 1rem);
+  position: relative;
+}
+
+.repel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gutter, var(--space-s-m));
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--gutter, var(--space-s-m));
+}
+
+.region {
+  padding-top: var(--region-space, var(--space-l-xl));
+  padding-bottom: var(--region-space, var(--space-l-xl));
+}
+
+.prose {
+  max-inline-size: var(--content-measure);
+}
+
+.object-fit-cover {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+/* My styles */
+
+.table-of-contents {
+  width: 100%;
+}
+
+.table-of-contents summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5em;
+  padding: .5em;
+  border: none;
+  border: 2px solid var(--fg-subtle);
+  border-radius: 3px;
+  line-height: 1;
+} .table-of-contents summary:focus {
+  border-color: var(--primary);
+  border: 2px solid var(--primary-alpha);
+} .table-of-contents summary::marker {
+  display: none;
+} ::-webkit-details-marker {
+  display: none;
+} .table-of-contents summary svg {
+  rotate: -90deg;
+  transition: transform 200ms;
+}
+
+.table-of-contents[open] summary svg {
+  transform: rotate(-90deg);
+}
+
+.table-of-contents > summary + ol {
+  display: flex;
+  flex-direction: column;
+  margin: .5em 0 0 0;
+  padding: .75em 1em;
+  border-radius: 3px;
+  border: 2px solid var(--fg-subtle);
+}
+
+.table-of-contents ol {
+  list-style: none;
+  padding-left: 1em;
+}

@@ -1,18 +1,19 @@
 ---
-import { DarkThemeToggle, IconSwitch } from 'astro-headless-ui';
+import { DarkThemeToggle, IconSwitcher } from 'astro-headless-ui';
 import { Icon } from 'astro-icon';
 ---
 
-<header id="_header">
-    <a id="_logo" href="/"><strong>Documentation</strong></a>
-    <menu>
-        <DarkThemeToggle id="_theme-toggle" class="touch-target scale">
-            <IconSwitch size="1.25em" style="margin:.35rem .2rem .2rem .2rem;">
-                <Icon name="carbon:sun"/>
-                <Icon name="carbon:moon"/>
-            </IconSwitch>
-        </DarkThemeToggle>
-        <a id="_search-link" href="/search" class="touch-target scale"><span style="display:inline-block;height:1.25em;width:1.25em;"><Icon name="ic:outline-search"/></span>Search</a>
-    </menu>
-</header>
-<div id="_header-spacer"></div>
+<div class="header-spacer">
+    <header class="header">
+        <a class="header-logo" href="/"><strong>Documentation</strong></a>
+        <menu>
+            <DarkThemeToggle class="theme-toggle touch scale">
+                <IconSwitcher active="body.dark" size="1.25em">
+                    <Icon name="carbon:sun"/>
+                    <Icon name="carbon:moon"/>
+                </IconSwitcher>
+            </DarkThemeToggle>
+            <a href="/search" class="search-link touch scale"><span style="display:inline-block;height:1.25em;width:1.25em;"><Icon name="ic:outline-search"/></span>Search</a>
+        </menu>
+    </header>
+</div>

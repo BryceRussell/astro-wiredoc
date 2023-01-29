@@ -14,14 +14,15 @@ const props = {
 console.log(hide)
 ---
 { !hide &&
-    <nav id="_breadcrumb" class="touch-target">
-        <Breadcrumb {...props}>
-            {url => (<a href={url.href[0]==='/'?url.href:'/'+url.href}>{url.text}</a><span>/</span>)}
-            <active slot="active">{url => <span>{url.text}</span>}</active>
-            <Fragment slot="disabled"><span>...</span><span>/</span></Fragment>
-        </Breadcrumb>
-    </nav>
-    <div id="_breadcrumb-spacer"></div>
+    <div class="breadcrumb-spacer">
+        <nav class="breadcrumb" class="touch-target">
+            <Breadcrumb {...props}>
+                {url => (<a href={url.href[0]==='/'?url.href:'/'+url.href}>{url.text}</a><span>/</span>)}
+                <active slot="active">{url => <span>{url.text}</span>}</active>
+                <Fragment slot="disabled"><span>...</span><span>/</span></Fragment>
+            </Breadcrumb>
+        </nav>
+    </div>
 }
 
 { hide &&

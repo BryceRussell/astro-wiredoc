@@ -1,22 +1,20 @@
 ---
 import { SEO } from 'astro-seo';
 import { Icon } from 'astro-icon'
-import { CodeCopy, IconSwitch } from 'astro-headless-ui';
+import { CodeCopy, IconSwitcher } from 'astro-headless-ui';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import ScrollToTop from '@/components/ScrollToTop.astro';
-import RootFileTree from '@/components/RootFileTree.astro';
 import { SEODefault } from '@/config';
 import type { Markdown, Frontmatter } from '@/types';
-import '@/css/grid.scss'
+import '@/css/styles.css'
 
 const  {
-	breadcrumb=true,
-	scroll=true,
 	frontmatter,
 	headings,
+	scroll=true,
     SEO: _SEO = {
 		title: frontmatter.title,
 		description: frontmatter.description,
@@ -46,51 +44,29 @@ try {
 	<body>
 		<Navbar />
 		<Breadcrumb />
-		<aside id="_sidebar-left">
-			<RootFileTree pages={pages} />
+		<aside class="sidebar-left">
 			<slot name="sidebar-left"/>
 		</aside>
-		<main class="markdown" data-pagefind-body>
+		<main class="prose" data-pagefind-body>
 			<slot />
 			{scroll && <ScrollToTop />}
 		</main>
-		<aside id="_sidebar-mobile">
-			{headings && <TableOfContents close item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
-			<slot name="sidebar-mobile"/>
-		</aside>
-		<div id="_sidebar-mobile-spacer"></div>
-		<aside id="_sidebar-right">
+		<div class="sidebar-mobile-spacer">
+			<aside class="sidebar-mobile">
+				{headings && <TableOfContents close item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
+				<slot name="sidebar-mobile"/>
+			</aside>
+		</div>
+		<aside class="sidebar-right">
 			{headings && <TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
 			<slot name="sidebar-right"/>
 		</aside>
 		<Footer />
 		<CodeCopy padding=".5em" class="copy-code">
-			<IconSwitch name="copy-icons" selector="button.copied" size="1.5rem" style="margin-top:-1px">
+			<IconSwitcher name="copy-icons" active="button.copied" size="1.5rem" style="margin-top:-1px">
 				<Icon name="fluent:clipboard-20-regular"/>
 				<Icon name="fluent:clipboard-task-20-regular"/>
-			</IconSwitch>
+			</IconSwitcher>
 		</CodeCopy>
-		<script is:inline>
-			function toggleDetails(e) {
-				const details = e.closest('details');
-				details.open = false
-			}
-		</script>
-		<script is:inline>
-			document.querySelectorAll('a > img').forEach(e => {
-				e.parentNode.classList.add('link-image')
-			});
-		</script>
-		<script is:inline>
-			if (window.netlifyIdentity) {
-			  window.netlifyIdentity.on("init", user => {
-				if (!user) {
-				  window.netlifyIdentity.on("login", () => {
-					document.location.href = "/admin/";
-				  });
-				}
-			  });
-			}
-		</script>
 	</body>
 </html>
