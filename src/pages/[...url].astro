@@ -2,7 +2,6 @@
 import { CollectionEntry, getCollection } from 'astro:content';
 import fg from 'fast-glob';
 import Markdown from "@/layouts/Markdown.astro";
-import TableOfContents from '@/components/TableOfContents.astro';
 
 export async function getStaticPaths() {
     // Automatically create indexes for directories
@@ -31,10 +30,11 @@ const {
 
 const {
     Content,
-    headings
+    headings,
+    remarkPluginFrontmatter
 } = await page.render()
 ---
 
-<Markdown frontmatter={page.data} headings={headings}>
+<Markdown frontmatter={remarkPluginFrontmatter || page.data} headings={headings}>
     <Content />
 </Markdown>

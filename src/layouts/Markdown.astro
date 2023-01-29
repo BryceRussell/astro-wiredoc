@@ -8,7 +8,6 @@ import Breadcrumb from '@/components/Breadcrumb.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import ScrollToTop from '@/components/ScrollToTop.astro';
 import { SEODefault } from '@/config';
-import type { Markdown, Frontmatter } from '@/types';
 import '@/css/styles.css'
 
 const  {
@@ -21,15 +20,6 @@ const  {
         ...SEODefault(Astro)
     }
 } = Astro.props
-
-var pages: Markdown[] = []
-try {
-	pages = await Astro.glob<Frontmatter>('/src/pages/docs/**/*.md')
-	pages = pages
-		.filter(page => !page.frontmatter.draft)
-} catch {
-	console.warn("Could not find any markdown files, create a new entry at /admin")
-}
 ---
 
 <html lang="en">
