@@ -1,0 +1,101 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'details'> {
+    esc?: string|boolean;
+    outside?: string|boolean;
+    close?: string|boolean;
+    open?: string|boolean;
+    hide?: string|boolean;
+}
+
+const {
+    esc,
+    outside,
+    close,
+    hide,
+    open,
+    ..._attrs
+} = Astro.props as Props
+
+const utilAttrs = {
+    "close-esc": esc,
+    "close-click-outside": outside,
+    "force-close": close,
+    "force-open": open===true
+        ? undefined
+        : open,
+    hide
+}
+
+const attrs = {
+    open: open===true
+        ? true
+        : undefined,
+    ..._attrs
+}
+---
+
+<details-utils {...utilAttrs}>
+    <details {...attrs}>
+        <slot />
+    </details>
+</details-utils>
+
+<script>
+    class DetailsUtils extends HTMLElement {
+        constructor() {
+            super();
+            const details = this.querySelector("details") as HTMLDetailsElement
+            this.bindCloseOnEsc(details)
+            this.bindCloseOnOutsideClick(details)
+            this.addMediaListener(this.getAttr("force-open"), () => {
+                this.toggleDetails(details, true)
+            })
+            this.addMediaListener(this.getAttr("force-close"), () => {
+                this.toggleDetails(details, false)
+            })
+        }
+
+        getAttr(name: string): string|boolean|null {
+            const value = this.getAttribute(name)
+            if (value==='true'||value==='') return true
+            if (value==='false') return false
+            return value
+        }
+
+        toggleDetails(details: HTMLDetailsElement, toggle?: boolean): void {
+            details.toggleAttribute("open", toggle)
+        }
+
+        addMediaListener(query: any, callback: (event?: MediaQueryListEvent) => void): void {
+            if (query === true) {
+                callback()
+                return
+            }
+            if (query) window.matchMedia(`(${query})`).addListener((event) => {
+                if (event.matches) callback(event)
+            })
+        }
+
+        bindCloseOnOutsideClick(details: HTMLDetailsElement): void {
+            if (!this.getAttr("close-click-outside")) return
+            document.documentElement.addEventListener("mousedown", (event) => {
+                if (!this.contains(event.target as Node)) {
+                    this.toggleDetails(details, false)
+                }
+            }, false);
+        }
+
+        bindCloseOnEsc(details: HTMLDetailsElement): void {
+            if (!this.getAttr("close-esc")) return
+            document.documentElement.addEventListener("keydown", event => {
+                if(event.key === "Escape") {
+                    this.toggleDetails(details, false)
+                }
+            }, false);
+        }
+    }
+
+    customElements.define('details-utils', DetailsUtils);
+</script>

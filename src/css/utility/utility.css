@@ -60,7 +60,26 @@
   white-space: nowrap !important;
 }
 
+.relative {
+  position: relative;
+} .absolute {
+  position: absolute;
+}
+
+.btn {
+  cursor: pointer;
+  padding: .5em .75em;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--primary);
+} summary.btn {
+  padding: .5em .25em .5em .75em;
+  font-weight: normal;
+} summary.btn svg {
+  margin-left: .25em;
+}
+
 /* My styles */
+
 
 .table-of-contents {
   width: 100%;
@@ -83,13 +102,6 @@
   display: none;
 } ::-webkit-details-marker {
   display: none;
-} .table-of-contents summary svg {
-  rotate: -90deg;
-  transition: transform 200ms;
-}
-
-.table-of-contents[open] summary svg {
-  transform: rotate(-90deg);
 }
 
 .table-of-contents > summary + ol {

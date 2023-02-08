@@ -3,6 +3,7 @@
 @import './global/variables.css';
 
 @import './composition/composition.css';
+@import './composition/docs-grid.css';
 @import './utility/utility.css';
 @import './blocks/blocks.css';
 @import './exceptions/exceptions.css';

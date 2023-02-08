@@ -16,8 +16,6 @@ body {
   background: var(--bg);
   color: var(--fg);
   letter-spacing: var(--tracking-l);
-  display: flex;
-  flex-direction: column;
 }
 
 body.dark {
@@ -28,7 +26,10 @@ body.dark {
   --accent-color: var(--accent-dark);
 }
 
-/* Base typesetting */
+::selection {
+  background-color: var(--primary-alpha);
+  color: var(--bg);
+}
 
 h1, h2, h3, h4, h5, h6 {
   position: relative;
@@ -53,33 +54,15 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--fluid-2);
 }
 
-p {
-  margin: 1em 0;
-}
-
 a {
   text-decoration: none;
   color: var(--primary);
-}
-
-a:hover {
+} a:hover {
   text-decoration: underline;
   filter: brightness(70%);
   transition: filter 100ms,
-}
-
-a:focus {
+} a:focus {
   text-decoration: underline;
-}
-
-/* Generic elements */
-
-ul {
-  margin: 1em 0;
-}
-
-[role='list'] {
-  padding: 0;
 }
 
 em {
@@ -96,21 +79,6 @@ blockquote p {
   margin: 1em;
 }
 
-svg {
-  height: 2.5ex;
-  width: auto;
-  flex: none;
-}
-
-main > ul[role='list'],
-header,
-section,
-article > *,
-aside {
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-}
-
 hr {
   border: none;
   height: 2px;
@@ -120,7 +88,7 @@ hr {
 :not(pre) > code {
   vertical-align: middle;
   padding: .125em .25em;
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--radius-sm);
   background-color: var(--fg-subtle);
   font-size: var(--fluid-1);
 }
@@ -131,9 +99,30 @@ pre {
   height: 100%;
   margin: 1em 0;
   padding: 1em;
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--radius-sm);
   background-color: var(--gray);
   font-size: var(--fluid-0);
+}
+
+/* Misc */
+
+summary {
+  font-weight: bold;
+}
+
+details :is(ul, ol) {
+  background-color: var(--bg);
+  padding: .5em;
+}
+
+summary svg {
+  margin-bottom: .2em;
+  rotate: -90deg;
+  transition: transform 100ms;
+}
+
+details[open] summary svg {
+  transform: rotate(-90deg);
 }
 
 footer {

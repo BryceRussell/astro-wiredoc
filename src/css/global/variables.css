@@ -34,8 +34,8 @@
   --outline-size: 2px;
 
   --gutter: var(--space-s-m);
-  --border-radius: 5px;
-  --border-radius-sm: 3px;
+  --radius: 5px;
+  --radius-sm: 3px;
   --duration-sm: 250ms;
   --duration-md: 500ms;
   --duration-lg: 700ms;

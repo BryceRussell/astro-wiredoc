@@ -31,9 +31,6 @@ const equalDepth = headings.filter(h => h.depth === +depth);
 const Tag: HTMLTag = depth === 1 ? 'details' : 'ol'
 
 const _attrs = {
-    class: depth === 1
-        ? "table-of-contents"
-        : null,
     open: open
         ? true
         : null,
