@@ -16,8 +16,8 @@ import { Icon } from 'astro-icon';
                     <Icon name="carbon:moon"/>
                 </IconSwitcher>
             </DarkThemeToggle>
-            <form action="/search?q=Test">
-                <input type="text" placeholder="Search..." class="btn circle">
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search..." class="btn circle">
             </form>
         </menu>
     </header>
