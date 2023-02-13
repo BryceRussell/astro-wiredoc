@@ -1,31 +1,16 @@
 ---
-import { DarkThemeToggle, IconSwitcher } from 'astro-headless-ui';
-import { Icon } from 'astro-icon';
-import Dropdown from './Dropdown.astro';
+import { Breadcrumb } from "astro-headless-ui";
 ---
 
-<div class="header-spacer">
-    <header class="header">
-        <a class="header-logo" href="/"><strong>Documentation</strong></a>
-        <menu>
-            <DarkThemeToggle class="theme-toggle touch scale">
-                <IconSwitcher active="body.dark" size="1.25em">
-                    <Icon name="carbon:sun"/>
-                    <Icon name="carbon:moon"/>
-                </IconSwitcher>
-            </DarkThemeToggle>
-            <a href="/search" class="search-link touch scale"><span style="display:inline-block;height:1.25em;width:1.25em;"><Icon name="ic:outline-search"/></span>Search</a>
-            <Dropdown esc outside class="relative dropdown">
-                <summary class="touch">
-                    Test
-                    <Icon name="radix-icons:caret-up" size={24}/>
-                </summary>
-                <ul class="absolute">
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                </ul>
-            </Dropdown>
-        </menu>
+<div class="navbar-spacer">
+    <header class="navbar flex w-100">
+        <slot />
+        <nav class="breadcrumb flex-00 center" class="touch-target">
+            <Breadcrumb index={false}>
+                {url => (<a href={url.href[0]==='/'?url.href:'/'+url.href}>{url.text}</a><span>/</span>)}
+                <active slot="active">{url => <span>{url.text}</span>}</active>
+                <Fragment slot="disabled"><span>...</span><span>/</span></Fragment>
+            </Breadcrumb>
+        </nav>
     </header>
 </div>

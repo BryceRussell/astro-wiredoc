@@ -1,18 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 import Grid from "@/layouts/Grid.astro";
-import TableOfContents from "@/components/TableOfContents.astro";
+import Details from '@/components/Details.astro';
 import '@/css/docs.css'
 
 const pages = await getCollection('docs');
 ---
 
 <Grid>
-    <nav style="display:flex;flex-direction:column;gap:.5em;">
+    <nav class="list">
         { pages.map(async(page) => {
             const { headings } = await page.render()
-            return <TableOfContents url={`/docs/${page.slug}`} headings={headings} max={3}/>
-        }) }
+            return <Details url={`/docs/${page.slug}`} headings={headings} max={3} />
+        })}
     </nav>
 </Grid>
 

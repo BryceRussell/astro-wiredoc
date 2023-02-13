@@ -12,6 +12,10 @@ details-utils {
   z-index: 20;
 }
 
+details {
+  position: relative;
+}
+
 summary {
   list-style: none;
 } summary::-webkit-details-marker {

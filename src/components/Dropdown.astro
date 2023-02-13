@@ -10,11 +10,11 @@ export interface Props extends HTMLAttributes<'details'> {
 }
 
 const {
-    esc,
-    outside,
+    esc=true,
+    outside=true,
     close,
-    hide,
     open,
+    hide,
     ..._attrs
 } = Astro.props as Props
 

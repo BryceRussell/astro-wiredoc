@@ -97,11 +97,9 @@
   /* Layout */
 
   --header-height: calc(38px + 1.5em);
-  --breadcrumb-height: 38px;
-  --sidebar-mobile-height: 4.25em;
-  --ui-height: calc(var(--header-height) + var(--breadcrumb-height));
-  --ui-height-mobile: calc(var(--header-height) + var(--breadcrumb-height) + var(--sidebar-mobile-height));
-  --sidebar-left-width: 30ch;
-  --sidebar-right-width: 30ch;
-  --md-width-max: 100ch;
+  --navbar-height: 38px;
+  --ui-height: calc(var(--header-height) + var(--navbar-height));
+  --sidebar-left-width: 32ch;
+  --sidebar-right-width: 32ch;
+  --md-width-max: 80ch;
 }

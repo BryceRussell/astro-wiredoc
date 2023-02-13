@@ -21,6 +21,9 @@ h3 > a {
   color: var(--light-gray);
 }
 
+.copy-code.copied {
+  color: var(--success);
+}
 
 /* Scroll to top button clicked */
 .scroll-to-top.success {

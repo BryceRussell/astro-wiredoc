@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon';
+import { TableOfContents } from "astro-headless-ui";
+import type { MarkdownHeading } from 'astro';
+import type { HTMLAttributes } from 'astro/types';
+
+interface Links extends MarkdownHeading, HTMLAttributes<'a'> {};
+
+export interface Props {
+    title?: string;
+    url?: string;
+    headings: Array<Links>;
+    depth?: number;
+    max?: number;
+}
+
+const {
+    url,
+    headings,
+    depth,
+    max,
+    title=headings[0].text,
+    ...attrs
+} = Astro.props as Props
+
+---
+
+<details {...attrs}>
+    <summary>
+        {title}
+        <Icon name="radix-icons:caret-up" size={24}/>
+    </summary>
+    <TableOfContents {...{
+        url,
+        headings: headings?.map(h => ({...h, text: h.text.replace(/^#/, '')})),
+        depth,
+        max
+    }}/>
+</details>

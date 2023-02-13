@@ -1,0 +1,39 @@
+---
+import { DarkThemeToggle, IconSwitcher } from 'astro-headless-ui';
+import { Icon } from 'astro-icon';
+import Dropdown from './Dropdown.astro';
+---
+
+<div class="header-spacer">
+    <header class="header repel">
+        <a href="/" class="cluster">
+            <img src="/logo.webp" alt="">
+            My Project
+        </a>
+        <menu class="cluster">
+            <DarkThemeToggle class="theme touch scale border">
+                <IconSwitcher active="body.dark" size="1.25em">
+                    <Icon name="carbon:sun"/>
+                    <Icon name="carbon:moon"/>
+                </IconSwitcher>
+            </DarkThemeToggle>
+            <a href="/search" class="search touch scale border">
+                <span style="display:inline-block;height:1.25em;width:1.25em;">
+                    <Icon name="ic:outline-search"/>
+                </span>
+                Search
+            </a>
+            <!-- <Dropdown esc outside class="relative dropdown">
+                <summary class="touch">
+                    Test
+                    <Icon name="radix-icons:caret-up" size={24}/>
+                </summary>
+                <ul class="absolute">
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+            </Dropdown> -->
+        </menu>
+    </header>
+</div>

@@ -1,11 +1,8 @@
 import type { AstroGlobal } from "astro";
 import type { SEOInterface } from "@/types";
 
-export const SITE = 'https://astro-simple-docs.netlify.app/'
-
-
-export function SEODefault(Astro: AstroGlobal): SEOInterface {
-    if (!Astro.site) throw Error("src/config.ts SEODefault(): No 'site' option is set in astro.config.mjs")
+export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
+    if (!Astro.site) throw Error("\"src/config.ts\": No 'site' option is set in astro.config.mjs")
     return {
         title: "Astro Simple Docs",
         description: "A fast and easy to use documentation template built using Astro",
@@ -27,3 +24,13 @@ export function SEODefault(Astro: AstroGlobal): SEOInterface {
         }
     }
 }
+
+export const NAVIGATION = [
+    {
+        title: "Introduction",
+        links: [
+            {  }
+        ]
+    },
+    {}
+]
