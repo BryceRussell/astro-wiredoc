@@ -11,7 +11,11 @@ import '@/css/docs.css'
         window.addEventListener('load', () => {
             const params = new URLSearchParams(window.location.search)
             const query = params.get("q")
-            if (query) document.querySelector(".pagefind-ui__search-input").value = query
+            const el = document.querySelector(".pagefind-ui__search-input")
+            if (query && el) {
+                el.value = query
+                el.onchange()
+            }
         })
     </script>
 </Grid>
