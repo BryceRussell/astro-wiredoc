@@ -4,42 +4,35 @@ import type { HTMLAttributes } from 'astro/types';
 export interface Props extends HTMLAttributes<'details'> {
     esc?: string|boolean;
     outside?: string|boolean;
-    close?: string|boolean;
-    open?: string|boolean;
-    hide?: string|boolean;
+    forceOpen?: string;
+    forceClose?: string;
+    hide?: boolean;
 }
 
 const {
-    esc=true,
-    outside=true,
-    close,
-    open,
+    esc,
+    outside,
+    forceOpen,
+    forceClose,
     hide,
-    ..._attrs
+    ...attrs
 } = Astro.props as Props
 
 const utilAttrs = {
     "close-esc": esc,
     "close-click-outside": outside,
-    "force-close": close,
-    "force-open": open===true
-        ? undefined
-        : open,
-    hide
-}
-
-const attrs = {
-    open: open===true
-        ? true
-        : undefined,
-    ..._attrs
+    "force-close": forceClose,
+    "force-open": forceOpen
 }
 ---
 
 <details-utils {...utilAttrs}>
-    <details {...attrs}>
-        <slot />
-    </details>
+    {hide
+        ? <slot />
+        : <details {...attrs}>
+              <slot />
+          </details>
+    }
 </details-utils>
 
 <script>

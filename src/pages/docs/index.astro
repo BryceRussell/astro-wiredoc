@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Grid from "@/layouts/Grid.astro";
 import Details from '@/components/Details.astro';
+import Dropdown from '@/components/Dropdown.astro';
 import '@/css/docs.css'
 
 const pages = await getCollection('docs');
@@ -11,7 +12,11 @@ const pages = await getCollection('docs');
     <nav class="list">
         { pages.map(async(page) => {
             const { headings } = await page.render()
-            return <Details url={`/docs/${page.slug}`} headings={headings} max={3} />
+            return (
+                <Dropdown hide forceClose="(max-width: 748px)" forceOpen="(min-width: 748px)">
+                    <Details open url={`/docs/${page.slug}`} headings={headings} depth={2} max={3} />
+                </Dropdown>
+            )
         })}
     </nav>
 </Grid>

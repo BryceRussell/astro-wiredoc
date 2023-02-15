@@ -1,28 +1,43 @@
 ---
 import { Icon } from 'astro-icon';
 import { TableOfContents } from "astro-headless-ui";
-import type { MarkdownHeading } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
+import type { Link } from '@/types';
+import { getEntryBySlug } from 'astro:content';
 
-interface Links extends MarkdownHeading, HTMLAttributes<'a'> {};
 
-export interface Props {
+export interface Props extends HTMLAttributes<'details'> {
     title?: string;
     url?: string;
-    headings: Array<Links>;
+    headings: Array<Link>;
     depth?: number;
     max?: number;
+    entry?: string;
 }
 
 const {
-    url,
-    headings,
     depth,
     max,
-    title=headings[0].text,
+    entry,
     ...attrs
-} = Astro.props as Props
+} = Astro.props
 
+let {
+    url,
+    headings
+} = Astro.props
+
+if (entry) {
+    const _entry = await getEntryBySlug('docs', entry)
+    url = '/docs/' + _entry.slug
+    
+    const { headings: _headings } = await _entry.render()
+    headings = _headings
+}
+
+headings = headings?.map(h => ({...h, text: h?.text?.replace(/^#/, '')}))
+
+const { title=headings[0].text } = Astro.props
 ---
 
 <details {...attrs}>
@@ -32,7 +47,7 @@ const {
     </summary>
     <TableOfContents {...{
         url,
-        headings: headings?.map(h => ({...h, text: h.text.replace(/^#/, '')})),
+        headings,
         depth,
         max
     }}/>

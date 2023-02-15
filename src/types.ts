@@ -1,6 +1,8 @@
 import type { VFile, Data } from 'vfile';
-import type { MarkdownInstance, MarkdownLayoutProps } from 'astro';
+import type { MarkdownHeading, MarkdownInstance, MarkdownLayoutProps } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
+
+export interface Link extends MarkdownHeading, HTMLAttributes<'a'> {};
 
 export interface Frontmatter {
     draft?: boolean;

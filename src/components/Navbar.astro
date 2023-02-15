@@ -3,9 +3,9 @@ import { Breadcrumb } from "astro-headless-ui";
 ---
 
 <div class="navbar-spacer">
-    <header class="navbar flex w-100">
+    <header class="navbar">
         <slot />
-        <nav class="breadcrumb flex-00 center" class="touch-target">
+        <nav class="breadcrumb cluster tight" class="touch-target">
             <Breadcrumb index={false}>
                 {url => (<a href={url.href[0]==='/'?url.href:'/'+url.href}>{url.text}</a><span>/</span>)}
                 <active slot="active">{url => <span>{url.text}</span>}</active>
