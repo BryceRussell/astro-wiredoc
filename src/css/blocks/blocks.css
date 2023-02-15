@@ -1,11 +1,7 @@
-/* https://cube.fyi/block.html */
-
-/* TL;DR: Components styles */
-
 /* Header */
 
 .header {
-  padding: .25em;
+  padding: .25em .5em;
 }
 
 .header > a {

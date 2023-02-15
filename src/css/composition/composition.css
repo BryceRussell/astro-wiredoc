@@ -5,32 +5,3 @@
 body {
   flex-grow: 1;
 }
-
-/* Dropdowns */
-
-details-utils {
-  z-index: 20;
-}
-
-details {
-  position: relative;
-}
-
-summary {
-  list-style: none;
-} summary::-webkit-details-marker {
-  display: none;
-}
-
-summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-details :is(ul, ol) {
-  list-style: none;
-  top: 100%;
-  left: 0;
-  width: 100%;
-}

@@ -3,8 +3,7 @@
 }
 body {
   display: grid;
-  grid-template-rows: min-content;
-  grid-template-rows: min-content min-content max-content min-content;
+  grid-template-rows: var(--header-height) var(--navbar-height) 1fr min-content;
   grid-template-areas: "header" "navbar" "main" "footer";
   min-height: 100vh;
   height: 100%;
@@ -44,6 +43,7 @@ main {
   height: var(--navbar-height);
 }
 .navbar {
+  z-index: 10;
   position: fixed;
   top: var(--header-height);
   display: flex;
@@ -100,9 +100,8 @@ body > footer {
   }
 
   body {
-    grid-auto-columns: var(--sidebar-left-width) auto var(--sidebar-right-width);
-    grid-template-rows: var(--sidebar-left-width) 100%;
-    grid-template-rows: min-content min-content max-content min-content;
+    grid-template-columns: var(--sidebar-left-width) auto;
+    grid-template-rows: var(--header-height) var(--navbar-height) 1fr min-content;
     grid-template-areas:
       "header header"
       "navbar navbar"
@@ -117,9 +116,8 @@ body > footer {
 
 @media (min-width: 1024px) {
   body {
-    grid-auto-columns: var(--sidebar-left-width) auto var(--sidebar-right-width);
-    grid-template-rows: var(--sidebar-left-width) 100% var(--sidebar-right-width);
-    grid-template-rows: min-content min-content max-content min-content;
+    grid-template-columns: var(--sidebar-left-width) auto var(--sidebar-right-width);
+    grid-template-rows: var(--header-height) var(--navbar-height) 1fr min-content;
     grid-template-areas:
       "header header header"
       "navbar navbar navbar"
