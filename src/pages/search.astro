@@ -23,19 +23,11 @@ import '@/css/docs.css'
         // Add query from url to search input
         const params = new URLSearchParams(window.location.search)
         const query = params.get("q")
-        let attempts = 0;
-        let findInput: NodeJS.Timer
-        if (query) findInput = setInterval(() => {
-            attempts++
-            console.log(attempts)
-            const el = document.querySelector(".pagefind-ui__search-input") as HTMLInputElement
-            if (el) {
-                clearInterval(findInput)
-                el.value = query
-                el.dispatchEvent(new Event("input", { bubbles: true }))
-            }
-            if (attempts > 49) clearInterval(findInput);
-        }, 25)
+        const el = document.querySelector(".pagefind-ui__search-input") as HTMLInputElement
+        if (query && el) {
+            el.value = query
+            el.dispatchEvent(new Event("input", { bubbles: true }))
+        }
     });
 </script>
 
