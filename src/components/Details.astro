@@ -1,19 +1,11 @@
 ---
+import type { DETAILS } from '@/types';
+import { getEntryBySlug } from 'astro:content';
 import { Icon } from 'astro-icon';
 import { TableOfContents } from "astro-headless-ui";
-import type { HTMLAttributes } from 'astro/types';
-import type { Link } from '@/types';
-import { getEntryBySlug } from 'astro:content';
 
 
-export interface Props extends HTMLAttributes<'details'> {
-    title?: string;
-    url?: string;
-    headings: Array<Link>;
-    depth?: number;
-    max?: number;
-    entry?: string;
-}
+export interface Props extends DETAILS {}
 
 const {
     depth,
@@ -29,10 +21,11 @@ let {
 
 if (entry) {
     const _entry = await getEntryBySlug('docs', entry)
-    url = '/docs/' + _entry.slug
-    
-    const { headings: _headings } = await _entry.render()
-    headings = _headings
+    if (_entry) {
+        url = '/docs/' + _entry.slug
+        const { headings: _headings } = await _entry.render()
+        headings = _headings
+    }
 }
 
 headings = headings?.map(h => ({...h, text: h?.text?.replace(/^#/, '')}))

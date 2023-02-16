@@ -1,21 +1,25 @@
 import type { VFile, Data } from 'vfile';
-import type { MarkdownHeading, MarkdownInstance, MarkdownLayoutProps } from 'astro';
+import type { MarkdownHeading } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 
 export interface Link extends MarkdownHeading, HTMLAttributes<'a'> {};
 
-export interface Frontmatter {
-    draft?: boolean;
+export interface DETAILS extends HTMLAttributes<'details'> {
     title?: string;
-    description?: string;
-    pubDate?: Date;
-    tags?: string[];
-    source?: string;
-    demo?: string;
+    url?: string;
+    headings: Array<Link>;
+    depth?: number;
+    max?: number;
+    entry?: string;
 }
 
-export type Markdown = MarkdownInstance<Frontmatter>;
-export type MarkdownLayout = MarkdownLayoutProps<Frontmatter>;
+export type Sidebar = SidebarDetails[];
+export interface SidebarDetails extends Omit<DETAILS, 'headings'> {
+    links?: SidebarLink[]
+}
+export interface SidebarLink extends Omit<Link, 'slug'>{
+    slug?: string;
+};
 
 export interface SEOInterface {
     title?: string;

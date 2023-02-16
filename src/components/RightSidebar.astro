@@ -1,0 +1,26 @@
+---
+import type { MarkdownHeading } from 'astro';
+import { Icon } from 'astro-icon';
+import { TableOfContents } from 'astro-headless-ui';
+
+export interface Props {
+    headings?: MarkdownHeading[]
+}
+
+const {
+    headings
+} = Astro.props as Props
+---
+
+<aside class="sidebar-right">
+    {headings &&
+        <details open>
+            <summary class="touch">
+                On This Page
+                <Icon name="radix-icons:caret-up" size={24}/>
+            </summary>
+            <TableOfContents max={3} headings={headings.map(h => {return {...h, text: h.text.replace(/^#/g, '')}})}/>
+        </details>
+    }
+    <slot />
+</aside>

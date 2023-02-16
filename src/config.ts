@@ -1,5 +1,5 @@
 import type { AstroGlobal } from "astro";
-import type { Link, SEOInterface } from "@/types";
+import type { Sidebar, SEOInterface } from "@/types";
 
 export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
     if (!Astro.site) throw Error("\"src/config.ts\": No 'site' option is set in astro.config.mjs")
@@ -25,15 +25,13 @@ export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
     }
 }
 
-export const LEFT_NAVIGATION: Array<{
-    title?: string;
-    links: Link[];
-    entry?: string;
-}> = [
+export const LEFT_NAVIGATION: Sidebar = [
     {
         title: "Introduction",
         links: [
-            { depth: 1, slug: 'getting-started', text: 'Getting Started'}
+            { depth: 1, text: 'Why?', href: '/why', slug: 'why',},
+            { depth: 1, text: 'Getting Started', href: '/getting-started', slug: 'getting-started'},
+            { depth: 1, text: 'Installation', href: '/installation', slug: 'installation',}
         ]
     },
     {

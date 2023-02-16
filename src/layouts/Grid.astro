@@ -4,6 +4,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Navbar from "@/components/Navbar.astro";
 import { SEODEFAULT } from "@/config";
+import LeftSidebar from "@/components/LeftSidebar.astro";
 
 const  {
     SEO: _SEO=SEODEFAULT(Astro)
@@ -22,9 +23,9 @@ const  {
 	<body>
 		<Header />
 		<Navbar />
-		<aside class="sidebar-left">
+		<LeftSidebar>
 			<slot name="sidebar-left"/>
-		</aside>
+		</LeftSidebar>
 		<main>
 			<slot />
 		</main>
