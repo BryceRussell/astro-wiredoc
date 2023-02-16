@@ -7,22 +7,6 @@ import '@/css/docs.css'
 	<link slot="head" href="/_pagefind/pagefind-ui.css" rel="stylesheet">
     <div id="search" style="margin:.75em 0;"></div>
     <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
-    <script is:inline>
-        const params = new URLSearchParams(window.location.search)
-        const query = params.get("q")
-        let attempts = 0;
-        let findInput;
-        if (query) findInput = setInterval(() => {
-            attempts = attempts + 1;
-            const el = document.querySelector(".pagefind-ui__search-input")
-            if (el) {
-                clearInterval(findInput)
-                el.value = query
-                el.dispatchEvent(new Event("input", { bubbles: true }))
-            }
-            if (attempts > 49) clearInterval(findInput);
-        }, 25)
-    </script>
 </Grid>
 
 <script>
@@ -31,11 +15,26 @@ import '@/css/docs.css'
             element: "#search",
             resetStyles: false,
             showImages: false,
-            processResult: function (result) {
+            processResult: function (result: any) {
                 result.meta.title = result.meta.title.replace(/</g, "&lt;").replace(/>/g, "&gt;")
                 return result;
             }
         });
+        const params = new URLSearchParams(window.location.search)
+        const query = params.get("q")
+        let attempts = 0;
+        let findInput: NodeJS.Timer
+        if (query) findInput = setInterval(() => {
+            attempts = attempts + 1;
+            console.log('query:', attempts)
+            const el = document.querySelector(".pagefind-ui__search-input") as HTMLInputElement
+            if (el) {
+                clearInterval(findInput)
+                el.value = query
+                el.dispatchEvent(new Event("input", { bubbles: true }))
+            }
+            if (attempts > 49) clearInterval(findInput);
+        }, 25)
     });
 </script>
 
