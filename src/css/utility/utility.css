@@ -47,6 +47,8 @@
   gap: .5em;
 } .cluster.tight {
   gap: .25em;
+} .cluster.loose {
+  gap: 1rem;
 }
 
 .list {
@@ -60,14 +62,17 @@
 .btn {
   place-items: center;
   padding: .5em .75em;
-  box-shadow: 0px 0px 1px 0.5px var(--fg-subtle);
   border-radius: var(--radius-sm);
-  border: none;
+  border: 1px solid var(--fg-subtle);
   background-color: var(--bg);
-} .btn.center {
+} .btn:hover {
+  background-color: var(--fg-subtle);
+  border-color: var(--gray);
+} .btn.icon {
   display: grid;
   place-items: center;
   padding: 0;
+  color: var(--bg-subtle);
 } 
 
 summary.btn {

@@ -13,8 +13,8 @@ const pages = await getCollection('docs');
         { pages.map(async(page) => {
             const { headings } = await page.render()
             return (
-                <Dropdown hide forceClose="(max-width: 748px)" forceOpen="(min-width: 748px)">
-                    <Details open url={`/docs/${page.slug}`} headings={headings} depth={2} max={3} />
+                <Dropdown forceClose="(max-width: 748px)" forceOpen="(min-width: 748px)">
+                    <Details url={`/docs/${page.slug}`} headings={headings} depth={2} max={3} />
                 </Dropdown>
             )
         })}

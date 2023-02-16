@@ -3,8 +3,8 @@ import { Icon } from 'astro-icon';
 ---
 
 <button
-    id="_scroll-to-top"
-    class="touch-target scale"
+    id="__scroll-to-top"
+    class="touch btn icon"
     onclick="scrollToTop()"
     aria-label="Scroll to top"
 >
@@ -12,7 +12,7 @@ import { Icon } from 'astro-icon';
 </button>
 
 <script is:inline>
-    const button = document.querySelector('#_scroll-to-top')
+    const button = document.querySelector('#__scroll-to-top')
 
     window.scrollToTop = () => {
         window.scrollTo(0, 0)

@@ -20,6 +20,6 @@ h3 > a {
   color: var(--success);
 }
 
-.scroll-to-top.success {
+#__scroll-to-top.success {
   transform: translateY(-.5em);
 }

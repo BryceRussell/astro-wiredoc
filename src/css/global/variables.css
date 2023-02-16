@@ -36,13 +36,9 @@
   --gutter: var(--space-s-m);
   --radius: 5px;
   --radius-sm: 3px;
-  --duration-sm: 250ms;
-  --duration-md: 500ms;
+  --duration-sm: 125ms;
+  --duration: 300ms;
   --duration-lg: 700ms;
-  --transition: var(--duration-sm) ease;
-  --transition-movement: var(--duration-sm) linear;
-  --transition-fade: var(--duration-md) ease;
-  --transition-bounce: var(--duration-md) cubic-bezier(0.5, 0.05, 0.2, 1.5);
   --tracking-s: -0.07ch;
   --tracking: -0.05ch;
   --tracking-l: -0.01ch;

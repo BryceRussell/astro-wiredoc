@@ -126,6 +126,7 @@ ol {
 
 details {
   position: relative;
+  width: 100%;
 }
 
 summary {

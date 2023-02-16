@@ -8,23 +8,23 @@ import { TableOfContents } from "astro-headless-ui";
 export interface Props extends DETAILS {}
 
 const {
+    url: _url,
+    headings: _headings,
     depth,
     max,
     entry,
     ...attrs
 } = Astro.props
 
-let {
-    url,
-    headings
-} = Astro.props
+let headings = _headings;
+let url = _url;
 
 if (entry) {
     const _entry = await getEntryBySlug('docs', entry)
     if (_entry) {
         url = '/docs/' + _entry.slug
-        const { headings: _headings } = await _entry.render()
-        headings = _headings
+        const { headings: entryHeadings } = await _entry.render()
+        headings = entryHeadings
     }
 }
 

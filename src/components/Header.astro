@@ -3,21 +3,21 @@ import { DarkThemeToggle, IconSwitcher } from 'astro-headless-ui';
 import { Icon } from 'astro-icon';
 ---
 
-<div class="header-spacer">
-    <header class="header repel">
+<div id="__header-spacer">
+    <header id="__header" class="repel">
         <a href="/" class="cluster">
             <img src="/logo.webp" alt="">
             My Project
         </a>
         <menu class="cluster">
-            <DarkThemeToggle class="touch btn center circle">
-                <IconSwitcher active="body.dark" size="1.25rem">
+            <DarkThemeToggle id="__toggle-theme" class="touch btn icon">
+                <IconSwitcher active="body.dark" size="1.33rem">
                     <Icon name="carbon:sun"/>
                     <Icon name="carbon:moon"/>
                 </IconSwitcher>
             </DarkThemeToggle>
             <form action="/search" method="get">
-                <input type="text" name="q" placeholder="Search..." class="btn circle">
+                <input type="text" name="q" placeholder="Search..." class="btn">
             </form>
         </menu>
     </header>

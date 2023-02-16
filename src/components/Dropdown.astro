@@ -6,7 +6,7 @@ export interface Props extends HTMLAttributes<'details'> {
     outside?: string|boolean;
     forceOpen?: string;
     forceClose?: string;
-    hide?: boolean;
+    el?: boolean;
 }
 
 const {
@@ -14,7 +14,7 @@ const {
     outside,
     forceOpen,
     forceClose,
-    hide,
+    el,
     ...attrs
 } = Astro.props as Props
 
@@ -27,11 +27,11 @@ const utilAttrs = {
 ---
 
 <details-utils {...utilAttrs}>
-    {hide
-        ? <slot />
-        : <details {...attrs}>
+    { el
+        ? <details {...attrs}>
               <slot />
           </details>
+        : <slot />
     }
 </details-utils>
 

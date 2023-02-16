@@ -4,10 +4,10 @@ import Details from "./Details.astro";
 import { LEFT_NAVIGATION } from "@/config";
 ---
 
-<aside class="sidebar-left">
+<aside id="__sidebar-left">
     { LEFT_NAVIGATION.map(menu => (
-        <Dropdown hide open forceClose="(max-width: 748px)" forceOpen="(min-width: 748px)">
-            <Details title={menu.title} entry={menu.entry} headings={menu.links}/>
+        <Dropdown forceClose="(max-width: 748px)" forceOpen="(min-width: 748px)">
+            <Details open title={menu.title} entry={menu.entry} headings={menu.links}/>
         </Dropdown>
     ))}
     <slot />
