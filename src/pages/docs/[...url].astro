@@ -9,10 +9,9 @@ export async function getStaticPaths() {
     //const urls = fg.sync('src/pages/**', { onlyDirectories: true }).map(d => d.replace('src/pages/', ''))
     return pages.map(page => ({
         params: {
-            url: `docs/${page.slug}`
+            url: page.slug
         },
         props: {
-            url: `/docs/${page.slug}`,
             page
         }
     }))
@@ -24,7 +23,6 @@ export interface Props {
 }
 
 const {
-    url,
     page
 } = Astro.props as Props
 
