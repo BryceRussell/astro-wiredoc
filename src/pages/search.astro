@@ -31,4 +31,24 @@ import '@/css/docs.css'
     });
 </script>
 
+<style is:global>
+    body {
+        --pagefind-ui-scale: 0.8;
+        --pagefind-ui-primary: var(--primary);
+        --pagefind-ui-text: var(--fg);
+        --pagefind-ui-background: var(--bg);
+        --pagefind-ui-border: var(--fg-subtle);
+        --pagefind-ui-tag: var(--fg-subtle);
+        --pagefind-ui-border-width: 2px;
+        --pagefind-ui-border-radius: 3px;
+        --pagefind-ui-image-border-radius: 0;
+        --pagefind-ui-image-box-ratio: 3 / 2;
+        --pagefind-ui-font: var(--font);
+    }
+
+    .pagefind-ui__search-input::placeholder {
+        opacity: 1;
+        color: var(--fg);
+    }
+</style>
 
