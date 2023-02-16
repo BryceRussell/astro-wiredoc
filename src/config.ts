@@ -1,5 +1,5 @@
 import type { AstroGlobal } from "astro";
-import type { Sidebar, SEOInterface } from "@/types";
+import type { SEOInterface, SidebarConfig } from "@/types";
 
 export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
     if (!Astro.site) throw Error("\"src/config.ts\": No 'site' option is set in astro.config.mjs")
@@ -25,13 +25,13 @@ export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
     }
 }
 
-export const LEFT_NAVIGATION: Sidebar = [
+export const LEFT_NAVIGATION: SidebarConfig = [
     {
         title: "Introduction",
         links: [
-            { depth: 1, text: 'Why?', href: '/why', slug: 'why',},
-            { depth: 1, text: 'Getting Started', href: '/getting-started', slug: 'getting-started'},
-            { depth: 1, text: 'Installation', href: '/installation', slug: 'installation',}
+            { depth: 1, text: 'Why?', href: '/why', slug: '',},
+            { depth: 1, text: 'Getting Started', href: '/getting-started', slug: ''},
+            { depth: 1, text: 'Installation', href: '/installation', slug: ''}
         ]
     },
     {
@@ -43,11 +43,13 @@ export const LEFT_NAVIGATION: Sidebar = [
     {
         title: "Reference",
         links: [
-
+            { depth: 1, text: 'API', href: '/reference/api', slug: ''}
         ]
     },
-    {
+    {   
+        title: 'Test Auto Headings',
         entry: '3rd-party-libraries/chalk',
+        depth: 2,
         links: [
 
         ]
