@@ -2,6 +2,7 @@
 import type { MarkdownHeading } from 'astro';
 import { Icon } from 'astro-icon';
 import { TableOfContents } from 'astro-headless-ui';
+import { SOCIAL_ICONS } from '@/config';
 
 export interface Props {
     headings?: MarkdownHeading[]
@@ -22,5 +23,15 @@ const {
             <TableOfContents max={3} headings={headings.map(h => {return {...h, text: h.text.replace(/^#/g, '')}})}/>
         </details>
     }
+    <ul class="cluster center">
+        { SOCIAL_ICONS.map(link => {
+            const { icon, color, style, ..._attrs} = link
+            return <li>
+                    <a {..._attrs} style={color?`color:${color};${style}`:style}>
+                        <Icon name={icon} size={24}/>
+                    </a>
+                </li>
+        })}
+    </ul>
     <slot />
 </aside>

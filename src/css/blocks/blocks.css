@@ -37,3 +37,10 @@
 .prose p {
   margin: 1em;
 }
+
+.prose ul,
+.prose ol {
+  list-style: disc;
+  margin: 1em 0;
+  padding: 0 0 0 1em;
+}

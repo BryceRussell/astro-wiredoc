@@ -5,6 +5,10 @@ import type { HTMLAttributes } from 'astro/types';
 export type Rename<T, K extends keyof T, N extends string> = Pick<T, Exclude<keyof T, K>> & { [P in N]: T[K] }
 
 export interface Link extends MarkdownHeading, HTMLAttributes<'a'> {};
+export interface IconLink extends HTMLAttributes<'a'> {
+    icon: string;
+    color?: string;
+};
 
 export interface DETAILS extends Omit<HTMLAttributes<'details'>, 'slot'> {
     title?: string;

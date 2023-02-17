@@ -83,5 +83,9 @@ summary.btn {
 }
 
 .circle {
-  border-radius: 999px;
+  border-radius: 99px;
+}
+
+.center {
+  margin-inline: auto;
 }
