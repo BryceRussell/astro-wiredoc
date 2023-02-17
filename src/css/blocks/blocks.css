@@ -19,6 +19,14 @@
   border: 1px solid var(--fg-subtle);
 }
 
+.social a {
+  opacity: .5;
+}
+
+.social a:hover {
+  opacity: 1;
+}
+
 /* Markdown */
 
 .prose {

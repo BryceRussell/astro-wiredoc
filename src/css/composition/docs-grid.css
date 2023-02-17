@@ -173,7 +173,6 @@ body > footer {
   border-radius: 5px;
   border: none;
   outline: none;
-  background-color: var(--darker);
+  background-color: transparent;
   font-size: var(--fluid-1);
-  color: #ccc;
 }
