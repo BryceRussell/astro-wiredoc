@@ -57,6 +57,12 @@
   gap: .5em;
 } .list.tight {
   gap: .25em;
+} .list.loose {
+  gap: 1rem;
+}
+
+.p {
+  padding: .5em;
 }
 
 .btn {
@@ -84,6 +90,10 @@ summary.btn {
 
 .circle {
   border-radius: 99px;
+}
+
+.down {
+  margin-top: auto;
 }
 
 .center {

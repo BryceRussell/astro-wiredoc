@@ -97,11 +97,12 @@ main {
   top: var(--ui-height);
   right: 0;
   display: none;
+  flex-direction: column;
   height: 100%;
   max-height: calc(100% - var(--ui-height));
   width: var(--sidebar-right-width);
   gap: .5em;
-  padding: 0 1em;
+  padding: 0  1em;
   background-color: var(--bg);
 }
 
@@ -146,7 +147,6 @@ body > footer {
 
   #__sidebar-right {
     display: flex;
-    flex-direction: column;
     height: 100%;
     gap: .5em;
     border-left: 1px solid var(--fg-subtle);

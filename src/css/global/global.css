@@ -144,7 +144,7 @@ details :is(ul, ol) {
   top: 100%;
   left: 0;
   width: 100%;
-  margin: 0;
+  padding-left: 1em;
 }
 
 details summary + :is(ul, ol) {
