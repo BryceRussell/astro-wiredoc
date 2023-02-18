@@ -31,7 +31,3 @@ A simple solution to authoring and publishing documention using Astro
 - Configure Template
 - Setup Netlify identity
 - Create posts at `/admin`
-
-## TODO / Wishlist
-
-- Themeable
