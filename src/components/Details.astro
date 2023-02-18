@@ -28,7 +28,7 @@ if (entry) {
     }
 }
 
-headings = headings?.map(h => ({...h, text: h?.text?.replace(/^#/, '')}))
+if (!!headings.length) headings = headings?.map(h => ({...h, text: h?.text?.replace(/^#/, '')}))
 
 const { title=headings[0].text } = Astro.props
 ---

@@ -95,6 +95,13 @@ declare module 'astro:content' {
   collection: "docs",
   data: any
 },
+"test/empty-file/nested/index.md": {
+  id: "test/empty-file/nested/index.md",
+  slug: "test/empty-file/nested",
+  body: string,
+  collection: "docs",
+  data: any
+},
 "test/heading-test/index.md": {
   id: "test/heading-test/index.md",
   slug: "test/heading-test",

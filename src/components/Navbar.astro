@@ -6,16 +6,15 @@ import { Breadcrumb } from "astro-headless-ui";
 <div id="__navbar-spacer">
     <header id="__navbar" class="cluster">
         <slot />
-        <button id="__toggle-right" class="btn icon" onclick="document.body.classList.toggle('aside')">
+        <button id="__toggle-right" class="btn icon" aria-label="Toggle right sidebar" onclick="document.body.classList.toggle('aside')">
             <Icon name="fluent:text-first-line-20-filled" size={20}/>
         </button>
         <nav class="cluster tight" class="touch-target">
             <Breadcrumb index={false}>
-                <docs slot="docs">
-                    {url => (<a href={url.href[0]==='/'?url.href:'/'+url.href}>Docs</a><span>/</span>)}
-                </docs>
-                {url => (<a href={url.href[0]==='/'?url.href:'/'+url.href}>{url.text}</a><span>/</span>)}
-                <active slot="active">{url => <span>{url.text === 'docs'?'Docs':url.text}</span>}</active>
+                {({href,text}) => (<a href={href[0]==='/'?href:'/'+href}>{text}</a><span>/</span>)}
+                <active slot="active">
+                    {({href, text}) => <a href={href[0]==='/'?href:'/'+href}>{text}</a>}
+                </active>
                 <Fragment slot="disabled"><span>...</span><span>/</span></Fragment>
             </Breadcrumb>
         </nav>

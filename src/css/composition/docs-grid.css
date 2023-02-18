@@ -69,6 +69,10 @@ main {
   border-bottom: 1px solid var(--fg-subtle);
 }
 
+#__navbar > nav > a:first-child {
+  text-transform: capitalize;
+}
+
 #__toggle-right {
   padding: .33em .33em .2em .33em;
 }
