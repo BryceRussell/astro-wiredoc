@@ -1,0 +1,101 @@
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+.object-fit-cover {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.touch {
+  min-height: 38px;
+  min-width: 38px;
+}
+
+.wrapper {
+  width: clamp(16rem, 95vw, 75rem);
+  margin-inline: auto;
+  padding-inline: var(--gutter, 1rem);
+  position: relative;
+}
+
+.repel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: .5em;
+} .cluster.tight {
+  gap: .25em;
+} .cluster.loose {
+  gap: 1rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+} .list.tight {
+  gap: .25em;
+} .list.loose {
+  gap: 1rem;
+}
+
+.p {
+  padding: .5em;
+}
+
+.btn {
+  place-items: center;
+  padding: .5em .75em;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--fg-subtle);
+  background-color: var(--bg);
+} .btn:hover {
+  background-color: var(--fg-subtle);
+  border-color: var(--gray);
+} .btn.icon {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: var(--bg-subtle);
+} 
+
+summary.btn {
+  padding: .5em .25em .5em .75em;
+  font-weight: normal;
+} summary.btn svg {
+  margin-left: .25em;
+}
+
+.circle {
+  border-radius: 99px;
+}
+
+.down {
+  margin-top: auto;
+}
+
+.center {
+  margin-inline: auto;
+}

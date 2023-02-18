@@ -1,13 +1,14 @@
 ---
 import { SEO } from "astro-seo";
-import Navbar from "@/components/Navbar.astro";
+import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Breadcrumb from "@/components/Breadcrumb.astro";
-import { SEODefault } from "@/config";
+import Navbar from "@/components/Navbar.astro";
+import { SEODEFAULT } from "@/config";
+import LeftSidebar from "@/components/LeftSidebar.astro";
+import RightSidebar from "@/components/RightSidebar.astro";
 
 const  {
-	breadcrumb=true,
-    SEO: _SEO=SEODefault(Astro)
+    SEO: _SEO=SEODEFAULT(Astro)
 } = Astro.props
 ---
 
@@ -21,29 +22,18 @@ const  {
         <slot name="head"/>
 	</head>
 	<body>
+		<Header />
 		<Navbar />
-		<Breadcrumb hide={!breadcrumb} />
-		<aside id="_sidebar-left">
+		<LeftSidebar>
 			<slot name="sidebar-left"/>
-		</aside>
+		</LeftSidebar>
 		<main>
 			<slot />
 		</main>
-		<aside id="_sidebar-right">
+		<RightSidebar>
 			<slot name="sidebar-right"/>
-		</aside>
+		</RightSidebar>
 		<Footer />
 		<slot name="body"/>
-		<script is:inline>
-			if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", user => {
-				if (!user) {
-				window.netlifyIdentity.on("login", () => {
-					document.location.href = "/admin/";
-				});
-				}
-			});
-			}
-		</script>
 	</body>
 </html>

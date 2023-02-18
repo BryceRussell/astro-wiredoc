@@ -1,37 +1,33 @@
 ---
+import type { MarkdownHeading } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import type { SEOInterface } from '@/types';
 import { SEO } from 'astro-seo';
 import { Icon } from 'astro-icon'
-import { CodeCopy, IconSwitch } from 'astro-headless-ui';
+import { CodeCopy, IconSwitcher } from 'astro-headless-ui';
+import Header from '@/components/Header.astro';
 import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
-import Breadcrumb from '@/components/Breadcrumb.astro';
-import TableOfContents from '@/components/TableOfContents.astro';
+import LeftSidebar from '@/components/LeftSidebar.astro';
+import RightSidebar from '@/components/RightSidebar.astro';
 import ScrollToTop from '@/components/ScrollToTop.astro';
-import RootFileTree from '@/components/RootFileTree.astro';
-import { SEODefault } from '@/config';
-import type { Markdown, Frontmatter } from '@/types';
-import '@/css/grid.scss'
+import Footer from '@/components/Footer.astro';
+import { SEODEFAULT } from '@/config';
+import '@/css/docs.css'
+
+export interface Props {
+	frontmatter: CollectionEntry<'docs'>['data']
+	headings: MarkdownHeading[]
+}
 
 const  {
-	breadcrumb=true,
-	scroll=true,
 	frontmatter,
 	headings,
     SEO: _SEO = {
 		title: frontmatter.title,
 		description: frontmatter.description,
-        ...SEODefault(Astro)
+        ...SEODEFAULT(Astro)
     }
 } = Astro.props
-
-var pages: Markdown[] = []
-try {
-	pages = await Astro.glob<Frontmatter>('/src/pages/docs/**/*.md')
-	pages = pages
-		.filter(page => !page.frontmatter.draft)
-} catch {
-	console.warn("Could not find any markdown files, create a new entry at /admin")
-}
 ---
 
 <html lang="en">
@@ -44,53 +40,26 @@ try {
         <slot name="head"/>
 	</head>
 	<body>
-		<Navbar />
-		<Breadcrumb />
-		<aside id="_sidebar-left">
-			<RootFileTree pages={pages} />
+		<Header />
+		<Navbar>
+			<!-- { headings && <TableOfContents close item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>} -->
+		</Navbar>
+		<LeftSidebar>
 			<slot name="sidebar-left"/>
-		</aside>
-		<main class="markdown" data-pagefind-body>
+		</LeftSidebar>
+		<main class="prose" data-pagefind-body>
 			<slot />
-			{scroll && <ScrollToTop />}
+			<ScrollToTop />
 		</main>
-		<aside id="_sidebar-mobile">
-			{headings && <TableOfContents close item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
-			<slot name="sidebar-mobile"/>
-		</aside>
-		<div id="_sidebar-mobile-spacer"></div>
-		<aside id="_sidebar-right">
-			{headings && <TableOfContents open item='span' title="On This Page" url={Astro.url.pathname} max={3} headings={headings}/>}
+		<RightSidebar headings={headings}>
 			<slot name="sidebar-right"/>
-		</aside>
+		</RightSidebar>
 		<Footer />
-		<CodeCopy padding=".5em" class="copy-code">
-			<IconSwitch name="copy-icons" selector="button.copied" size="1.5rem" style="margin-top:-1px">
+		<CodeCopy paddingY=".5em" paddingX=".3em" class="copy-code">
+			<IconSwitcher name="copy-icons" active="button.copied" size="1.5rem" style="margin-top:-1px">
 				<Icon name="fluent:clipboard-20-regular"/>
 				<Icon name="fluent:clipboard-task-20-regular"/>
-			</IconSwitch>
+			</IconSwitcher>
 		</CodeCopy>
-		<script is:inline>
-			function toggleDetails(e) {
-				const details = e.closest('details');
-				details.open = false
-			}
-		</script>
-		<script is:inline>
-			document.querySelectorAll('a > img').forEach(e => {
-				e.parentNode.classList.add('link-image')
-			});
-		</script>
-		<script is:inline>
-			if (window.netlifyIdentity) {
-			  window.netlifyIdentity.on("init", user => {
-				if (!user) {
-				  window.netlifyIdentity.on("login", () => {
-					document.location.href = "/admin/";
-				  });
-				}
-			  });
-			}
-		</script>
 	</body>
 </html>

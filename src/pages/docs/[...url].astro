@@ -1,0 +1,38 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import fg from 'fast-glob';
+import Markdown from "@/layouts/Markdown.astro";
+
+export async function getStaticPaths() {
+    // Automatically create indexes for directories
+    const pages = await getCollection('docs')
+    //const urls = fg.sync('src/pages/**', { onlyDirectories: true }).map(d => d.replace('src/pages/', ''))
+    return pages.map(page => ({
+        params: {
+            url: page.slug
+        },
+        props: {
+            page
+        }
+    }))
+}
+
+export interface Props {
+    url: string,
+    page: CollectionEntry<'docs'>
+}
+
+const {
+    page
+} = Astro.props as Props
+
+const {
+    Content,
+    headings,
+    remarkPluginFrontmatter
+} = await page.render()
+---
+
+<Markdown frontmatter={remarkPluginFrontmatter || page.data} headings={headings}>
+    <Content />
+</Markdown>

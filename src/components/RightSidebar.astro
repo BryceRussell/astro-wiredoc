@@ -1,0 +1,60 @@
+---
+import type { MarkdownHeading } from 'astro';
+import { Icon } from 'astro-icon';
+import { TableOfContents } from 'astro-headless-ui';
+import { GITHUB_REPO, SOCIAL_ICONS } from '@/config';
+
+export interface Props {
+    headings?: MarkdownHeading[]
+}
+
+const {
+    headings
+} = Astro.props as Props
+---
+
+<aside id="__sidebar-right">
+    { headings &&
+        <details open>
+            <summary class="touch">
+                On This Page
+                <Icon name="radix-icons:caret-up" size={24}/>
+            </summary>
+            <TableOfContents max={3} headings={headings.map(h => {return {...h, text: h.text.replace(/^#/g, '')}})}/>
+        </details>
+    }
+    <details open>
+        <summary class="touch">
+            Contribute
+            <Icon name="radix-icons:caret-up" size={24}/>
+        </summary>
+        <ul class="list">
+            <li>
+                <a href={GITHUB_REPO+'/issues'} class="cluster tight">
+                    <Icon name="ps:magnifying-glass" size={14}/>
+                    Submit an Issue
+                </a>
+            </li>
+            { headings &&
+                <li>
+                    <a
+                        href={Astro.url.pathname.replace('/docs', GITHUB_REPO+'/blob/content-collections/src/content/docs') + '/index.md'}
+                        class="cluster tight"
+                    >
+                        <Icon name="ph:pencil-duotone" size={16}/>
+                        Edit this page
+                    </a>
+                </li>
+            }
+        </ul>
+    </details>
+    <nav class="social down cluster center p">
+        { SOCIAL_ICONS.map(link => {
+            const { icon, color, style, ..._attrs} = link
+            return <a {..._attrs} style={color?`color:${color};${style}`:style}>
+                        <Icon name={icon} size={24}/>
+                    </a>
+        })}
+    </nav>
+    <slot />
+</aside>

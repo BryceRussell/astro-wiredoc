@@ -1,0 +1,20 @@
+---
+import Dropdown from "./Dropdown.astro";
+import Details from "./Details.astro";
+import { LEFT_NAVIGATION } from "@/config";
+---
+
+<aside id="__sidebar-left">
+    { LEFT_NAVIGATION.map(menu => {
+        const { links } = menu
+        const props = {
+            open: true,
+            headings: links||[],
+            ...menu
+        }
+        return  <Dropdown forceClose="(max-width: 748px)" forceOpen="(min-width: 748px)">
+                    <Details {...props}/>
+                </Dropdown>
+    })}
+    <slot />
+</aside>

@@ -1,0 +1,7 @@
+:root {
+  display: flex;
+}
+
+body {
+  flex-grow: 1;
+}

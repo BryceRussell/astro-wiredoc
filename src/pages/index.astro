@@ -1,7 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
-import '@/css/base.scss';
-
+import '@/css/styles.css';
 ---
 
 <Base>
@@ -10,4 +9,15 @@ import '@/css/base.scss';
     </main>
 </Base>
 
+<script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+</script>  
 

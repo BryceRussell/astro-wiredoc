@@ -1,0 +1,54 @@
+---
+import Grid from "@/layouts/Grid.astro";
+import '@/css/docs.css'
+---
+
+<Grid>
+	<link slot="head" href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+    <div id="search" style="margin:.75em 0;"></div>
+    <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+</Grid>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ 
+            element: "#search",
+            resetStyles: false,
+            showImages: false,
+            processResult: function (result: any) {
+                result.meta.title = result.meta.title.replace(/</g, "&lt;").replace(/>/g, "&gt;")
+                return result;
+            }
+        });
+        // Add query from url to search input
+        const params = new URLSearchParams(window.location.search)
+        const query = params.get("q")
+        const el = document.querySelector(".pagefind-ui__search-input") as HTMLInputElement
+        if (query && el) {
+            el.value = query
+            el.dispatchEvent(new Event("input", { bubbles: true }))
+        }
+    });
+</script>
+
+<style is:global>
+    body {
+        --pagefind-ui-scale: 0.8;
+        --pagefind-ui-primary: var(--primary);
+        --pagefind-ui-text: var(--fg);
+        --pagefind-ui-background: var(--bg);
+        --pagefind-ui-border: var(--fg-subtle);
+        --pagefind-ui-tag: var(--fg-subtle);
+        --pagefind-ui-border-width: 1px;
+        --pagefind-ui-border-radius: 3px;
+        --pagefind-ui-image-border-radius: 0;
+        --pagefind-ui-image-box-ratio: 3 / 2;
+        --pagefind-ui-font: var(--font);
+    }
+
+    .pagefind-ui__search-input::placeholder {
+        opacity: 1;
+        color: var(--fg);
+    }
+</style>
+

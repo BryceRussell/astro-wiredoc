@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 import NetlifyCMS from 'astro-netlify-cms';
+import h from 'hastscript'
 import rehypeSlug from 'rehype-slug'
 import remarkGemoji from 'remark-gemoji'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import h from 'hastscript'
 import oembed from 'remark-oembed';
-import { autoTitle, remarkImage } from './plugins.mjs';
+import { autoTitle } from 'astro-auto-title';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 export default defineConfig({
     site: process.env.MODE === 'development'
@@ -23,8 +23,7 @@ export default defineConfig({
                     clean_accents: true
                 },
                 collections: [{
-                    folder: "src/pages/docs",
-                    name: "Documentation",
+                    folder: "src/content/ntation",
                     label: "Documentation",
                     description: "This is a description",
                     label_singular: "Page",
@@ -37,11 +36,10 @@ export default defineConfig({
                     create: true,
                     delete: true,
                     nested: {
-                        depth: 12,
+                        depth: 8,
                         summary: "{{title}}"
                     },
                     fields: [
-                        { name: "layout", widget: "hidden", default: "@/layouts/Markdown.astro" },
                         { name: "draft", widget: "boolean", label: "Draft", default: false, required: false },
                         { name: "pubDate", widget: "date", label: "Publish Date" },
                         { name: "title", widget: "string", label: "Title" },
@@ -59,7 +57,7 @@ export default defineConfig({
     markdown: {
         extendDefaultPlugins: true,
         remarkPlugins: [
-            autoTitle,
+            [autoTitle, {}],
             remarkGemoji,
             [oembed, { syncWidget: true }]
         ],

@@ -1,84 +1,51 @@
 ---
-import { Icon } from 'astro-icon';
+import type { Tree, Link } from '@/types';
+import fg from 'fast-glob';
+import path from 'node:path';
+import Details from './Details.astro';
 
-function createTree(directories: string[]) {
-  let tree: FileTreeNode = {};
+function generateFileTree(paths: string[]) {
+    const root: Tree<{}> = {};
+    
+    for (const path of paths) {
+        const slugs = path.split('/');
+        let node = root;
+        
+        for (let i = 0; i < slugs.length; i++) {
+            const slug = slugs[i];
+            
+            if (!node[slug]) {
+                node[slug] = {};
+            } 
 
-  for (const directory of directories) {
-    let current = tree;
-    const path = directory.split('/');
-
-    for (const dir of path) {
-      if (!current[dir]) {
-        current[dir] = {};
-      }
-      current = current[dir];
+            node = node[slug];
+        }
     }
-  }
-
-  return tree;
+    return root;
 }
 
-export interface Props {
-  dirs: string[];
-  tree?: FileTreeNode;
-  url?: string;
-  depth?: number;
-  max?: number;
+let url = '/docs';
+function generateHeadings(obj: Tree<{}>, path = '', depth = 1, result = []) {
+    url = url + path
+    for (let key in obj) {
+        const heading = { depth: depth, href: url + '/' + key, text: key }
+        if (typeof obj[key] === 'object' && Object.keys(obj[key]).length > 0) {
+            url = '/docs'
+            result.push(heading)
+            generateHeadings(obj[key], path + '/' + key, depth + 1, result)
+        } else result.push(heading)
+    }
+    return result;
 }
 
-const {
-    dirs=[],
-    tree=createTree(dirs)['']||{},
-    url="/docs",
-    depth=1,
-    max=2
-} = Astro.props
+const glob = (await fg(`src/content/docs/**`, { onlyDirectories: true }))
+    .map(p => p.replace('src/content/docs/',''))
 
-interface FileTreeNode {
-    [dir: string]: FileTreeNode
-}
-
-const current = Astro.url.pathname.split('/').slice(0, 3).join('/')
-
-// Open dialog if it relates to current page
-var open = false
-if (depth === 1) {
-  for (let key in tree) {
-      if (`${url}/${key}` === current) open = true;
-      break;
-  }
-}
-
-const Tag = depth === 1 ? 'details' : 'ol'
-
-const _attrs = {
-    class: depth === 1 ? "table-of-contents": null,
-    open,
-    'data-depth': depth,
-}
+const fileTree = generateFileTree(glob)
 ---
 
-<Tag {..._attrs}>
-    { Object.entries(tree).map(([key, val]) => {
-        const newUrl = url+'/'+key
-        const _props = {
-          tree: val,
-          url: newUrl,
-          depth: depth + 1
-        }
-        return <>
-            { depth === 1
-              ? <summary>
-                  <a href={newUrl}>{key}</a>
-                  <Icon name="radix-icons:caret-up" size={24}/>
-                </summary>
-              : <li>
-                  <a href={newUrl}>{key}</a>
-                  { depth > 1 && depth <= max && <Astro.self {..._props}/> }
-                </li>
-            }
-            { depth === 1 && depth <= max && <Astro.self {..._props}/> }
-        </>
-    })}
-</Tag>
+{ Object.entries(fileTree).map(([key, val]) => {
+    const headings = generateHeadings({[key]:val})
+    console.log(headings)
+    return <Details open headings={headings} depth={2}/>
+})}

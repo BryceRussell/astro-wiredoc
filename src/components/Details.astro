@@ -1,0 +1,47 @@
+---
+import type { DETAILS } from '@/types';
+import { getEntryBySlug } from 'astro:content';
+import { Icon } from 'astro-icon';
+import { TableOfContents } from "astro-headless-ui";
+
+
+export interface Props extends DETAILS {}
+
+const {
+    url: _url,
+    headings: _headings,
+    depth,
+    max,
+    entry,
+    ...attrs
+} = Astro.props
+
+let headings = _headings;
+let url = _url;
+
+if (entry) {
+    const _entry = await getEntryBySlug('docs', entry)
+    if (_entry) {
+        url = '/docs/' + _entry.slug
+        const { headings: entryHeadings } = await _entry.render()
+        headings = entryHeadings
+    }
+}
+
+if (!!headings.length) headings = headings?.map(h => ({...h, text: h?.text?.replace(/^#/, '')}))
+
+const { title=headings[0].text } = Astro.props
+---
+
+<details {...attrs}>
+    <summary>
+        {title}
+        <Icon name="radix-icons:caret-up" size={24}/>
+    </summary>
+    <TableOfContents {...{
+        url,
+        headings,
+        depth,
+        max
+    }}/>
+</details>

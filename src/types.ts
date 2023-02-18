@@ -1,19 +1,36 @@
 import type { VFile, Data } from 'vfile';
-import type { MarkdownInstance, MarkdownLayoutProps } from 'astro';
+import type { MarkdownHeading } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 
-export interface Frontmatter {
-    draft?: boolean;
-    title?: string;
-    description?: string;
-    pubDate?: Date;
-    tags?: string[];
-    source?: string;
-    demo?: string;
+// Utility types
+
+export type Rename<T, K extends keyof T, N extends string> = Pick<T, Exclude<keyof T, K>> & { [P in N]: T[K] }
+
+export interface Tree<T> {
+    [key: string]: Tree<T> | T;
 }
 
-export type Markdown = MarkdownInstance<Frontmatter>;
-export type MarkdownLayout = MarkdownLayoutProps<Frontmatter>;
+// Configuration Types
+
+export interface Link extends MarkdownHeading, HTMLAttributes<'a'> {};
+export interface IconLink extends HTMLAttributes<'a'> {
+    icon: string;
+    color?: string;
+};
+
+export interface DETAILS extends Omit<HTMLAttributes<'details'>, 'slot'> {
+    title?: string;
+    url?: string;
+    headings: Link[];
+    depth?: number;
+    max?: number;
+    entry?: string;
+}
+
+export type SidebarConfig = SidebarDropdown[];
+export interface SidebarDropdown extends Rename<DETAILS, 'headings', 'links'> {}
+
+// Page Types
 
 export interface SEOInterface {
     title?: string;
