@@ -1,0 +1,51 @@
+---
+import type { Tree, Link } from '@/types';
+import fg from 'fast-glob';
+import path from 'node:path';
+import Details from './Details.astro';
+
+function generateFileTree(paths: string[]) {
+    const root: Tree<{}> = {};
+    
+    for (const path of paths) {
+        const slugs = path.split('/');
+        let node = root;
+        
+        for (let i = 0; i < slugs.length; i++) {
+            const slug = slugs[i];
+            
+            if (!node[slug]) {
+                node[slug] = {};
+            } 
+
+            node = node[slug];
+        }
+    }
+    return root;
+}
+
+let url = '/docs';
+function generateHeadings(obj: Tree<{}>, path = '', depth = 1, result = []) {
+    url = url + path
+    for (let key in obj) {
+        const heading = { depth: depth, href: url + '/' + key, text: key }
+        if (typeof obj[key] === 'object' && Object.keys(obj[key]).length > 0) {
+            url = '/docs'
+            result.push(heading)
+            generateHeadings(obj[key], path + '/' + key, depth + 1, result)
+        } else result.push(heading)
+    }
+    return result;
+}
+
+const glob = (await fg(`src/content/docs/**`, { onlyDirectories: true }))
+    .map(p => p.replace('src/content/docs/',''))
+
+const fileTree = generateFileTree(glob)
+---
+
+{ Object.entries(fileTree).map(([key, val]) => {
+    const headings = generateHeadings({[key]:val})
+    console.log(headings)
+    return <Details open headings={headings} depth={2}/>
+})}

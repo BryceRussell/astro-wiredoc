@@ -2,7 +2,15 @@ import type { VFile, Data } from 'vfile';
 import type { MarkdownHeading } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 
+// Utility types
+
 export type Rename<T, K extends keyof T, N extends string> = Pick<T, Exclude<keyof T, K>> & { [P in N]: T[K] }
+
+export interface Tree<T> {
+    [key: string]: Tree<T> | T;
+}
+
+// Configuration Types
 
 export interface Link extends MarkdownHeading, HTMLAttributes<'a'> {};
 export interface IconLink extends HTMLAttributes<'a'> {
@@ -21,6 +29,8 @@ export interface DETAILS extends Omit<HTMLAttributes<'details'>, 'slot'> {
 
 export type SidebarConfig = SidebarDropdown[];
 export interface SidebarDropdown extends Rename<DETAILS, 'headings', 'links'> {}
+
+// Page Types
 
 export interface SEOInterface {
     title?: string;
