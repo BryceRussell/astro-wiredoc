@@ -23,6 +23,12 @@
   min-width: 38px;
 }
 
+.grid {
+  display: grid;
+} .grid.center {
+  place-items: center;
+}
+
 .wrapper {
   width: clamp(16rem, 95vw, 75rem);
   margin-inline: auto;
@@ -40,6 +46,7 @@
 
 .cluster {
   display: flex;
+  flex: 0 1 auto;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
@@ -92,10 +99,12 @@ summary.btn {
   border-radius: 99px;
 }
 
-.down {
+.up {
+  margin-bottom: auto;
+} .right {
+  margin-left: auto;
+} .down {
   margin-top: auto;
-}
-
-.center {
-  margin-inline: auto;
+} .left {
+  margin-right: auto;
 }

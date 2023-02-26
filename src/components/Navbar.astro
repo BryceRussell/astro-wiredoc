@@ -1,16 +1,23 @@
 ---
 import { Icon } from "astro-icon";
 import { Breadcrumb } from "astro-headless-ui";
+
+const index = Astro.url.pathname.replace(/\/$/g, '') === '/docs'
+    ? 'Home'
+    : false
 ---
 
 <div id="__navbar-spacer">
     <header id="__navbar" class="cluster">
         <slot />
         <button id="__toggle-right" class="btn icon" aria-label="Toggle right sidebar" onclick="document.body.classList.toggle('aside')">
-            <Icon name="fluent:text-first-line-20-filled" size={20}/>
+            <svg width="20" height="20" astro-icon="fluent:text-first-line-20-filled" viewBox="0 0 20 18">
+                <path fill="currentColor" d="M4.28 2.22a.75.75 0 0 0-1.06 1.06l.97.97-.97.97a.75.75 0 0 0 1.06 1.06l1.5-1.5a.75.75 0 0 0 0-1.06l-1.5-1.5zM16.25 3.5h-7.5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5zm-12.5 10a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H3.75zm12.5-3.5H3.75a.75.75 0 0 1 0-1.5h12.5a.75.75 0 0 1 0 1.5z">
+                </path>
+            </svg>
         </button>
         <nav class="cluster tight" class="touch-target">
-            <Breadcrumb index={false}>
+            <Breadcrumb index={index}>
                 {({href,text}) => (<a href={href[0]==='/'?href:'/'+href}>{text}</a><span>/</span>)}
                 <active slot="active">
                     {({href, text}) => <a href={href[0]==='/'?href:'/'+href}>{text}</a>}

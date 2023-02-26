@@ -46,6 +46,5 @@ const fileTree = generateFileTree(glob)
 
 { Object.entries(fileTree).map(([key, val]) => {
     const headings = generateHeadings({[key]:val})
-    console.log(headings)
     return <Details open headings={headings} depth={2}/>
 })}

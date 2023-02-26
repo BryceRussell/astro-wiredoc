@@ -4,17 +4,23 @@
   padding: .25em .5em;
 }
 
-#__header > a {
+#__header nav {
   height: 100%;
-  padding: .25em;
+}
+
+#__header [href="/docs"] {
   text-decoration: none;
   font-size: clamp(1.13rem, 0.56vw + 1.01rem, 1.5rem);
   font-weight: bold;
   color: var(--fg);
 }
 
-#__header > a img {
+#__header [href="/"] {
   height: 100%;
+}
+
+#__header [href="/"] img {
+  height: 90%;
   border-radius: 50%;
   border: 1px solid var(--fg-subtle);
 }

@@ -5,10 +5,14 @@ import { Icon } from 'astro-icon';
 
 <div id="__header-spacer">
     <header id="__header" class="repel">
-        <a href="/" class="cluster">
-            <img src="/logo.webp" alt="">
-            Docs
-        </a>
+        <nav class="cluster tight">
+            <a href="/" class="cluster">
+                <img src="/logo.webp" alt="Home">
+            </a>
+            <a href="/docs">
+                Docs
+            </a>
+        </nav>
         <menu class="cluster">
             <DarkThemeToggle id="__toggle-theme" class="touch btn icon">
                 <IconSwitcher active="body.dark" size="1.33rem">
