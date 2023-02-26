@@ -3,6 +3,30 @@ import type { IconLink, SEOInterface, SidebarConfig } from "@/types";
 
 export const GITHUB_REPO = "https://github.com/BryceRussell/astro-simple-docs";
 
+export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
+    if (!Astro.site) throw Error("\"src/config.ts\": No 'site' option is set in astro.config.mjs")
+    return {
+        title: "Astro WireDoc",
+        description: "A wireframe documentation template created using Astro",
+        canonical: ''+(new URL(Astro.url.pathname, Astro.site)),
+        openGraph: {
+            basic: {
+                title: "WireDoc",
+                url: ''+(new URL(Astro.url.pathname, Astro.site)),
+                image: "/og.webp",
+                type: "website"
+            },
+            optional: {
+                siteName: "Astro WireDoc",
+                description: "A wireframe documentation template created using Astro"
+            },
+            image: {
+                alt: "Astro WireDoc"
+            }
+        }
+    }
+}
+
 export const SOCIAL_ICONS: IconLink[] = [
     { title: 'Github', icon: 'mdi:github', color: 'var(--darker)', href: GITHUB_REPO },
     { title: 'Discord', icon: 'ic:baseline-discord', color: '#7289da', href: '#' },
@@ -48,27 +72,3 @@ export const LEFT_NAVIGATION: SidebarConfig = [
         ]
     },
 ]
-
-export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
-    if (!Astro.site) throw Error("\"src/config.ts\": No 'site' option is set in astro.config.mjs")
-    return {
-        title: "Astro Simple Docs",
-        description: "A fast and easy to use documentation template built using Astro",
-        canonical: ''+(new URL(Astro.url.pathname, Astro.site)),
-        openGraph: {
-            basic: {
-                title: "astro-simple-docs",
-                url: ''+(new URL(Astro.url.pathname, Astro.site)),
-                image: "/og.webp",
-                type: "website"
-            },
-            optional: {
-                siteName: "Astro Simple Docs",
-                description: "An easy to use documentation template built using Astro"
-            },
-            image: {
-                alt: "logo"
-            }
-        }
-    }
-}

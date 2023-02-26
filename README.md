@@ -1,33 +1,27 @@
-# Astro Simple Docs
+# Astro WireDoc
 
 > **Note**: Work in progress
 
-A simple solution to authoring and publishing documention using Astro
+A documentation template for Astro
 
-## [Demo](https://astro-simple-docs.netlify.app)
+## [Demo](https://astro-wiredoc.netlify.app)
 
 ## Features
 
-- Add documentation pages in admin panel using Netlify CMS
-- Automatically creates index pages
-- Responsive grid layout and fluid font scale
-- Responsive 16/9 youtube embeds
-- Mobile styling
-- Table of contents generated from markdown
 - Static page search using pagefind
+- Automatically create a navigation page for missing pages
+- Table of contents
 - Breadcrumb navigation
-- Syntax highlighting
-- Heading Links
-- Copy code buttons
 - Scroll to top button
-- Dark/light theme
-
-## How to use
-
-> **Note**: Work in progress
-
-- Download template
-- Host using Netlify
-- Configure Template
-- Setup Netlify identity
-- Create posts at `/admin`
+- Markdown
+  - Netlify CMS `/admin` dashboard for authoring pages
+  - Syntax highlighting
+  - Heading links
+  - Copy code buttons
+  - Embeds
+- Styling
+  - Wireframe
+  - Dark/light themes
+  - Responsive
+  - Mobile
+  - Easily customizable using CSS variables

@@ -10,8 +10,8 @@
     "preview": "astro build && npx -y pagefind --source dist && astro preview"
   },
   "devDependencies": {
-    "astro": "^2.0.10",
-    "astro-headless-ui": "^0.0.26",
+    "astro": "^2.0.15",
+    "astro-headless-ui": "^0.0.27",
     "astro-icon": "^0.8.0",
     "astro-seo": "^0.6.1",
     "astro-auto-title": "^0.0.3",
