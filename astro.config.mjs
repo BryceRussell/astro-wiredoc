@@ -10,7 +10,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 export default defineConfig({
     site: process.env.MODE === 'development'
         ? 'https://localhost:3000/'
-        : 'https://astro-simple-docs.netlify.app/',
+        : 'https://astro-wiredoc.app/',
     integrations: [
         NetlifyCMS({
             config: {

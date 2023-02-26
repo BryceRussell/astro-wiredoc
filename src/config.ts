@@ -1,7 +1,7 @@
 import type { AstroGlobal } from "astro";
 import type { IconLink, SEOInterface, SidebarConfig } from "@/types";
 
-export const GITHUB_REPO = "https://github.com/BryceRussell/astro-simple-docs";
+export const GITHUB_REPO = "https://github.com/BryceRussell/astro-wiredoc";
 
 export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
     if (!Astro.site) throw Error("\"src/config.ts\": No 'site' option is set in astro.config.mjs")
