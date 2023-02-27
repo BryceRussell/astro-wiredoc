@@ -18,18 +18,28 @@ export interface IconLink extends HTMLAttributes<'a'> {
     color?: string;
 };
 
-export interface DETAILS extends Omit<HTMLAttributes<'details'>, 'slot'> {
+export interface DETAILS_COMMON extends Omit<HTMLAttributes<'details'>, 'slot'> {
     title?: string;
     url?: string;
-    headings: Link[];
     depth?: number;
     max?: number;
-    entry?: string;
     link?: boolean;
 }
 
+type DETAILS_OPTIONAL =
+    | { headings: Link[]; }
+    | { entry: string; }
+
+export type DETAILS = DETAILS_COMMON & DETAILS_OPTIONAL
+
+
 export type SidebarConfig = SidebarDropdown[];
-export interface SidebarDropdown extends Rename<DETAILS, 'headings', 'links'> {}
+export type SidebarOptional =
+    | { links: Link[]; }
+    | { entry: string; }
+    | { glob: string; }
+
+export type SidebarDropdown = DETAILS_COMMON & SidebarOptional
 
 // Page Types
 
