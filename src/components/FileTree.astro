@@ -24,13 +24,10 @@ function generateFileTree(paths: string[]) {
     return root;
 }
 
-let url = '/docs';
 function generateHeadings(obj: Tree<{}>, path = '', depth = 1, result = []) {
-    url = url + path
     for (let key in obj) {
-        const heading = { depth: depth, href: url + '/' + key, text: key }
+        const heading = { depth: depth, href: '/docs'+path+'/' + key, text: key }
         if (typeof obj[key] === 'object' && Object.keys(obj[key]).length > 0) {
-            url = '/docs'
             result.push(heading)
             generateHeadings(obj[key], path + '/' + key, depth + 1, result)
         } else result.push(heading)
@@ -46,5 +43,5 @@ const fileTree = generateFileTree(glob)
 
 { Object.entries(fileTree).map(([key, val]) => {
     const headings = generateHeadings({[key]:val})
-    return <Details open headings={headings} depth={2}/>
+    return <Details open link headings={headings} depth={2}/>
 })}

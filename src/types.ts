@@ -25,6 +25,7 @@ export interface DETAILS extends Omit<HTMLAttributes<'details'>, 'slot'> {
     depth?: number;
     max?: number;
     entry?: string;
+    link?: boolean;
 }
 
 export type SidebarConfig = SidebarDropdown[];

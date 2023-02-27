@@ -67,23 +67,23 @@ declare module 'astro:content' {
 
 	const entryMap: {
 		"docs": {
-"3rd-party-libraries/chalk/index.md": {
-  id: "3rd-party-libraries/chalk/index.md",
-  slug: "3rd-party-libraries/chalk",
+"test/3rd-party-libraries/chalk/index.md": {
+  id: "test/3rd-party-libraries/chalk/index.md",
+  slug: "test/3rd-party-libraries/chalk",
   body: string,
   collection: "docs",
   data: any
 },
-"3rd-party-libraries/fast-glob/index.md": {
-  id: "3rd-party-libraries/fast-glob/index.md",
-  slug: "3rd-party-libraries/fast-glob",
+"test/3rd-party-libraries/fast-glob/index.md": {
+  id: "test/3rd-party-libraries/fast-glob/index.md",
+  slug: "test/3rd-party-libraries/fast-glob",
   body: string,
   collection: "docs",
   data: any
 },
-"3rd-party-libraries/kleur/index.md": {
-  id: "3rd-party-libraries/kleur/index.md",
-  slug: "3rd-party-libraries/kleur",
+"test/3rd-party-libraries/kleur/index.md": {
+  id: "test/3rd-party-libraries/kleur/index.md",
+  slug: "test/3rd-party-libraries/kleur",
   body: string,
   collection: "docs",
   data: any
@@ -91,13 +91,6 @@ declare module 'astro:content' {
 "test/empty-file/index.md": {
   id: "test/empty-file/index.md",
   slug: "test/empty-file",
-  body: string,
-  collection: "docs",
-  data: any
-},
-"test/empty-file/nested/index.md": {
-  id: "test/empty-file/nested/index.md",
-  slug: "test/empty-file/nested",
   body: string,
   collection: "docs",
   data: any

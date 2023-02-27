@@ -27,15 +27,6 @@ export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
     }
 }
 
-export const SOCIAL_ICONS: IconLink[] = [
-    { title: 'Github', icon: 'mdi:github', color: 'var(--darker)', href: GITHUB_REPO },
-    { title: 'Discord', icon: 'ic:baseline-discord', color: '#7289da', href: '#' },
-    { title: 'Youtube', icon: 'mdi:youtube', color: 'red', href: '#' },
-    { title: 'Twitter', icon: 'mdi:twitter', color: '#1DA1F2', href: '#' },
-    { title: 'Mastadon', icon: 'mdi:mastodon', color: '#6364ff', href: '#' },
-    { title: 'Open Collective', icon: 'gg:open-collective', color: '#447bf9', href: '#' }
-]
-
 export const LEFT_NAVIGATION: SidebarConfig = [
     {
         title: "Introduction",
@@ -65,10 +56,19 @@ export const LEFT_NAVIGATION: SidebarConfig = [
         ]
     },
     {   
-        title: 'Auto Headings',
-        entry: '3rd-party-libraries/kleur',
+        title: 'From Entry Headings',
+        entry: 'test/3rd-party-libraries/kleur',
         links: [
 
         ]
     },
+]
+
+export const SOCIAL_ICONS: IconLink[] = [
+    { title: 'Github', icon: 'mdi:github', color: 'var(--darker)', href: GITHUB_REPO },
+    { title: 'Discord', icon: 'ic:baseline-discord', color: '#7289da', href: '#' },
+    { title: 'Youtube', icon: 'mdi:youtube', color: 'red', href: '#' },
+    { title: 'Twitter', icon: 'mdi:twitter', color: '#1DA1F2', href: '#' },
+    { title: 'Mastadon', icon: 'mdi:mastodon', color: '#6364ff', href: '#' },
+    { title: 'Open Collective', icon: 'gg:open-collective', color: '#447bf9', href: '#' }
 ]

@@ -13,8 +13,9 @@ const {
     depth,
     max,
     entry,
+    link,
     ...attrs
-} = Astro.props
+} = Astro.props as Props
 
 let headings = _headings;
 let url = _url;
@@ -28,6 +29,7 @@ if (entry) {
     }
 }
 
+// Remove '#' from heading links
 if (!!headings.length) headings = headings?.map(h => ({...h, text: h?.text?.replace(/^#/, '')}))
 
 const { title=headings[0].text } = Astro.props
@@ -35,7 +37,13 @@ const { title=headings[0].text } = Astro.props
 
 <details {...attrs}>
     <summary>
-        {title}
+        {link
+            ? (() => {
+                const { href, text } = headings[0]
+                return <a href={href}>{text}</a>
+            })()
+            : title
+        }
         <Icon name="radix-icons:caret-up" size={24}/>
     </summary>
     <TableOfContents {...{
