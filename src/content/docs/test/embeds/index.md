@@ -1,15 +1,13 @@
 ---
 draft: false
 pubDate: 2022-12-26T15:41:10.746Z
-title: Test Youtube Embed
+title: Embeds
 tags:
   - test
-  - youtube
-  - embed
-description: testing youtube embed from ombed plugin
+description: Test embeds
 ---
 
-# Youtube Embed Test
+# Youtube Embed
 
 https://www.youtube.com/watch?v=u0HTvSXNJmE
 
