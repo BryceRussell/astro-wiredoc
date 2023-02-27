@@ -2,19 +2,26 @@
 import { CollectionEntry, getCollection } from 'astro:content';
 import fg from 'fast-glob';
 import Markdown from "@/layouts/Markdown.astro";
+import Grid from '@/layouts/Grid.astro';
+import FileTree from '@/components/FileTree.astro';
 
 export async function getStaticPaths() {
     // Automatically create indexes for directories
-    const pages = await getCollection('docs')
-    //const urls = fg.sync('src/pages/**', { onlyDirectories: true }).map(d => d.replace('src/pages/', ''))
-    return pages.map(page => ({
-        params: {
-            url: page.slug
-        },
-        props: {
-            page
-        }
-    }))
+    const entries = await getCollection('docs')
+    const slugs = entries.map(e => e.slug)
+    const dirs = fg.sync('src/content/**', { onlyDirectories: true })
+        .map(d => d.replace('src/content/docs/', ''))
+        .slice(1)
+        .filter(s => !slugs.includes(s))
+    const paths = [];
+    paths.push(entries.map(page => ({
+        params: { url: page.slug },
+        props: { page }
+    })))
+    paths.push(dirs.map((dir) => ({
+        params: { url: dir }
+    })))
+    return paths
 }
 
 export interface Props {
@@ -26,13 +33,21 @@ const {
     page
 } = Astro.props as Props
 
-const {
-    Content,
-    headings,
-    remarkPluginFrontmatter
-} = await page.render()
+const { url } = Astro.params
 ---
 
-<Markdown frontmatter={remarkPluginFrontmatter || page.data} headings={headings}>
-    <Content />
-</Markdown>
+{ !page
+    ?   <Grid>
+            <FileTree link glob={url+'/**'}/>
+        </Grid>
+    : async() => {
+        const {
+            Content,
+            headings,
+            remarkPluginFrontmatter
+        } = await page.render()
+        return  <Markdown frontmatter={remarkPluginFrontmatter || page.data} headings={headings}>
+                    <Content />
+                </Markdown>
+    }
+}

@@ -30,38 +30,30 @@ export function SEODEFAULT(Astro: AstroGlobal): SEOInterface {
 export const LEFT_NAVIGATION: SidebarConfig = [
     {
         title: "Introduction",
-        links: [
-            { depth: 1, text: 'Why?', href: '/why', slug: '',},
-            { depth: 1, text: 'Getting Started', href: '/getting-started', slug: ''},
-            { depth: 1, text: 'Installation', href: '/installation', slug: ''}
-        ]
+        glob: 'introduction/**'
     },
     {
         title: "Guides",
-        links: [
-
-        ]
+        glob: 'guides/**'
     },
     {
         title: "Reference",
-        links: [
-            { depth: 1, text: 'Configuration', href: '/reference/configuration', slug: ''},
-            { depth: 1, text: 'API', href: '/reference/api', slug: ''}
-        ]
+        glob: 'reference/**'
     },
     {
         title: "Tests",
-        links: [
-
-        ]
+        glob: 'test/**'
     },
     {   
-        title: 'From Entry Headings',
-        entry: 'test/3rd-party-libraries/kleur',
-        links: [
-
-        ]
+        title: 'Generate From Page Headings',
+        entry: 'test/3rd-party-libraries/kleur'
     },
+    {
+        title: 'Manually Create Links',
+        links: [
+            {depth: 1, href: '#', slug: '', text: 'This link was manually set in config'}
+        ]
+    }
 ]
 
 export const SOCIAL_ICONS: IconLink[] = [

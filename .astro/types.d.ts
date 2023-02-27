@@ -67,6 +67,27 @@ declare module 'astro:content' {
 
 	const entryMap: {
 		"docs": {
+"introduction/getting-started/index.md": {
+  id: "introduction/getting-started/index.md",
+  slug: "introduction/getting-started",
+  body: string,
+  collection: "docs",
+  data: any
+},
+"introduction/why/index.md": {
+  id: "introduction/why/index.md",
+  slug: "introduction/why",
+  body: string,
+  collection: "docs",
+  data: any
+},
+"reference/config/index.md": {
+  id: "reference/config/index.md",
+  slug: "reference/config",
+  body: string,
+  collection: "docs",
+  data: any
+},
 "test/3rd-party-libraries/chalk/index.md": {
   id: "test/3rd-party-libraries/chalk/index.md",
   slug: "test/3rd-party-libraries/chalk",
@@ -88,6 +109,20 @@ declare module 'astro:content' {
   collection: "docs",
   data: any
 },
+"test/auto-title/index.md": {
+  id: "test/auto-title/index.md",
+  slug: "test/auto-title",
+  body: string,
+  collection: "docs",
+  data: any
+},
+"test/embeds/index.md": {
+  id: "test/embeds/index.md",
+  slug: "test/embeds",
+  body: string,
+  collection: "docs",
+  data: any
+},
 "test/empty-file/index.md": {
   id: "test/empty-file/index.md",
   slug: "test/empty-file",
@@ -102,23 +137,9 @@ declare module 'astro:content' {
   collection: "docs",
   data: any
 },
-"test/no-h1/index.md": {
-  id: "test/no-h1/index.md",
-  slug: "test/no-h1",
-  body: string,
-  collection: "docs",
-  data: any
-},
 "test/relative-image/index.md": {
   id: "test/relative-image/index.md",
   slug: "test/relative-image",
-  body: string,
-  collection: "docs",
-  data: any
-},
-"test/youtube-embed/index.md": {
-  id: "test/youtube-embed/index.md",
-  slug: "test/youtube-embed",
   body: string,
   collection: "docs",
   data: any

@@ -1,26 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
 import Grid from "@/layouts/Grid.astro";
-import Details from '@/components/Details.astro';
-import Dropdown from '@/components/Dropdown.astro';
 import FileTree from '@/components/FileTree.astro';
 import '@/css/docs.css'
-
-const pages = await getCollection('docs');
 ---
 
 <Grid>
-    <!-- <nav class="list">
-        { pages.map(async(page) => {
-            const { headings } = await page.render()
-            return (
-                <Dropdown forceClose="(max-width: 748px)" forceOpen="(min-width: 748px)">
-                    <Details url={`/docs/${page.slug}`} headings={headings} depth={2} max={3} />
-                </Dropdown>
-            )
-        })}
-    </nav> -->
-    <FileTree></FileTree>
+    <FileTree link glob="**"/>
 </Grid>
 
 

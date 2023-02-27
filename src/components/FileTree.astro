@@ -1,47 +1,57 @@
 ---
-import type { Tree, Link } from '@/types';
+import type { Tree, Link, DETAILS_COMMON } from '@/types';
 import fg from 'fast-glob';
-import path from 'node:path';
 import Details from './Details.astro';
+import { getEntryBySlug } from 'astro:content';
+
+export interface Props extends DETAILS_COMMON {
+    glob?: string;
+}
+
+const {
+    glob,
+    depth=2,
+    open=true,
+    ...props
+} = Astro.props as Props
 
 function generateFileTree(paths: string[]) {
     const root: Tree<{}> = {};
-    
     for (const path of paths) {
         const slugs = path.split('/');
         let node = root;
-        
         for (let i = 0; i < slugs.length; i++) {
             const slug = slugs[i];
-            
             if (!node[slug]) {
                 node[slug] = {};
-            } 
-
+            }
             node = node[slug];
         }
     }
     return root;
 }
 
-function generateHeadings(obj: Tree<{}>, path = '', depth = 1, result = []) {
-    for (let key in obj) {
-        const heading = { depth: depth, href: '/docs'+path+'/' + key, text: key }
-        if (typeof obj[key] === 'object' && Object.keys(obj[key]).length > 0) {
-            result.push(heading)
-            generateHeadings(obj[key], path + '/' + key, depth + 1, result)
-        } else result.push(heading)
+async function generateHeadings(obj: Tree<{}>, path = '', depth = 1, result: Link[] = []) {
+    for (let key in obj) { 
+        const slug = path+'/'+key
+        const entry = await getEntryBySlug('docs', slug.replace(/^\//, ''));
+        const text = entry?.data.title || key
+        result.push({ depth: depth, href: '/docs'+slug, slug: '', text })
+        if (!!Object.keys(obj[key]).length) await generateHeadings(obj[key], slug, depth + 1, result)
     }
     return result;
 }
 
-const glob = (await fg(`src/content/docs/**`, { onlyDirectories: true }))
-    .map(p => p.replace('src/content/docs/',''))
+const fileTree = generateFileTree(
+    (await fg(`src/content/docs/` + glob, { onlyDirectories: true })).map(p => p.replace('src/content/docs/',''))
+)
 
-const fileTree = generateFileTree(glob)
+const walk = Object.entries(fileTree)
 ---
 
-{ Object.entries(fileTree).map(([key, val]) => {
-    const headings = generateHeadings({[key]:val})
-    return <Details open link headings={headings} depth={2}/>
+{ walk.map(async([key, val]) => {
+    const headings = await generateHeadings({[key]:val})
+    return <Details {open} {depth} {...{headings, ...props}}/>
 })}
+
+{!walk.length && props.title && <Details {open} {depth} {...{headings:[], ...props}}/>}

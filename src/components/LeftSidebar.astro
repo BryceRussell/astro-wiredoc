@@ -1,17 +1,19 @@
 ---
 import Dropdown from "./Dropdown.astro";
 import Details from "./Details.astro";
+import FileTree from "./FileTree.astro";
 import { LEFT_NAVIGATION } from "@/config";
 ---
 
 <aside id="__sidebar-left">
     { LEFT_NAVIGATION.map(menu => {
-        const { links } = menu
+        const { title, links, glob } = menu
         const props = {
             open: true,
             headings: links||[],
             ...menu
         }
+        if (glob) return <FileTree title={title} glob={glob}/>
         return  <Dropdown forceClose="(max-width: 748px)" forceOpen="(min-width: 748px)">
                     <Details {...props}/>
                 </Dropdown>
