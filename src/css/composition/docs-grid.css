@@ -1,6 +1,7 @@
 :root {
   scroll-padding-top: calc(var(--ui-height) + 1em);
 }
+
 body {
   display: grid;
   grid-template-rows: var(--header-height) var(--navbar-height) 1fr min-content;
@@ -39,6 +40,7 @@ main {
   grid-area: header;
   height: var(--header-height);
 }
+
 #__header {
   z-index: 10;
   position: fixed;
@@ -58,6 +60,7 @@ main {
   grid-area: navbar;
   height: var(--navbar-height);
 }
+
 #__navbar {
   z-index: 10;
   position: fixed;
@@ -69,7 +72,7 @@ main {
   border-bottom: 1px solid var(--fg-subtle);
 }
 
-#__navbar > nav > a:first-child {
+#__navbar>nav>a:first-child {
   text-transform: capitalize;
 }
 
@@ -106,11 +109,11 @@ main {
   max-height: calc(100% - var(--ui-height));
   width: var(--sidebar-right-width);
   gap: .5em;
-  padding: 0  1em;
+  padding: 0 1em;
   background-color: var(--bg);
 }
 
-body > footer {
+body>footer {
   grid-area: footer;
 }
 
@@ -155,6 +158,7 @@ body > footer {
     gap: .5em;
     border-left: 1px solid var(--fg-subtle);
   }
+
   #__toggle-right {
     display: none;
   }
@@ -179,4 +183,5 @@ body > footer {
   outline: none;
   background-color: transparent;
   font-size: var(--fluid-1);
+  color: var(--light);
 }
